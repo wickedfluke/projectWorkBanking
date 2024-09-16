@@ -1,4 +1,5 @@
-import { IsEmail, IsString, IsUrl, Matches, MinLength } from "class-validator";
+import { IsEmail, IsString, MinLength } from "class-validator";
+import { MatchesPasswordPattern } from "../../utils/matchesPasswordPattern";
 
 export class AddUserDTO {
     @IsString()
@@ -7,19 +8,13 @@ export class AddUserDTO {
     @IsString()
     lastName: string;
 
-    @IsUrl()
-    picture: string;
-
     @IsEmail()
     username: string;
 
     @MinLength(8)
-    // @Matches(
-    //     new RegExp('((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'),
-    //     {
-    //         message: 'password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number or special character'
-    //     }
-    // )
+    @MatchesPasswordPattern({
+        message: 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.'
+    })
     password: string;
 }
 

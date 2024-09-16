@@ -1,7 +1,7 @@
 import express from 'express';
 import { isAuthenticated } from '../../utils/auth/authenticated-middleware';
-import { me } from './user.controller';
-import { list } from './user.controller';
+import { me } from './account.controller';
+import { list } from './account.controller';
 
 const router = express.Router();
 

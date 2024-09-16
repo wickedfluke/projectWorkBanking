@@ -14,7 +14,7 @@ passport.use(
             try {
                 const identity = await UserIdentityModel.findOne({ 'credentials.username': username });
                 if (!identity) {
-                    return done(null, false, { message: `Username ${username} not found` });
+                    return done(null, false, { message: `Email ${username} not found` });
                 }
                 const match = await bcrypt.compare(password, identity.credentials.hashedPassword);
                 if (match) {

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { CreateTodoDTO } from './todo.dto';
 import { TodoService } from './todo.service';
-import userService from '../user/user.service';
+import userService from '../account/user.service';
 import { ValidationError } from '../../errors/validation';
 import { ValidationError as OriginalValidationError } from "class-validator";
 import { NotFoundError } from '../../errors/not-found';
