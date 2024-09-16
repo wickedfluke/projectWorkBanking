@@ -1,4 +1,4 @@
-import { User } from "../../../api/user/user.entity";
+import { User } from "../../../api/account/account.entity";
 
 export interface UserIdentity {
     id: string;

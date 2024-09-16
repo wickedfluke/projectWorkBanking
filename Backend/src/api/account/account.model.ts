@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
-import { User } from "./user.entity";
+import { User } from "./account.entity";
 
 const userSchema = new mongoose.Schema<User>({
     firstName: String,
     lastName: String,
-    picture: String
+    iban: String,
+    openDate: Date
 })
 
 userSchema.virtual('fullName').get(function () {
