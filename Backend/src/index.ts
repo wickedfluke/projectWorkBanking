@@ -3,7 +3,7 @@ import app from './app';
 import mongoose from 'mongoose';
 
 mongoose.set('debug', true);
-mongoose.connect('mongodb://127.0.0.1:27017/simulazione-01')
+mongoose.connect('mongodb+srv://lucabenini:BHD4IYDPwu1gkGQ7@mybankingdb.fwk8n.mongodb.net/?retryWrites=true&w=majority&appName=myBankingDb')
   .then(_ => {
     console.log('Connected to db');
     app.listen(3000, () => {
