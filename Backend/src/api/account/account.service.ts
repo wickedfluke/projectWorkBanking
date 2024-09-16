@@ -32,7 +32,11 @@ export class UserService {
     async getUserById(userId: string) {
         return UserModel.findById(userId);
     };
-    
+
+    async changePassword(userId: string, newPassword: string) {
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        await UserIdentityModel.updateOne({ user: userId }, { 'credentials.hashedPassword': hashedPassword });
+    }
 
 }
 export default new UserService();

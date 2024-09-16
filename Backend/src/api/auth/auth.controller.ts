@@ -1,6 +1,6 @@
 import { NextFunction, Response } from "express";
 import { TypedRequest } from "../../utils/typed-request.interface";
-import userService from "../account/user.service";
+import userService from "../account/account.service";
 import { AddUserDTO } from "./auth.dto";
 import { omit, pick } from "lodash";
 import { UserExistsError } from "../../errors/user-exist";
