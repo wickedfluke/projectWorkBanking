@@ -29,7 +29,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
                 return;
             }
 
-            const token = jwt.sign(user.toJSON(), JWT_SECRET, { expiresIn: '30 minutes' });
+            const token = jwt.sign(JSON.parse(JSON.stringify(user)), JWT_SECRET, { expiresIn: '30 minutes' });
             
             await logService.createLog(req, 'Login Attempt', true);
 
