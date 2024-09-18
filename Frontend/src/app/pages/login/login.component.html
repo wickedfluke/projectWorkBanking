@@ -1,0 +1,51 @@
+<div class="body">
+  <div class="row w-100">
+    <!-- Left Column: Login Form -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div class="login-form w-75">
+        <h2 class="text-center mb-4">
+          <span class="h2 actual">Login</span>
+          <span class="separate">|</span>
+          <span class="h2" (click)="navigate('signup')">Registrati</span>
+        </h2>
+        <!-- <h2 class="text-center mb-4">Register</h2> -->
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="username"
+              [(ngModel)]="loginData.username"
+              placeholder="Inserisci qui la tua mail"
+            />
+            <!-- <div class="form-text text-success">Success message</div> -->
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              [(ngModel)]="loginData.password"
+              placeholder="Inserisci qui la tua password"
+            />
+            <!-- <div class="form-text text-success">Success message</div> -->
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Continua</button>
+          </div>
+        </form>
+
+        <!-- Div for login error message -->
+        <div id="login-error" class="text-danger mt-3">Credenziali non valide. Riprova.</div>
+      </div>
+    </div>
+    <!-- Right Column: Image -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center illustration">
+      <img src="../../../assets/loginImage.png" alt="Illustration" />
+    </div>
+  </div>
+</div>
