@@ -43,6 +43,7 @@ export class UserService {
     async changePassword(userId: string, newPassword: string) {
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         await UserIdentityModel.updateOne({ user: userId }, { 'credentials.hashedPassword': hashedPassword });
+        return true;
     }
 
     async activateUser(userId: string): Promise<void> {

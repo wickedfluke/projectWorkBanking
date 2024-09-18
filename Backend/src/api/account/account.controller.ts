@@ -41,7 +41,7 @@ export const password = async (req: TypedRequest<PasswordRequestBody>, res: Resp
         const newPassword = req.body.newPassword;
 
         const success = await userService.changePassword(user.id!, newPassword);
-
+        console.log(success);
         if (success!) {
             await logService.createLog(req, 'Password Change', true);
             res.status(200).json({ message: 'Password updated successfully' });
