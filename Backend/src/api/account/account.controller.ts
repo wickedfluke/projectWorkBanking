@@ -1,3 +1,4 @@
+import { MovementModel } from './../movement/movement.model';
 import { NextFunction, Response } from "express";
 import { TypedRequest } from "../../utils/typed-request.interface";
 import userService from "./account.service";
@@ -10,7 +11,15 @@ interface PasswordRequestBody {
 
 export const me = async (req: TypedRequest, res: Response, next: NextFunction) => {
     try {
-        res.json(req.user!);
+        const user = req.user!;
+        let query: any = { bankAccount: user.id };
+
+        const lastMovement = await MovementModel
+            .findOne(query)
+            .sort({ dueDate: -1 });
+        const finalBalance = lastMovement?.balance || 0;
+
+        res.json({ user, finalBalance });
     } catch (err) {
         next(err);
     }

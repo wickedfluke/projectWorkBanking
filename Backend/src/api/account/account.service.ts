@@ -3,7 +3,6 @@ import { UserIdentityModel } from "../../utils/auth/local/user-identity-model";
 import { User } from "./account.entity";
 import { UserModel } from "./account.model";
 import * as bcrypt from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
 export class UserService {
