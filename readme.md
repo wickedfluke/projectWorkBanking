@@ -107,7 +107,7 @@ Saranno caricati **almeno 10 movimenti** per due conti correnti di test. Il prim
 1. **Clonare il repository**:
    ```bash
    git clone https://github.com/wickedfluke/projectWorkBanking.git
-   cd progetto-conti-correnti
+   cd projectWorkBanking
    ```
 
 2. **Configurare il backend**:
