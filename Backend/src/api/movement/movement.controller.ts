@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { movementService } from './movement.service';
 import { Parser } from 'json2csv';
+import { logService } from '../log/log.service';
 
 export async function listMovementsWithBalanceController(req: Request, res: Response) {
     const { number } = req.query;
@@ -43,26 +44,36 @@ export async function listMovementsByDateRangeController(req: Request, res: Resp
     }
 }
 
-export async function createPhoneMovementController(req: Request, res: Response) {
+export async function createPhoneMovementController(req: Request, res: Response, next: NextFunction) {
     const { phoneNumber, operator, rechargeAmount } = req.body;
     const userId = req.params.userId;
 
     try {
         await movementService.createPhoneMovement(userId, phoneNumber, operator, rechargeAmount);
+        
+        await logService.createLog(req, 'Ricarica telefonica', true);
+
         res.status(201).json({ message: 'Ricarica telefonica creata con successo' });
     } catch (error) {
+        await logService.createLog(req, 'Ricarica telefonica', false);
+
         res.status(500).json({ error: (error as Error).message });
     }
 }
 
-export async function createTransferMovementController(req: Request, res: Response) {
+export async function createTransferMovementController(req: Request, res: Response, next: NextFunction) {
     const { receiverIban, transferAmount } = req.body;
     const userId = req.params.userId;
 
     try {
         await movementService.createTransferMovement(userId, receiverIban, transferAmount);
+        
+        await logService.createLog(req, 'Operazione Bonifico', true);
+
         res.status(201).json({ message: 'Bonifico effettuato con successo' });
     } catch (error) {
+        await logService.createLog(req, 'Operazione Bonifico', false);
+
         res.status(500).json({ error: (error as Error).message });
     }
 }
