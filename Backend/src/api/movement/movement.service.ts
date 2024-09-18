@@ -4,8 +4,7 @@ import { NotFoundError } from '../../errors/not-found';
 import { CreateMovementDTO } from './movement.dto';
 import { Types } from 'mongoose';
 
-export class MovementService {
-    constructor(private movementModel: typeof MovementModel) { }
+class MovementService {
 
     async listMovementsWithBalance(number: number, userId: string) {
         let query: any = { bankAccount: userId };
@@ -81,66 +80,19 @@ export class MovementService {
         }
     }
 
+    async createOpeningMovement(userId: string): Promise<void> {
+        const openingMovement = {
+            userId,
+            date: new Date(),
+            description: 'Apertura conto',
+            amount: 0,
+            balance: 0,
+            category: 'Entrata'
+        };
 
-
-
-
-
-
-
-    async create(todoDTO: CreateTodoDTO, userId: string): Promise<Todo> {
-        const createdBy = new Types.ObjectId(userId);
-        const newTodo: Todo = {
-            ...todoDTO,
-            createdBy: createdBy
-        }
-        const createdTodo = new this.todoModel(newTodo);
-        return (await createdTodo.save()).populate('createdBy assignedTo');
-
+        await MovementModel.create(openingMovement); 
     }
-
-    async markAsChecked(id: string): Promise<Todo | null> {
-        const updatedTodo = await this.todoModel.findByIdAndUpdate(id, { completed: true }, { new: true }).exec();
-        if (!updatedTodo) {
-            throw new NotFoundError();
-        }
-        return updatedTodo;
-    }
-
-    async markAsNotChecked(id: string): Promise<Todo | null> {
-        const updatedTodo = await this.todoModel.findByIdAndUpdate(id, { completed: false }, { new: true }).exec();
-        if (!updatedTodo) {
-            throw new NotFoundError();
-        }
-        return updatedTodo;
-    }
-
-    async getTodoById(todoId: string) {
-        return TodoModel.findById(todoId);
-
-    };
-
-    async isTodoCreatedByCurrentUser(todoId: string, userId: string) {
-        const todo = await TodoModel.findById(todoId);
-        return todo && todo.createdBy?.toString() == userId;
-    };
-
-    async isTodoAssignedToCurrentUser(todoId: string, userId: string) {
-        const todo = await TodoModel.findById(todoId);
-        return todo && todo.assignedTo?.toString() == userId;
-    };
-
-    async assignUserToTodo(todoId: string, assignedUserId: string) {
-        const todo = await TodoModel.findById(todoId);
-        if (!todo) {
-            throw new NotFoundError()
-        }
-
-        const assignedUserObjectId = new Types.ObjectId(assignedUserId);
-        todo.assignedTo = assignedUserObjectId;
-        todo.save();
-
-        return todo.populate('createdBy assignedTo');
-    };
 
 }
+
+export const movementService = new MovementService();
