@@ -1,8 +1,3 @@
-.body {
-  /* Prevent scrolling */
-  overflow: hidden;
-}
-
 .separate {
   cursor: default;
   text-decoration: none;
@@ -82,8 +77,19 @@ h2 .actual {
 }
 
 @media (max-width: 768px) {
+  #img-register {
+    display: none;
+  }
   .col-md-6 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .body {
+    /* Prevent scrolling */
+    overflow: hidden;
+    height: 100vh;
   }
 }
