@@ -14,13 +14,13 @@ import { isAuthenticated } from '../../utils/auth/authenticated-middleware';
 
 const router = express.Router();
 router.use(isAuthenticated)
-router.get('/:userId', listMovementsWithBalanceController);
+router.get('/:userId/:number', listMovementsWithBalanceController);
 router.get('/:categoryId/:userId', listMovementsByCategoryController);
 router.get('/date-range/:userId', listMovementsByDateRangeController);
 router.post('/phone/:userId', createPhoneMovementController);
 router.post('/transfer/:userId', createTransferMovementController);
-router.post('/export/movements', exportMovementsCSV1);
-router.post('/export/movements/category/:categoryId', exportMovementsCSV2);
-router.post('/export/movements/date-range', exportMovementsCSV3);
+router.post('/export', exportMovementsCSV1);
+router.post('/export/category/:categoryId', exportMovementsCSV2);
+router.post('/export/date-range', exportMovementsCSV3);
 
 export default router;
