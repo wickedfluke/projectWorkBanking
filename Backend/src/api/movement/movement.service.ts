@@ -80,7 +80,7 @@ export class MovementService {
 
     async createOpeningMovement(userId: string): Promise<void> {
         const openingMovement = {
-            userId,
+            bankAccount: userId,
             date: new Date(),
             description: 'Apertura conto',
             amount: 0,
@@ -103,7 +103,7 @@ export class MovementService {
         const description = `Ricarica telefonica: ${operator} - ${phoneNumber}`;
         const newBalance = finalBalance - rechargeAmount;
         const phoneMovement = {
-            userId,
+            bankAccount: userId,
             date: new Date(),
             description,
             amount: rechargeAmount,
@@ -114,7 +114,7 @@ export class MovementService {
         await MovementModel.create(phoneMovement);
     }
 
-    async createTransferMovement(userId: string, receiverIban: string, transferAmount: number): Promise<void> {
+    async createTransferMovement(userId: string, receiverIban: string, transferAmount: number, description: string): Promise<void> {
         let query: any = { bankAccount: userId };
         const lastMovement = await MovementModel
             .findOne(query)
@@ -125,12 +125,12 @@ export class MovementService {
         }
         const receiver = await UserModel.findOne({ iban: receiverIban });
         const sender = await UserModel.findOne({ _id: userId });
-        const description = `Bonifico in uscita verso: ${receiverIban} | ${receiver?.fullName}`;
+        const senderDescription = `Bonifico in uscita verso: ${receiverIban} | ${receiver?.fullName}`;
         const newBalance = finalBalance - transferAmount;
         const exitTransferMovement = {
-            userId,
+            bankAccount: userId,
             date: new Date(),
-            description,
+            description: "Causale: " + description + " | " + senderDescription,
             amount: transferAmount,
             balance: newBalance,
             category: '66e8361af832b9e813f119aa'
@@ -138,12 +138,12 @@ export class MovementService {
 
         await MovementModel.create(exitTransferMovement);
 
-        const description2 = `Bonifico in entrata da: ${sender?.iban} | ${sender?.fullName}`;
+        const receiverDescription = `Bonifico in entrata da: ${sender?.iban} | ${sender?.fullName}`;
         const newBalance2 = finalBalance + transferAmount;
         const incomingTransferMovement = {
-            userId: receiver?._id,
+            bankAccount: receiver?._id,
             date: new Date(),
-            description2,
+            description: "Causale: " + description + " | " + receiverDescription,
             amount: transferAmount,
             balance: newBalance2,
             category: '66e835dff832b9e813f119a6'

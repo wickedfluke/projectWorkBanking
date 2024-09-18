@@ -1,13 +1,15 @@
 <div class="body">
   <div class="row w-100">
     <!-- Left Column: Login Form -->
+    <h2 class="text-center mb-4" style="margin-left: 0%; margin-right: auto;">
+      <button>
+      <span class="button_top">Login</span></button>
+      <span class="separate">|</span>
+      <button><span class="button_top" (click)="navigate('signup')">Registrati</span></button>
+    </h2>
     <div class="col-md-6 d-flex justify-content-center align-items-center">
+      
       <div class="login-form w-75">
-        <h2 class="text-center mb-4">
-          <span class="h2 actual">Login</span>
-          <span class="separate">|</span>
-          <span class="h2" (click)="navigate('signup')">Registrati</span>
-        </h2>
         <!-- <h2 class="text-center mb-4">Register</h2> -->
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
           <div class="mb-3">

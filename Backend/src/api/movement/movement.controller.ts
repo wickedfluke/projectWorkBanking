@@ -62,11 +62,11 @@ export async function createPhoneMovementController(req: Request, res: Response,
 }
 
 export async function createTransferMovementController(req: Request, res: Response, next: NextFunction) {
-    const { receiverIban, transferAmount } = req.body;
+    const { receiverIban, transferAmount, description } = req.body;
     const userId = req.params.userId;
 
     try {
-        await movementService.createTransferMovement(userId, receiverIban, transferAmount);
+        await movementService.createTransferMovement(userId, receiverIban, transferAmount, description);
         
         await logService.createLog(req, 'Operazione Bonifico', true);
 
