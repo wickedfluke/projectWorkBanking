@@ -15,7 +15,7 @@ import { isAuthenticated } from '../../utils/auth/authenticated-middleware';
 const router = express.Router();
 router.use(isAuthenticated)
 router.get('/:userId', listMovementsWithBalanceController);
-router.get('/category/:userId', listMovementsByCategoryController);
+router.get('/:categoryId/:userId', listMovementsByCategoryController);
 router.get('/date-range/:userId', listMovementsByDateRangeController);
 router.post('/phone/:userId', createPhoneMovementController);
 router.post('/transfer/:userId', createTransferMovementController);

@@ -28,7 +28,8 @@ export async function listMovementsByCategoryController(req: Request, res: Respo
 }
 
 export async function listMovementsByDateRangeController(req: Request, res: Response) {
-    const { number, startDate, endDate } = req.query;
+    const { number } = req.query;
+    const {startDate, endDate} = req.body;
     const userId = req.params.userId;
 
     try {

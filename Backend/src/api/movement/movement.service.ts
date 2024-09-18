@@ -11,7 +11,7 @@ export class MovementService {
 
         const lastMovement = await MovementModel
             .findOne(query)
-            .sort({ dueDate: -1 });
+            .sort({ date: -1 });
 
         const finalBalance = lastMovement?.balance || 0;
 
@@ -36,7 +36,7 @@ export class MovementService {
 
         const items = await MovementModel
             .find(query)
-            .sort({ dueDate: -1 })
+            .sort({ date: -1 })
             .limit(number)
             .populate('category');
 
@@ -55,7 +55,7 @@ export class MovementService {
 
         let query: any = {
             bankAccount: userId,
-            dueDate: {
+            date: {
                 $gte: new Date(startDate),
                 $lte: new Date(endDate)
             }
@@ -63,7 +63,7 @@ export class MovementService {
 
         const items = await MovementModel
             .find(query)
-            .sort({ dueDate: -1 })
+            .sort({ date: -1 })
             .limit(number)
             .populate('category');
 
@@ -95,7 +95,7 @@ export class MovementService {
         let query: any = { bankAccount: userId };
         const lastMovement = await MovementModel
             .findOne(query)
-            .sort({ dueDate: -1 });
+            .sort({ date: -1 });
         const finalBalance = lastMovement?.balance || 0;
         if (finalBalance < rechargeAmount) {
             throw new Error('Saldo insufficiente per effettuare la ricarica');
@@ -118,12 +118,20 @@ export class MovementService {
         let query: any = { bankAccount: userId };
         const lastMovement = await MovementModel
             .findOne(query)
-            .sort({ dueDate: -1 });
+            .sort({ date: -1 });
         const finalBalance = lastMovement?.balance || 0;
+        const receiver = await UserModel.findOne({ iban: receiverIban });
+        let query2: any = { bankAccount: receiver?._id };
+        const lastMovement2 = await MovementModel
+            .findOne(query2)
+            .sort({ date: -1 });
+        const finalBalance2 = lastMovement2?.balance || 0;
+
+
         if (finalBalance < transferAmount) {
             throw new Error('Saldo insufficiente per effettuare il bonifico');
         }
-        const receiver = await UserModel.findOne({ iban: receiverIban });
+        
         const sender = await UserModel.findOne({ _id: userId });
         const senderDescription = `Bonifico in uscita verso: ${receiverIban} | ${receiver?.fullName}`;
         const newBalance = finalBalance - transferAmount;
@@ -139,7 +147,7 @@ export class MovementService {
         await MovementModel.create(exitTransferMovement);
 
         const receiverDescription = `Bonifico in entrata da: ${sender?.iban} | ${sender?.fullName}`;
-        const newBalance2 = finalBalance + transferAmount;
+        const newBalance2 = finalBalance2 + transferAmount;
         const incomingTransferMovement = {
             bankAccount: receiver?._id,
             date: new Date(),

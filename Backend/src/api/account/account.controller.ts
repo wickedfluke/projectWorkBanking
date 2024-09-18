@@ -16,7 +16,7 @@ export const me = async (req: TypedRequest, res: Response, next: NextFunction) =
 
         const lastMovement = await MovementModel
             .findOne(query)
-            .sort({ dueDate: -1 });
+            .sort({ date: -1 });
         const finalBalance = lastMovement?.balance || 0;
 
         res.json({ user, finalBalance });
