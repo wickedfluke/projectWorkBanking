@@ -1,0 +1,89 @@
+.body {
+  /* Prevent scrolling */
+  overflow: hidden;
+}
+
+.separate {
+  cursor: default;
+  text-decoration: none;
+  font-weight: normal;
+  margin: 0 10px;
+}
+
+h2 .h2 {
+  cursor: pointer;
+}
+
+h2 .actual {
+  background-color: rgba(255, 193, 7, 0.5);
+  border-radius: 15px;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+.btn-primary {
+  background-color: #f48c06;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #d97706;
+}
+
+.illustration img {
+  max-width: 100%;
+  height: auto;
+}
+
+#password-not-match,
+.success-message {
+  display: none;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.form-control {
+  padding-right: 50px; /* Spazio sufficiente per l'icona e un po' di margine */
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px; /* Distanza dal bordo destro dell'input */
+  cursor: pointer;
+  z-index: 1; /* Assicurati che l'icona sia sopra l'input */
+}
+
+.eye-icon app-eyes-icon {
+  font-size: 1.2rem; /* Dimensione dell'icona */
+}
+
+.form-text {
+  margin-top: 0.25rem; /* Spazio sopra i messaggi di errore */
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,108 @@
+<div class="container-fluid p-0">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning px-4">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <img
+          src="../../../assets/DashboardImg1.jpg"
+          alt="Dashboard Illustration"
+          class="img-fluid img-width"
+          (click)="navigate('app/dashboard')"
+        />
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link">Ricarica Cellulare</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Visualizza Movimenti</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Effettua Bonifico</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Visualizza il tuo Profilo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Modifica Password</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-danger" id="logout">LOGOUT</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome Message and Balance -->
+  <div class="container mt-4">
+    <div class="row align-items-center justify-content-center px-4">
+      <div class="col-md-6 mb-4 text-center">
+        <h2 class="welcome-message">
+          Benvenuto,
+          <span class="fw-bold">Mario Rossi</span>
+          <span>
+            <br />
+            il saldo del tuo conto è di:
+            <span class="total-amount">5.784,30€</span>
+          </span>
+          <app-eyes-icon (click)="onEyeClick($event)"></app-eyes-icon>
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="container">
+    <div class="row px-4 justify-content-center">
+      <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+          <thead class="bg-warning">
+            <tr>
+              <th>ID movimento</th>
+              <th>Data</th>
+              <th>Importo</th>
+              <th>Saldo</th>
+              <th>Categoria</th>
+              <th>Descrizione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">21346756</a></td>
+              <td>28/02/2024</td>
+              <td>300,00€</td>
+              <td>5.000,60€</td>
+              <td>Entrata</td>
+              <td>Caffè</td>
+            </tr>
+            <tr>
+              <td><a href="#">21346756</a></td>
+              <td>28/02/2024</td>
+              <td>308,00€</td>
+              <td>5.600,60€</td>
+              <td>Uscita</td>
+              <td>Negozio bici</td>
+            </tr>
+            <tr>
+              <td><a href="#">21346756</a></td>
+              <td>28/02/2024</td>
+              <td>400,00€</td>
+              <td>5.200,60€</td>
+              <td>Entrata</td>
+              <td>Sigarette</td>
+            </tr>
+            <tr>
+              <td><a href="#">21346756</a></td>
+              <td>28/02/2024</td>
+              <td>20,50€</td>
+              <td>9.000,60€</td>
+              <td>Uscita</td>
+              <td>Macchinette</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
