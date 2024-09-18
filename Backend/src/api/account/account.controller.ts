@@ -1,6 +1,8 @@
 import { NextFunction, Response } from "express";
 import { TypedRequest } from "../../utils/typed-request.interface";
 import userService from "./account.service";
+import { logService } from "../log/log.service";
+
 
 interface PasswordRequestBody {
     newPassword: string;
@@ -28,9 +30,18 @@ export const password = async (req: TypedRequest<PasswordRequestBody>, res: Resp
     try {
         const user = req.user!;
         const newPassword = req.body.newPassword;
-        await userService.changePassword(user.id!, newPassword);
-        res.status(200).json({ message: 'Password updated successfully' });
+
+        const success = await userService.changePassword(user.id!, newPassword);
+
+        if (success!) {
+            await logService.createLog(req, 'Password Change', true);
+            res.status(200).json({ message: 'Password updated successfully' });
+        } else {
+            await logService.createLog(req, 'Password Change', false);
+            res.status(400).json({ message: 'Failed to update password' });
+        }
     } catch (err) {
+        await logService.createLog(req, 'Password Change', false);
         next(err);
     }
-}
+};

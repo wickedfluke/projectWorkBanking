@@ -3,6 +3,7 @@ import { UserIdentityModel } from "../../utils/auth/local/user-identity-model";
 import { User } from "./account.entity";
 import { UserModel } from "./account.model";
 import * as bcrypt from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
 
 export class UserService {
 
@@ -36,6 +37,15 @@ export class UserService {
     async changePassword(userId: string, newPassword: string) {
         const hashedPassword = await bcrypt.hash(newPassword, 10);
         await UserIdentityModel.updateOne({ user: userId }, { 'credentials.hashedPassword': hashedPassword });
+    }
+
+    async activateUser(userId: string): Promise<void> {
+        await UserModel.updateOne({ _id: userId }, { isActive: true });
+    }
+
+    async verifyEmailToken(token: string): Promise<string> {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!);
+        return (decoded as any).userId;
     }
 
 }
