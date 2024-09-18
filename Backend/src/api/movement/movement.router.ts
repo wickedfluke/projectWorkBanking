@@ -20,7 +20,7 @@ router.get('/date-range/:userId', listMovementsByDateRangeController);
 router.post('/phone/:userId', createPhoneMovementController);
 router.post('/transfer/:userId', createTransferMovementController);
 router.post('/export', exportMovementsCSV1);
-router.post('/export/category/:categoryId', exportMovementsCSV2);
+router.post('/export/category', exportMovementsCSV2);
 router.post('/export/date-range', exportMovementsCSV3);
 
 export default router;

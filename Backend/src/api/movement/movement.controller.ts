@@ -82,9 +82,9 @@ export async function createTransferMovementController(req: Request, res: Respon
 export const exportMovementsCSV1 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = req.user!.id!;
-        const { number } = req.body;
+        const { number } = req.params;
 
-        const result = await movementService.listMovementsWithBalance(number, userId);
+        const result = await movementService.listMovementsWithBalance(Number(number), userId);
         const movements = result.movements;
 
         const fields = ['data', 'importo', 'nomeCategoria'];
@@ -104,10 +104,14 @@ export const exportMovementsCSV1 = async (req: Request, res: Response, next: Nex
 export const exportMovementsCSV2 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = req.user!.id!;
-        const categoryId = req.params.categoryId;
-        const { number } = req.body;
+        const { categoryId } = req.query;
+        const { number } = req.params;
 
-        const result = await movementService.listMovementsByCategory(number, categoryId, userId);
+        if (typeof categoryId !== 'string') {
+            return res.status(400).json({ error: 'Invalid category ID' });
+        }
+
+        const result = await movementService.listMovementsByCategory(Number(number), categoryId, userId);
         const movements = result.movements;
 
         const fields = ['data', 'importo', 'nomeCategoria'];
@@ -127,14 +131,14 @@ export const exportMovementsCSV2 = async (req: Request, res: Response, next: Nex
 export const exportMovementsCSV3 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = req.user!.id!;
-        const { number } = req.body;
-        const { startDate, endDate } = req.query;
+        const { number } = req.query;
+        const { startDate, endDate } = req.body;
 
         if (typeof startDate !== 'string' || typeof endDate !== 'string') {
             return res.status(400).json({ error: 'Invalid date range' });
         }
 
-        const result = await movementService.listMovementsByDateRange(number, startDate, endDate, userId);
+        const result = await movementService.listMovementsByDateRange(Number(number), startDate, endDate, userId);
         const movements = result.movements;
 
         const fields = ['data', 'importo', 'nomeCategoria'];
