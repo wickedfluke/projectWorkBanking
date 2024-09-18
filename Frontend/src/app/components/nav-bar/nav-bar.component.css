@@ -1,0 +1,64 @@
+/* Typography for IBM Plex Sans */
+.font-type {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+nav {
+  box-shadow: 0 4px 8px rgba(74, 73, 73, 0.5); /* Black shadow with 50% opacity */
+}
+
+/* Navbar Styles */
+.navbar-nav li a:hover,
+.navbar-nav li .active {
+  background-color: #ec9552;
+}
+
+.navbar-nav li a {
+  font-size: 0.9rem;
+  text-align: center;
+  height: 72px !important;
+  width: 200px;
+}
+
+/* Logout and Reset Password Button */
+#logout {
+  margin-right: 20px;
+  color: white;
+  background-color: #ec9552;
+  border: none;
+}
+
+#logout:hover,
+#reset-password:hover {
+  background-color: rgb(239, 96, 13);
+}
+
+/* Layout Adjustments */
+.padding-custom {
+  padding: 0;
+  height: 72px !important;
+}
+
+.align-text-custom {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+}
+
+.navbar-collapse {
+  justify-content: start;
+}
+
+.d-flex.align-items-center {
+  gap: 10px;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  padding: 0;
+}

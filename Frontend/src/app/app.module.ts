@@ -13,9 +13,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
 import { EyesIconComponent } from './components/eyes-icon/eyes-icon.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, DashboardComponent, EyesIconComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, DashboardComponent, EyesIconComponent, NavBarComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, MatIconModule],
   providers: [
     {

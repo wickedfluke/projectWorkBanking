@@ -1,25 +1,29 @@
-a {
-  cursor: pointer;
+/* Typography for IBM Plex Sans */
+.font-type {
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
-li a:hover {
-  background-color: white;
-  border-radius: 20px;
-}
-
+/* Welcome Message Styling */
 .welcome-message {
   font-size: 1.75rem;
   color: #333;
 }
 
-.balance {
-  font-size: 3rem;
-  color: #28a745;
+.total-amount {
+  font-size: 2rem;
+  color: black;
+  display: inline-block;
+  font-style: italic;
 }
 
-.visibility-icon {
-  font-size: 2rem;
-  cursor: pointer;
+.eye-icon {
+  font-size: 1.5rem;
+  margin-left: 15px;
+}
+
+/* Table Styling */
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
 }
 
 .table-bordered th,
@@ -37,48 +41,54 @@ li a:hover {
   text-decoration: underline;
 }
 
-#logout {
-  color: white;
-  background-color: #ec9552;
-  border: none;
+/* Table Header Styling */
+.bg-warning {
+  background-color: #fdba46 !important;
+  color: #ffffff;
 }
 
-#logout:hover {
-  background-color: #df6f2e;
+/* Layout Adjustments */
+.spacer-table {
+  margin-top: 20px;
 }
 
-/* img.img-fluid {
-  max-width: 90%;
-  height: auto;
-} */
-
-.container-fluid {
-  padding: 0;
+.spacer {
+  margin-top: 30px;
 }
 
-.px-4 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.img-position {
+  position: relative;
+  top: -40px;
 }
 
-.table-hover tbody tr:hover {
-  background-color: #f5f5f5;
+th {
+  background: #ffe1a1;
 }
 
-.img-width {
-  width: 50px;
-  height: auto;
-  cursor: pointer;
-  border-radius: 50%;
-  margin-right: 10px;
+.table-custom {
+  position: relative;
+  right: 4%;
 }
 
-app-eyes-icon {
-  cursor: pointer;
-  margin-left: 10px;
+.table-bordered th,
+.table-bordered td {
+  padding: 2%;
 }
 
-.total-amount {
-  font-size: 1.5rem;
-  color: #46f611;
+@media (max-width: 768px) {
+  #img-login {
+    display: none;
+  }
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-height: 650px) {
+  .body {
+    /* Prevent scrolling */
+    overflow: hidden;
+    height: 100vh;
+  }
 }
