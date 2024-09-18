@@ -1,8 +1,4 @@
-import { Movement } from './movement.entity';
 import { MovementModel } from './movement.model';
-import { NotFoundError } from '../../errors/not-found';
-import { CreateMovementDTO } from './movement.dto';
-import { Types } from 'mongoose';
 
 class MovementService {
 
@@ -87,7 +83,7 @@ class MovementService {
             description: 'Apertura conto',
             amount: 0,
             balance: 0,
-            category: 'Entrata'
+            category: '66e835cbf832b9e813f119a4'
         };
 
         await MovementModel.create(openingMovement); 

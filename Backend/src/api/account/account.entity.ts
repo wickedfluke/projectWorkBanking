@@ -6,4 +6,5 @@ export interface User {
     iban: string;
     openDate: Date;
     isActive: boolean;
+    confirmationCode?: string;
 }

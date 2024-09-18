@@ -62,7 +62,7 @@ export const add = async (req: TypedRequest<AddUserDTO>, res: Response, next: Ne
             isActive: false
         };
         const newUser = await userService.add(updatedUserData, credentials);
-        await emailService.sendConfirmationEmail(req.body.username, newUser.id!);
+        await emailService.sendConfirmationEmail(req.body.username, newUser.id!, newUser.confirmationCode!);
         res.status(201).json({
             message: 'User registered successfully. Please check your email to confirm registration.',
             userId: newUser.id
@@ -88,36 +88,17 @@ export const generateFakeIban = (): string => {
 
 export const confirmEmail = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { token } = req.query;
+        const { userId, code } = req.query;
 
-        if (!token) {
-            return res.status(400).json({ message: 'Token is required' });
+        const isConfirmed = await userService.verifyConfirmationCode(userId as string, code as string);
+
+        if (isConfirmed) {
+            await movementService.createOpeningMovement(userId as string);  // Create opening movement
+            res.status(200).json({ message: 'Email confirmed, account activated.' });
+        } else {
+            res.status(400).json({ message: 'Invalid confirmation code.' });
         }
-        
-        let decoded;
-        try {
-            decoded = jwt.verify(token as string, JWT_SECRET);
-        } catch (err) {
-            return res.status(400).json({ message: 'Invalid or expired token' });
-        }
-
-        const userId = decoded.userId;
-
-        const user = await userService.getUserById(userId);
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        if (user.isActive) {
-            return res.status(400).json({ message: 'Account already activated' });
-        }
-
-        await userService.activateUser(userId);
-        
-        await movementService.createOpeningMovement(userId);
-
-        res.status(200).json({ message: 'Email confirmed, account activated.' });
     } catch (error) {
-        next(error); 
+        next(error);
     }
-}
+};

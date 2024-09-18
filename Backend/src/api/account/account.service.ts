@@ -4,6 +4,7 @@ import { User } from "./account.entity";
 import { UserModel } from "./account.model";
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
+import { v4 as uuidv4 } from 'uuid';
 
 export class UserService {
 
@@ -13,7 +14,13 @@ export class UserService {
             throw new UserExistsError();
         }
         const hashedPassword = await bcrypt.hash(credentials.password, 10);
-        const newUser = await UserModel.create(user);
+        const confirmationCode = uuidv4();
+
+        const newUser = await UserModel.create({
+            ...user,
+            isActive: false, 
+            confirmationCode  
+        });
         await UserIdentityModel.create({
             provider: 'local',
             user: newUser.id,
@@ -43,9 +50,15 @@ export class UserService {
         await UserModel.updateOne({ _id: userId }, { isActive: true });
     }
 
-    async verifyEmailToken(token: string): Promise<string> {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!);
-        return (decoded as any).userId;
+    async verifyConfirmationCode(userId: string, confirmationCode: string) {
+        const user = await UserModel.findById(userId);
+        if (user && user.confirmationCode === confirmationCode) {
+            user.isActive = true;  
+            user.confirmationCode = undefined;  
+            await user.save();
+            return true;
+        }
+        return false;
     }
 
 }

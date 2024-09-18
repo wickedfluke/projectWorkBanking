@@ -1,42 +1,32 @@
 import nodemailer from 'nodemailer';
-import jwt from 'jsonwebtoken';
 
 class EmailService {
     private transporter;
 
     constructor() {
         this.transporter = nodemailer.createTransport({
-            service: 'Gmail', 
+            service: 'gmail', 
             auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
+                user: "mybankingtest@gmail.com",
+                pass: "vkzz hmdo yors xemb",
             }
         });
     }
 
-    async sendConfirmationEmail(username: string, userId: string) {
-        const token = generateEmailToken(userId); 
-
-        const confirmationLink = `${process.env.BASE_URL}/api/auth/confirm-email?token=${token}`;
+    async sendConfirmationEmail(username: string, userId: string, confirmationCode: string) {
+        //ToDO: Change the BASE_URL to the actual base URL of the application
+        //! REAL CONST const confirmationLink = `${process.env.BASE_URL}/api/auth/confirm-email?userId=${userId}&code=${confirmationCode}`;
+        const confirmationLink = `http://localhost:3000/api/confirm-email?userId=${userId}&code=${confirmationCode}`;
 
         const mailOptions = {
-            from: process.env.EMAIL_USER,
+            from: "mybankingtest@gmail.com",
             to: username,
-            subject: 'Confirm your email',
-            text: `Please confirm your email by clicking on the following link: ${confirmationLink}`
+            subject: 'Conferma la tua email',
+            text: `Per favore conferma la tua email cliccando il seguente link: ${confirmationLink}`,
         };
-
+        console.log(username, userId, confirmationCode);
         await this.transporter.sendMail(mailOptions);
     }
-}
-
-function generateEmailToken(userId: string) {
-    
-    const secret = process.env.JWT_SECRET;
-    if (!secret) {
-        throw new Error('JWT_SECRET is not defined');
-    }
-    return jwt.sign({ userId }, secret, { expiresIn: '1h' });
 }
 
 export const emailService = new EmailService();

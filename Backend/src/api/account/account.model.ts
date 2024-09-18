@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema<User>({
     lastName: String,
     iban: String,
     openDate: Date,
-    isActive: Boolean
+    isActive: Boolean,
+    confirmationCode: String
 })
 
 userSchema.virtual('fullName').get(function () {
