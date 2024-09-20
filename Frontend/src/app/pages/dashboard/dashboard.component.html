@@ -2,107 +2,37 @@
   <div class="container-fluid p-0">
     <!-- Navbar -->
     <app-nav-bar></app-nav-bar>
-    <div class="container-fluid" style="padding-left: 7%">
+    <div class="container-fluid" style="padding-left: 7%; padding-right: 7%;">
       <div class="row">
-        <div class="col-md-8 mb-4">
+        <div class="col-lg-8 col-md-12 mb-4">
           <!-- Welcome Message and Balance -->
           <div class="mt-4">
-            <div class="align-items-center">
-              <div>
-                <h2 class="welcome-message font-type spacer" style="font-size: 48px; line-height: 55px">
-                  Benvenuto
-                  <strong>Mario Rossi</strong>
-                  <span>,</span>
-                  <br />
-                  il saldo del tuo conto è di:
-                </h2>
+            <h2 class="welcome-message font-type" style="font-size: 48px; line-height: 55px">
+              Benvenuto
+              <strong>{{ currentUser.fullName }}</strong>
+              <span>,</span>
+              <br />
+              il saldo del tuo conto è di:
+            </h2>
 
-                <!-- Span che contiene il saldo con blur dinamico -->
-                <span
-                  [ngClass]="{ blurred: isBlurred }"
-                  class="total-amount font-type"
-                  style="font-size: 48px; line-height: 55px"
-                >
-                  5.784,30€
-                </span>
-
-                <!-- Icona per gestire il click -->
-                <span class="eye-icon">
-                  <app-eyes-icon id="eyes" (click)="toggleBlur()"></app-eyes-icon>
-                </span>
-              </div>
-            </div>
+            <span
+              [ngClass]="{ blurred: isBlurred, notBlurred: !isBlurred }"
+              class="total-amount font-type"
+              style="font-size: 48px; line-height: 55px"
+            >
+              {{ this.balance | currency: 'EUR':'symbol':'1.2-2' }}
+            </span>
+            <span class="eye-icon">
+              <app-eyes-icon id="eyes" (click)="toggleBlur()"></app-eyes-icon>
+            </span>
           </div>
-
-          <!-- Table and Image on the same row -->
-          <div class="table-custom spacer">
-            <div class="align-items-start">
-              <!-- Table Column (60%) -->
-              <div>
-                <div class="table-responsive spacer-table">
-                  <table class="table table-bordered table-hover row-padding">
-                    <thead class="bg-warning">
-                      <tr class="row-padding">
-                        <!-- <th>ID movimento</th> -->
-                        <th>Data</th>
-                        <th>Importo</th>
-                        <!-- <th>Saldo</th> -->
-                        <th>Categoria</th>
-                        <th>Descrizione</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <!-- <td><a href="#">21346756</a></td> -->
-                        <td>28/02/2024</td>
-                        <td>300,00€</td>
-                        <!-- <td>5.000,60€</td> -->
-                        <td>Entrata</td>
-                        <td>Caffè</td>
-                      </tr>
-                      <tr>
-                        <!-- <td><a href="#">21346757</a></td> -->
-                        <td>28/02/2024</td>
-                        <td>308,00€</td>
-                        <!-- <td>5.600,60€</td> -->
-                        <td>Uscita</td>
-                        <td>Negozio bici</td>
-                      </tr>
-                      <tr>
-                        <!-- <td><a href="#">21346758</a></td> -->
-                        <td>28/02/2024</td>
-                        <td>400,00€</td>
-                        <!-- <td>5.200,60€</td> -->
-                        <td>Entrata</td>
-                        <td>Sigarette</td>
-                      </tr>
-                      <tr>
-                        <!-- <td><a href="#">21346759</a></td> -->
-                        <td>28/02/2024</td>
-                        <td>20,50€</td>
-                        <!-- <td>9.000,60€</td> -->
-                        <td>Uscita</td>
-                        <td>Macchinette</td>
-                      </tr>
-                      <tr>
-                        <!-- <td><a href="#">21346759</a></td> -->
-                        <td>28/02/2024</td>
-                        <td>20,50€</td>
-                        <!-- <td>9.000,60€</td> -->
-                        <td>Uscita</td>
-                        <td>Macchinette</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <!-- Image Column (30%) -->
-          </div>
+          <!-- Movement Table -->
+          <app-movement-table></app-movement-table>
         </div>
-        <div class="col-md-4 d-flex justify-content-center align-items-center img-position">
-          <!-- <img src="../../../assets/DashboardImg1.jpg" class="right-img" alt="Img dashboard" /> -->
-          <img src="../../../assets/DashboardImg1.jpg" class="img-fluid" alt="Img dashboard" />
+
+        <!-- Image Section -->
+        <div class="col-lg-4 col-md-12 d-flex justify-content-center align-items-center mb-4">
+          <img src="../../../assets/DashboardImg1.jpg" class="img-fluid right-img d-none d-md-block" alt="Img dashboard" />
         </div>
       </div>
     </div>

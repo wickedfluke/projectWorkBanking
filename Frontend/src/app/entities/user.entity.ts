@@ -3,5 +3,7 @@ export interface User {
   firstName: string;
   lastName: string;
   fullName?: string;
-  picture: string;
+  iban: string;
+  openDate: Date;
+  isActive: boolean;
 }

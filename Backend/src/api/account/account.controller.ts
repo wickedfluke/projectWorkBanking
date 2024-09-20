@@ -53,4 +53,14 @@ export const password = async (req: TypedRequest<PasswordRequestBody>, res: Resp
         await logService.createLog(req, 'Password Change', false);
         next(err);
     }
-};
+}
+
+export const balance = async (req: TypedRequest, res: Response, next: NextFunction) => {
+    try {
+        const user = req.user!;
+        const balance = await userService.getUserBalance(user.id!);
+        res.json({ balance });
+    } catch (err) {
+        next(err);
+    }
+}

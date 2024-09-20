@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { EyeStateService } from '../../services/eyes-icon.service';
 import { Router } from '@angular/router';
-import { getElementById } from '../../functions/utils.html';
+import { User } from '../../entities/user.entity';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +10,26 @@ import { getElementById } from '../../functions/utils.html';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  constructor(private router: Router) {}
   visible: boolean = false;
   isBlurred: boolean = true;
+  users: User[] = [];
+  currentUser: any;
+  balance: number = 0;
+  constructor(private router: Router, private authService: AuthService, private userService: UserService) {}
 
-  hydeTotal(): void {
+  ngOnInit() {
+    this.authService.currentUser$.subscribe(user => this.currentUser = user)
+    this.userService.getUsers().subscribe(users => {
+      this.users = users
+  })
+    this.userService.getBalance().subscribe(balance => {
+      this.balance = balance.balance
+  })
+  console.log(this.balance)
+  }
+  
+
+  hideTotal(): void {
     this.visible = !this.visible;
   }
 

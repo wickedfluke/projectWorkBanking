@@ -4,6 +4,7 @@ import { User } from "./account.entity";
 import { UserModel } from "./account.model";
 import * as bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
+import { MovementModel } from "../movement/movement.model";
 
 export class UserService {
 
@@ -59,6 +60,16 @@ export class UserService {
             return true;
         }
         return false;
+    }
+
+    async getUserBalance(userId: string) {
+        let query: any = { bankAccount: userId };
+        const items = await MovementModel.find(query).sort({ date: -1 }).populate('category');
+        const lastMovement = await MovementModel
+            .findOne(query)
+            .sort({ date: -1 });
+        const finalBalance = lastMovement?.balance || 0;
+        return finalBalance;
     }
 
 }

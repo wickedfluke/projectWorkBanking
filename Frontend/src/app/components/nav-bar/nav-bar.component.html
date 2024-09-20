@@ -1,53 +1,44 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-warning padding-custom">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning shadow-sm">
+  <div class="container-fluid position-relative">
+    <a class="navbar-brand img-fluid right-img d-none d-md-block" href="#">
+      <img src="../../../assets/DashboardImg1.jpg" alt="Logo" style="height: 40px; margin-left: 37px; border-radius: 50px;">
+    </a>
+    <!-- Button for toggling the navbar on smaller screens -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 10px; margin-bottom: 6px;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <!-- Collapsible part of the navbar -->
-    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
-      <!-- Button for toggling the navbar on smaller screens -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
       <!-- Navbar links -->
-      <ul class="navbar-nav me-auto d-flex">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a
-            class="nav-link align-text-custom activated px-4"
-            routerLink="/app/dashboard/recharge"
-            routerLinkActive="active"
-          >
-            Ricarica
-            <br />
-            Cellulare
+          <a class="nav-link align-text-custom" routerLink="/app/dashboard/recharge" routerLinkActive="active">
+            Ricarica Cellulare
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link align-text-custom" routerLink="/app/dashboard/view" routerLinkActive="active">
-            Visualizza
-            <br />
-            Movimenti
+            Visualizza Movimenti
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link align-text-custom" href="#" routerLink="/app/dashboard/transfer" routerLinkActive="active">
-            Effettua
-            <br />
-            Bonifico
+          <a class="nav-link align-text-custom" routerLink="/app/dashboard/transfer" routerLinkActive="active">
+            Effettua Bonifico
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link align-text-custom" href="#" routerLink="/app/dashboard/profile" routerLinkActive="active">
-            Visualizza il
-            <br />
-            tuo Profilo
+          <a class="nav-link align-text-custom" routerLink="/app/dashboard/profile" routerLinkActive="active">
+            Visualizza il tuo Profilo
           </a>
         </li>
       </ul>
+    </div>
 
-      <!-- Right side buttons -->
-      <div class="d-flex align-items-center">
-        <!-- <a href="#" class="btn btn-outline-warning me-2" id="reset-password">Modifica Password</a> -->
-        <button (click)="logout()" class="btn btn-outline-danger" id="logout">LOGOUT</button>
-      </div>
+    <!-- Right side buttons -->
+    <div class="position-absolute top-0 end-0 mt-sm-2 me-sm-3">
+      <button (click)="logout()" class="btn btn-danger" id="logout">LOGOUT</button>
     </div>
   </div>
 </nav>

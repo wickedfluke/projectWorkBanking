@@ -6,26 +6,41 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Custom components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthInterceptor } from './auth/auth.interceptor';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
 import { EyesIconComponent } from './components/eyes-icon/eyes-icon.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { AuthInterceptor } from './utils/auth.interceptor';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
+import { MovementTableComponent } from './components/movement-table/movement-table.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, DashboardComponent, EyesIconComponent, NavBarComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, MatIconModule],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent,
+    EyesIconComponent,
+    NavBarComponent,
+    IfAuthenticatedDirective,
+    MovementTableComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatIconModule
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
     },
-    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

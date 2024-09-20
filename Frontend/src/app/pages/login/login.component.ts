@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
-import { getElementById, hydeContent, showContent } from '../../functions/utils.html';
+import { getElementById, hideContent, showContent } from '../../functions/utils.html';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +26,7 @@ export class LoginComponent {
   login(form: NgForm) {
     this.authService.login(this.loginData.username, this.loginData.password).subscribe(
       () => {
-        hydeContent(getElementById('login-error'));
+        hideContent(getElementById('login-error'));
         this.router.navigate(['/app/dashboard']);
       },
       (err: any) => {

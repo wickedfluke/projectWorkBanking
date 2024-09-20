@@ -1,71 +1,61 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { RegisterData } from '../entity/register.entity';
+import { Injectable } from '@angular/core';
+import { JwtService } from './jwt.service';
+import { BehaviorSubject, map, tap } from 'rxjs';
+import { Router } from '@angular/router';
+
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  iban: string;
+  openDate: Date;
+  isActive: boolean;
+}
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
-  private token: string | null = null;
-  private user: any | null = null;
-  constructor(private http: HttpClient) {}
+  private _currentUser$ = new BehaviorSubject<User | null>(null);
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/login', { username, password }).pipe(
-      tap((response: any) => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        this.token = response.token;
-        this.user = response.user;
-      })
-    );
+  currentUser$ = this._currentUser$.asObservable();
+
+  constructor(
+    protected http: HttpClient,
+    protected jwt: JwtService,
+    protected router: Router
+  ) {
+    this.fetchUser();
   }
 
-  // 5 Proprieta separate
-  register(firstName: string, lastName: string, picture: string, username: string, password: string): Observable<any>;
-  // 1 oggetto singolo
-  register(data: RegisterData): Observable<any>;
-  // Implement
-  register(
-    firstNameOrObj: string | RegisterData,
-    lastName?: string,
-    username?: string,
-    password?: string
-  ): Observable<any> {
-    if (typeof firstNameOrObj === 'string') {
-      return this.http.post<any>('http://localhost:3000/api/register', {
-        firstName: firstNameOrObj,
-        lastName,
-        username,
-        password,
-      });
-    }
-    return this.http.post<any>('http://localhost:3000/api/register', firstNameOrObj);
+  isLoggedIn() {
+    return this.jwt.hasToken();
   }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+  login(username: string, password: string) {
+    return this.http.post<{ user: User, token: string }>('/api/login', { username, password })
+      .pipe(
+        tap(res => this.jwt.setToken(res.token)),
+        tap(res => this._currentUser$.next(res.user)),
+        map(res => res.user)
+      );
   }
 
-  getUser(): any | null {
-    const userString = localStorage.getItem('user');
-    return userString ? JSON.parse(userString) : null;
+  register(data: { firstName: string, lastName: string, username: string, password: string, picture: string }) {
+    return this.http.post('/api/register', data);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  logout() {
+    this.jwt.removeToken();
+    this._currentUser$.next(null);
+    this.router.navigate(['/']);
   }
 
-  isAuthenticated(): boolean {
-    return !!this.token;
+  fetchUser() {
+    this.http.get<User>('/api/users/me')
+      .subscribe(user => this._currentUser$.next(user));
   }
-
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.token = null;
-    this.user = null;
-  }
+  
 }

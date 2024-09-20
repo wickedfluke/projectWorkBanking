@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { isValidPassword, isValidEmail } from '../../functions/validate-input';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -22,15 +21,6 @@ export class RegisterComponent {
 
   onRegister(form: NgForm) {
     if (form.invalid) return;
-    if (!isValidEmail(this.registerData.username)) {
-      alert('Email non valida');
-      return;
-    }
-    if (!isValidPassword(this.registerData.password)) {
-      alert('Password non valida');
-      return;
-    }
-
     this.authService.register(this.registerData).subscribe(
       (response) => {
         this.router.navigate(['/signin']);

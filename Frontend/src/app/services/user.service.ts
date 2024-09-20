@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, switchMap, tap } from 'rxjs';
-import { Todo } from '../entity/todo.entity';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../entities/user.entity';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  private apiUrl = '/api/users'; 
 
-  getUserList(token: string): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('http://localhost:3000/api/users/users', { headers });
+  constructor(private http: HttpClient) { }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
   }
 
-  getUserById(token: string, id: string): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`http://localhost:3000/api/users/${id}`, { headers });
+  getUserById(userId: string): Observable<User> {
+    const url = `${this.apiUrl}/${userId}`;
+    return this.http.get<User>(url);
   }
 
-  private getUser() {
-    const userJson = localStorage.getItem('user');
-    return userJson ? JSON.parse(userJson) : null;
+  getBalance(): Observable<{balance: number}> {
+    const url = `${this.apiUrl}/balance`;
+    return this.http.get<{balance: number}>(url);
   }
+  
 }

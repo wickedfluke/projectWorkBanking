@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class EyeStateService {
-  private isOpenSubject = new BehaviorSubject<boolean>(true); // Stato iniziale
+  private isOpenSubject = new BehaviorSubject<boolean>(true);
   isOpen$ = this.isOpenSubject.asObservable();
 
   setOpenState(isOpen: boolean): void {

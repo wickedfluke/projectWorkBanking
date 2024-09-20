@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser'; // Importa il servizio Title
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,15 @@ import { Title } from '@angular/platform-browser'; // Importa il servizio Title
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  constructor(private titleSrv: Title) {}
+  constructor(private titleSrv: Title, private authSrv: AuthService) {}
   title = 'Home banking';
+  currentUser$ = this.authSrv.currentUser$;
 
   ngOnInit(): void {
     this.titleSrv.setTitle(this.title);
+  }
+
+  logout() {
+    this.authSrv.logout();
   }
 }
