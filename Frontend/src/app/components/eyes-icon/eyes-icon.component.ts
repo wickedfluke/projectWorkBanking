@@ -10,7 +10,7 @@ export class EyesIconComponent {
   @Output() click = new EventEmitter<boolean>();
   @Input() size: string = '32px'; // Dimensione predefinita
 
-  isOpen: boolean = true;
+  isOpen: boolean = false;
 
   constructor(private eyeStateService: EyeStateService) {}
 
@@ -18,6 +18,6 @@ export class EyesIconComponent {
   onClick(): void {
     this.isOpen = !this.isOpen; // Alterna lo stato
     this.eyeStateService.setOpenState(this.isOpen);
-    this.click.emit(this.isOpen); // Emette l'evento
+    // this.click.emit(this.isOpen); // Emette l'evento
   }
 }

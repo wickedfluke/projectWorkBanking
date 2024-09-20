@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EyeStateService } from '../../services/eyes-icon.service';
 import { Router } from '@angular/router';
+import { getElementById } from '../../functions/utils.html';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,12 +9,16 @@ import { Router } from '@angular/router';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  constructor(private eyeStateService: EyeStateService, private router: Router) {}
+  constructor(private router: Router) {}
   visible: boolean = false;
+  isBlurred: boolean = true;
 
-  toggleVisible() {
+  hydeTotal(): void {
     this.visible = !this.visible;
-    console.log(this.visible);
+  }
+
+  toggleBlur(): void {
+    this.isBlurred = !this.isBlurred; // Alterna lo stato del blur
   }
 
   navigate(path: string) {
