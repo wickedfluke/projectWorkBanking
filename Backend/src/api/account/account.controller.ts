@@ -19,7 +19,7 @@ export const me = async (req: TypedRequest, res: Response, next: NextFunction) =
             .sort({ date: -1 });
         const finalBalance = lastMovement?.balance || 0;
 
-        res.json({ user, finalBalance });
+        res.json( user );
     } catch (err) {
         next(err);
     }

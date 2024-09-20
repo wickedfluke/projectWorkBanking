@@ -25,7 +25,6 @@ export class DashboardComponent {
     this.userService.getBalance().subscribe(balance => {
       this.balance = balance.balance
   })
-  console.log(this.balance)
   }
   
 
@@ -34,7 +33,7 @@ export class DashboardComponent {
   }
 
   toggleBlur(): void {
-    this.isBlurred = !this.isBlurred; // Alterna lo stato del blur
+    this.isBlurred = !this.isBlurred;
   }
 
   navigate(path: string) {

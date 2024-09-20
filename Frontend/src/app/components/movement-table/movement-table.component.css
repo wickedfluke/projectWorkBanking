@@ -82,3 +82,13 @@ th {
         height: 100vh;
     }
 }
+
+.link-like {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-like:hover {
+    color: #0056b3;
+}

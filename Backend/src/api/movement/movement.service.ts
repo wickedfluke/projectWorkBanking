@@ -16,9 +16,10 @@ export class MovementService {
         const finalBalance = lastMovement?.balance || 0;
 
         const movementData = items.map(item => ({
-            data: item.date,
-            importo: item.amount,
-            nomeCategoria: item.category
+            date: item.date,
+            amount: item.amount,
+            categoryName: item.category,
+            description: item.description
         }));
 
         return {
@@ -41,9 +42,10 @@ export class MovementService {
             .populate('category');
 
         const movementData = items.map(item => ({
-            data: item.date,
-            importo: item.amount,
-            nomeCategoria: item.category
+            date: item.date,
+            amount: item.amount,
+            categoryName: item.category,
+            description: item.description
         }));
 
         return {
@@ -68,9 +70,10 @@ export class MovementService {
             .populate('category');
 
         const movementData = items.map(item => ({
-            data: item.date,
-            importo: item.amount,
-            nomeCategoria: item.category
+            date: item.date,
+            amount: item.amount,
+            categoryName: item.category,
+            description: item.description
         }));
 
         return {

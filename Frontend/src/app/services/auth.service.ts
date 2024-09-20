@@ -27,7 +27,9 @@ export class AuthService {
     protected jwt: JwtService,
     protected router: Router
   ) {
-    this.fetchUser();
+    if (this.isLoggedIn()) {
+      this.fetchUser(); 
+    }
   }
 
   isLoggedIn() {
@@ -57,5 +59,6 @@ export class AuthService {
     this.http.get<User>('/api/users/me')
       .subscribe(user => this._currentUser$.next(user));
   }
-  
+
+
 }
