@@ -23,7 +23,7 @@ export class RegisterComponent {
     if (form.invalid) return;
     this.authService.register(this.registerData).subscribe(
       (response) => {
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/login']);
       },
       (error) => {
         console.log(error);

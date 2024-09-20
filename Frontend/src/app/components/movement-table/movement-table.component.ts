@@ -17,8 +17,6 @@ export class MovementTableComponent {
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => {
       this.currentUser = user;
-      console.log('user:', user);
-      console.log('Current user:', this.currentUser);
       if (this.currentUser) {
         this.getMovements();
       }
@@ -35,7 +33,6 @@ export class MovementTableComponent {
       this.movementService.listMovementsWithBalance(userId, numberOfMovements).subscribe(
         (data) => {
           this.movements = data.movements;
-          console.log('Movements:', this.movements);
         },
         (error) => {
           console.error('Error fetching movements:', error);

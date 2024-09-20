@@ -12,14 +12,7 @@ interface PasswordRequestBody {
 export const me = async (req: TypedRequest, res: Response, next: NextFunction) => {
     try {
         const user = req.user!;
-        let query: any = { bankAccount: user.id };
-
-        const lastMovement = await MovementModel
-            .findOne(query)
-            .sort({ date: -1 });
-        const finalBalance = lastMovement?.balance || 0;
-
-        res.json( user );
+        res.json( user);
     } catch (err) {
         next(err);
     }

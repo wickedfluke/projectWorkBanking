@@ -9,16 +9,16 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
   {
-    path: 'login signin',
+    path: 'login',
     canActivate: [LoginGuard],
     component: LoginComponent
   },
   {
-    path: 'register signup',
+    path: 'register',
     canActivate: [LoginGuard],
     component: RegisterComponent
   },
@@ -31,12 +31,7 @@ const routes: Routes = [
     path: 'dashboard',
     canActivate: [authGuard],
     component: DashboardComponent
-  },
-  { path: 'signin', component: LoginComponent },
-  { path: 'login', redirectTo: 'signin' },
-
-  { path: 'signup', component: RegisterComponent },
-  { path: 'register', redirectTo: 'signup' },
+  }
 ];
 
 @NgModule({
