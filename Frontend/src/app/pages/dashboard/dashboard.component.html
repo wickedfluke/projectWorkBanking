@@ -16,9 +16,14 @@
                   <br />
                   il saldo del tuo conto è di:
                 </h2>
-                <span class="total-amount font-type" style="font-size: 48px; line-height: 55px">5.784,30€</span>
+                <span *ngIf="visible" class="total-amount font-type" style="font-size: 48px; line-height: 55px">
+                  5.784,30€
+                </span>
+                <span *ngIf="!visible" class="total-amount font-type" style="font-size: 48px; line-height: 55px">
+                  ______.__€
+                </span>
                 <span class="eye-icon">
-                  <app-eyes-icon id="eyes" (click)="onEyeClick()"></app-eyes-icon>
+                  <app-eyes-icon id="eyes" (click)="toggleVisible()"></app-eyes-icon>
                 </span>
               </div>
             </div>
@@ -33,52 +38,52 @@
                   <table class="table table-bordered table-hover row-padding">
                     <thead class="bg-warning">
                       <tr class="row-padding">
-                        <th>ID movimento</th>
+                        <!-- <th>ID movimento</th> -->
                         <th>Data</th>
                         <th>Importo</th>
-                        <th>Saldo</th>
+                        <!-- <th>Saldo</th> -->
                         <th>Categoria</th>
                         <th>Descrizione</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td><a href="#">21346756</a></td>
+                        <!-- <td><a href="#">21346756</a></td> -->
                         <td>28/02/2024</td>
                         <td>300,00€</td>
-                        <td>5.000,60€</td>
+                        <!-- <td>5.000,60€</td> -->
                         <td>Entrata</td>
                         <td>Caffè</td>
                       </tr>
                       <tr>
-                        <td><a href="#">21346757</a></td>
+                        <!-- <td><a href="#">21346757</a></td> -->
                         <td>28/02/2024</td>
                         <td>308,00€</td>
-                        <td>5.600,60€</td>
+                        <!-- <td>5.600,60€</td> -->
                         <td>Uscita</td>
                         <td>Negozio bici</td>
                       </tr>
                       <tr>
-                        <td><a href="#">21346758</a></td>
+                        <!-- <td><a href="#">21346758</a></td> -->
                         <td>28/02/2024</td>
                         <td>400,00€</td>
-                        <td>5.200,60€</td>
+                        <!-- <td>5.200,60€</td> -->
                         <td>Entrata</td>
                         <td>Sigarette</td>
                       </tr>
                       <tr>
-                        <td><a href="#">21346759</a></td>
+                        <!-- <td><a href="#">21346759</a></td> -->
                         <td>28/02/2024</td>
                         <td>20,50€</td>
-                        <td>9.000,60€</td>
+                        <!-- <td>9.000,60€</td> -->
                         <td>Uscita</td>
                         <td>Macchinette</td>
                       </tr>
                       <tr>
-                        <td><a href="#">21346759</a></td>
+                        <!-- <td><a href="#">21346759</a></td> -->
                         <td>28/02/2024</td>
                         <td>20,50€</td>
-                        <td>9.000,60€</td>
+                        <!-- <td>9.000,60€</td> -->
                         <td>Uscita</td>
                         <td>Macchinette</td>
                       </tr>

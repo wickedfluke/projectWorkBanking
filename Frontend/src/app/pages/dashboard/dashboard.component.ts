@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { EyeStateService } from '../../services/eyes-icon.service';
 import { Router } from '@angular/router';
-import { getElementById } from '../../functions/utils.html';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,11 +9,11 @@ import { getElementById } from '../../functions/utils.html';
 })
 export class DashboardComponent {
   constructor(private eyeStateService: EyeStateService, private router: Router) {}
+  visible: boolean = false;
 
-  // Metodo per gestire il clic sull'icona dell'occhio
-  onEyeClick(): void {
-    const eyes = document.getElementById('eyes') as HTMLInputElement;
-    console.log('Occhio stato:', eyes.checked); // Per debugging
+  toggleVisible() {
+    this.visible = !this.visible;
+    console.log(this.visible);
   }
 
   navigate(path: string) {
