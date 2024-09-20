@@ -4,11 +4,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'nav', component: NavBarComponent },
   // Dashboard
-  { path: 'app/dashboard', component: DashboardComponent },
+  { path: 'app/dashboard', canActivate: [authGuard], component: DashboardComponent },
   // Login
   { path: 'signin', component: LoginComponent },
   { path: 'login', redirectTo: 'signin' },
