@@ -16,14 +16,19 @@
                   <br />
                   il saldo del tuo conto è di:
                 </h2>
-                <span *ngIf="visible" class="total-amount font-type" style="font-size: 48px; line-height: 55px">
+
+                <!-- Span che contiene il saldo con blur dinamico -->
+                <span
+                  [ngClass]="{ blurred: isBlurred }"
+                  class="total-amount font-type"
+                  style="font-size: 48px; line-height: 55px"
+                >
                   5.784,30€
                 </span>
-                <span *ngIf="!visible" class="total-amount font-type" style="font-size: 48px; line-height: 55px">
-                  ______.__€
-                </span>
+
+                <!-- Icona per gestire il click -->
                 <span class="eye-icon">
-                  <app-eyes-icon id="eyes" (click)="toggleVisible()"></app-eyes-icon>
+                  <app-eyes-icon id="eyes" (click)="toggleBlur()"></app-eyes-icon>
                 </span>
               </div>
             </div>
