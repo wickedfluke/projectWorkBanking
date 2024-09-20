@@ -80,6 +80,10 @@ th {
   transition: filter 0.3s ease; /* Transizione per un effetto più fluido */
 }
 
+.notBlurred { /* Sfoca il contenuto */
+  transition: filter 0.3s ease; /* Transizione per un effetto più fluido */
+}
+
 @media (max-width: 768px) {
   #img-login {
     display: none;

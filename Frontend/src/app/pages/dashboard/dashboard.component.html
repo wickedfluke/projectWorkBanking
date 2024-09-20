@@ -19,7 +19,7 @@
 
                 <!-- Span che contiene il saldo con blur dinamico -->
                 <span
-                  [ngClass]="{ blurred: isBlurred }"
+                  [ngClass]="{ blurred: isBlurred, notBlurred: !isBlurred }"
                   class="total-amount font-type"
                   style="font-size: 48px; line-height: 55px"
                 >
