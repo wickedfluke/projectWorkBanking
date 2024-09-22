@@ -3,30 +3,13 @@
 }
 
 .title {
-  position: relative;
-  top: 45px;
-}
-
-.table {
-  margin-top: 50px;
-  width: 100%;
-}
-
-.table-position {
-  position: relative;
-  top: 30px;
+  display: block;
+  margin-bottom: 20px; /* Spazio sotto il titolo */
 }
 
 .no-moovement {
-  position: relative;
-  top: 240px;
-  left: 200px;
   font-size: 50px;
-}
-
-.filter {
-  position: relative;
-  top: 120px;
+  text-align: center;
 }
 
 .bg-filter {
