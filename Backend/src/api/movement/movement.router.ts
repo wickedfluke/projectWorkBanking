@@ -7,7 +7,8 @@ import {
     createTransferMovementController,
     exportMovementsCSV1,
     exportMovementsCSV2,
-    exportMovementsCSV3
+    exportMovementsCSV3,
+    getMovementById
 } from './movement.controller';
 import { isAuthenticated } from '../../utils/auth/authenticated-middleware';
 
@@ -17,6 +18,7 @@ router.use(isAuthenticated)
 router.get('/', listMovementsWithBalanceController);
 router.get('/category', listMovementsByCategoryController);
 router.get('/date-range', listMovementsByDateRangeController);
+router.get('/:movementId', getMovementById);
 router.post('/phone', createPhoneMovementController);
 router.post('/transfer', createTransferMovementController);
 router.post('/export', exportMovementsCSV1);

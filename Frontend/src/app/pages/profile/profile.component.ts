@@ -33,6 +33,10 @@ export class ProfileComponent implements AfterViewInit {
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required]
     });
+    this.authService.fetchUsername().subscribe((email) => {
+      this.email = email;
+      console.log('Email:', this.email);
+    });
   }
 
   usciteMensili = [20, 30, 40, 50, 60, 70, 80, 90, 3000, 50, 30, 20];

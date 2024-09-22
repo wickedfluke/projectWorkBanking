@@ -16,6 +16,7 @@ export class MovementService {
         const finalBalance = lastMovement?.balance || 0;
 
         const movementData = items.map(item => ({
+            id: item._id,
             date: item.date,
             amount: item.amount,
             categoryName: item.category,
@@ -161,6 +162,10 @@ export class MovementService {
         };
 
         await MovementModel.create(incomingTransferMovement);
+    }
+
+    async getMovementById(userId: string, movementId: string) {
+        return await MovementModel.findById(movementId).populate('category');   
     }
 
 }

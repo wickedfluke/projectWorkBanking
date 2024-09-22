@@ -13,11 +13,13 @@
               class="form-control"
               id="phoneNumber"
               placeholder="Inserisci qui il tuo numero di telefono"
+              [(ngModel)]="phoneNumber"
+              name = "phoneNumber"
             />
           </div>
           <div class="mb-3">
             <label for="operator" class="form-label">Seleziona il tuo Operatore</label>
-            <select class="form-select" id="operator">
+            <select class="form-select" id="operator" [(ngModel)]="operator" name = "operator">
               <option value="" selected>Seleziona un operatore</option>
               <option value="Iliad">Iliad</option>
               <option value="Vodafone">Vodafone</option>
@@ -32,7 +34,7 @@
           </div>
           <div class="mb-3">
             <label for="amount" class="form-label">Seleziona il taglio della Ricarica</label>
-            <select class="form-select" id="amount">
+            <select class="form-select" id="amount" [(ngModel)]="amount" name = "amount">
               <option value="5">5€</option>
               <option value="10">10€</option>
               <option value="20">20€</option>
@@ -41,7 +43,7 @@
               <!-- Aggiungi altre opzioni se necessario -->
             </select>
           </div>
-          <button type="submit" class="btn btn-warning w-100">Effettua ricarica</button>
+          <button type="submit" class="btn btn-warning w-100" (click)="createPhoneMovement(phoneNumber, operator, amount, $event)">Effettua ricarica</button>
         </form>
       </div>
     </div>
@@ -52,18 +54,11 @@
         <!-- Saldo sotto l'immagine -->
         <div class="balance mt-2" style="margin-bottom: 30px">
           Saldo Residuo:
-          <strong>5.834,50€</strong>
+          <strong>{{balance | currency: 'EUR':'symbol':'1.2-2' }}</strong>
         </div>
         <!-- Immagine del telefono -->
         <img src="../../../assets/phone.png" alt="Phone Icon" class="phone-icon mb-3" />
       </div>
     </div>
   </div>
-</div>
-
-<!-- Icona della casa in basso a sinistra -->
-<div class="home-icon">
-  <a href="#">
-    <img src="https://via.placeholder.com/50.png?text=Home" alt="Home Icon" />
-  </a>
 </div>

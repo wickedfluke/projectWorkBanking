@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtService } from './jwt.service';
 import { BehaviorSubject, map, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 export interface User {
   id: string;
@@ -19,6 +20,7 @@ export interface User {
 })
 export class AuthService {
   private _currentUser$ = new BehaviorSubject<User | null>(null);
+  username: string = '';
 
   currentUser$ = this._currentUser$.asObservable();
 
@@ -60,5 +62,7 @@ export class AuthService {
       .subscribe(user => this._currentUser$.next(user));
   }
 
-
+  fetchUsername(): Observable<string> {
+    return this.http.get<string>('/api/users/username');
+  }
 }

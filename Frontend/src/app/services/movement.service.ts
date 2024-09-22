@@ -51,4 +51,8 @@ export class MovementService {
     const body = { startDate, endDate };
     return this.http.post(`${this.apiUrl}/export/date-range`, { number }, { responseType: 'text' });
   }
+
+  getMovementById(movementId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${movementId}`);
+  }
 }

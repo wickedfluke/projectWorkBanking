@@ -8,7 +8,7 @@
             <div class="user-info">
                 <p><strong>Nome:</strong> {{ currentUser.firstName }}</p>
                 <p><strong>Cognome:</strong> {{ currentUser.lastName }}</p>
-                <p><strong>Email:</strong> {{ currentUser.username }}</p>
+                <p><strong>Email:</strong> {{ this.email }}</p>
                 <p><strong>Iban:</strong> {{ currentUser.iban }}</p>
                 <p><strong>Data Apertura Conto:</strong> {{ currentUser.openDate | date:'dd/MM/yyyy' }}</p>
             </div>

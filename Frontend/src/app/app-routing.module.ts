@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,12 @@ const routes: Routes = [
     path: 'profile',
     canActivate: [authGuard],
     component: ProfileComponent
-  }
+  },
+  {
+    path: 'recharge',
+    canActivate: [authGuard],
+    component: PhoneRechargeComponent
+  },
 ];
 
 @NgModule({

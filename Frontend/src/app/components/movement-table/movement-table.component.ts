@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MovementService } from '../../services/movement.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-movement-table',
@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class MovementTableComponent {
   currentUser: any;
   movements: any[] = [];
-  constructor(private movementService: MovementService, private authService: AuthService, private router: Router) { }
+  selectedMovement: any = null;
+  modalReference: NgbModalRef | undefined;
+  constructor(private movementService: MovementService, private authService: AuthService, private modalService: NgbModal) { }
 
 
   ngOnInit(): void {
@@ -28,20 +30,30 @@ export class MovementTableComponent {
       console.error('Current user is not defined');
       return;
     }
-      const userId = this.currentUser.id;
-      const numberOfMovements = 5;
-      this.movementService.listMovementsWithBalance(numberOfMovements).subscribe(
-        (data) => {
-          this.movements = data.movements;
-        },
-        (error) => {
-          console.error('Error fetching movements:', error);
-        }
-      );
+    const userId = this.currentUser.id;
+    const numberOfMovements = 5;
+    this.movementService.listMovementsWithBalance(numberOfMovements).subscribe(
+      (data) => {
+        this.movements = data.movements;
+      },
+      (error) => {
+        console.error('Error fetching movements:', error);
+      }
+    );
   }
 
-  goToMovementDetails(movementId: string): void {
-    this.router.navigate(['/movements', movementId]);
+  goToMovementDetails(content: any, movementId: string): void {
+
+    this.movementService.getMovementById(movementId).subscribe(
+      (movement) => {
+        this.selectedMovement = movement;
+        console.log('Selected movement:', this.selectedMovement);
+        this.modalReference = this.modalService.open(content);
+      },
+      (error) => {
+        console.error('Error fetching movement details:', error);
+      }
+    );
   }
 }
 

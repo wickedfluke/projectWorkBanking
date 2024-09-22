@@ -1,7 +1,7 @@
 <div class="table-custom spacer">
     <div class="table-responsive mb-4" style="padding-left: 32px; padding-right: 15px;">
         <h3 class="font-type" style="font-size: 25px;">Ultimi 5 movimenti:</h3>
-        <ng-container *ngIf="currentUser; else noUser">
+        <ng-container *ngIf="currentUser">
             <table class="table table-bordered table-hover">
                 <thead class="bg-warning">
                     <tr>
@@ -19,7 +19,7 @@
                         <td>{{ movement.categoryName.title }}</td>
                         <td>{{ movement.categoryName.type }}</td>
                         <td>
-                            <span (click)="goToMovementDetails(movement.id)" class="link-like">
+                            <span (click)="goToMovementDetails(modalContent, movement.id)" class="link-like">
                                 Visualizza
                             </span>
                         </td>
@@ -27,8 +27,28 @@
                 </tbody>
             </table>
         </ng-container>
-        <ng-template #noUser>
-            <p class="text-danger">Current user is not defined. Please log in.</p>
-        </ng-template>
     </div>
 </div>
+
+<!-- Modal -->
+<ng-template #modalContent>
+    <div class="modal-header">
+        <h3 class="modal-title">Dettagli movimento</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalReference?.close()"></button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="selectedMovement">
+            <p><strong>Data:</strong> {{ selectedMovement.date | date:'dd/MM/yyyy' }}</p>
+            <p><strong>Importo:</strong> {{ selectedMovement.amount | currency:'EUR':'symbol' }}</p>
+            <p><strong>Categoria:</strong> {{ selectedMovement.category.title }}</p>
+            <p><strong>Tipo:</strong> {{ selectedMovement.category.type }}</p>
+            <p><strong>Descrizione:</strong> {{ selectedMovement.description }}</p>
+        </div>
+        <div *ngIf="!selectedMovement">
+            <p>Loading...</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalReference?.close()">Close</button>
+    </div>
+</ng-template>

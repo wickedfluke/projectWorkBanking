@@ -17,6 +17,7 @@ import { MovementTableComponent } from './components/movement-table/movement-tab
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     IfAuthenticatedDirective,
     MovementTableComponent,
-    ProfileComponent
+    ProfileComponent,
+    PhoneRechargeComponent
   ],
   imports: [
     BrowserModule,

@@ -158,3 +158,16 @@ export const exportMovementsCSV3 = async (req: Request, res: Response, next: Nex
         next(err);
     }
 };
+
+export const getMovementById = async (req: Request, res: Response) => {
+    const { movementId } = req.params;
+    const user = req.user!;
+    const userId = user.id!;
+
+    try {
+        const movement = await movementService.getMovementById(userId, movementId);
+        res.json(movement);
+    } catch (error) {
+        res.status(500).json({ error: (error as Error).message });
+    }
+}
