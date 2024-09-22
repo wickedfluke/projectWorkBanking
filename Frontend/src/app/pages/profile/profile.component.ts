@@ -1,5 +1,12 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../entities/user.entity';
+import { UserService } from '../../services/user.service';
+import { FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -9,21 +16,27 @@ import { Chart, registerables } from 'chart.js';
 export class ProfileComponent implements AfterViewInit {
   @ViewChild('lineChart') lineChart!: ElementRef;
   @ViewChild('pieChart') pieChart!: ElementRef;
+  currentUser: any;
+  users: User[] = [];
+  balance: number = 0;
+  email: string = '';
+  passwordForm: FormGroup | undefined;
+  modalReference: NgbModalRef | undefined;
 
-  user = {
-    nome: 'Mario',
-    cognome: 'Rossi',
-    email: 'mariuszrossi99@gmail.com',
-    iban: 'CH9789144829733648596',
-    dataAperturaConto: '28/02/2004',
-  };
+  constructor(private authService: AuthService, private userService: UserService, private fb: FormBuilder, private modalService: NgbModal) {
+    Chart.register(...registerables);
+  }
+
+  ngOnInit() {
+    this.authService.currentUser$.subscribe(user => this.currentUser = user)
+    this.passwordForm = this.fb.group({
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', Validators.required]
+    });
+  }
 
   usciteMensili = [20, 30, 40, 50, 60, 70, 80, 90, 3000, 50, 30, 20];
   distribuzioneSpese = [10, 15, 20, 25, 30];
-
-  constructor() {
-    Chart.register(...registerables);
-  }
 
   ngAfterViewInit() {
     this.createLineChart();
@@ -86,7 +99,35 @@ export class ProfileComponent implements AfterViewInit {
     });
   }
 
-  modificaPassword() {
-    // Funzione per la modifica della password
+  openChangePasswordModal(content: any) {
+    this.modalReference = this.modalService.open(content); 
+  }
+  
+  closeModal() {
+    if (this.modalReference) {
+      this.modalReference.close();
+    }
+  }
+
+  submitChangePassword() {
+    if (this.passwordForm!.invalid) {
+      alert('Compilare tutti i campi');
+      return;
+    }
+
+    const newPassword = this.passwordForm!.value.newPassword;
+    const confirmPassword = this.passwordForm!.value.confirmPassword;
+
+    if (newPassword !== confirmPassword) {
+      alert('Le password non corrispondono');
+      return;
+    }
+    this.userService.changePassword(newPassword).subscribe(() => {
+      alert('Password cambiata con successo');
+      this.closeModal();
+      this.authService.logout();
+    }, (error) => {
+      alert('Errore:' + error.error);
+    });
   }
 }

@@ -1,0 +1,51 @@
+.dashboard {
+    margin-top: 70px;
+}
+
+.user-detail {
+    padding: 20px;
+}
+
+.user-info {
+    margin-bottom: 20px;
+    border-left: 1px solid orange;
+    padding-left: 10px;
+}
+
+.user-info p {
+    margin: 4px;
+    padding: 5px 0;
+    border-bottom: 1px solid orange;
+}
+
+.user-info p:last-child {
+    border-bottom: none;
+}
+
+.password-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* Uniformare i grafici */
+.chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.chart-section,
+.spese-section {
+    margin-top: 20px;
+}

@@ -5,7 +5,8 @@ import { logService } from '../log/log.service';
 
 export async function listMovementsWithBalanceController(req: Request, res: Response) {
     const { number } = req.query;
-    const userId = req.params.userId;
+    const user = req.user!;
+    const userId = user.id!;
 
     try {
         const movements = await movementService.listMovementsWithBalance(Number(number), userId);
@@ -17,8 +18,8 @@ export async function listMovementsWithBalanceController(req: Request, res: Resp
 
 export async function listMovementsByCategoryController(req: Request, res: Response) {
     const { number, categoryId } = req.query;
-    const userId = req.params.userId;
-
+    const user = req.user!;
+    const userId = user.id!;
     try {
         const movements = await movementService.listMovementsByCategory(Number(number), categoryId as string, userId);
         res.json(movements);
@@ -30,7 +31,8 @@ export async function listMovementsByCategoryController(req: Request, res: Respo
 export async function listMovementsByDateRangeController(req: Request, res: Response) {
     const { number } = req.query;
     const {startDate, endDate} = req.body;
-    const userId = req.params.userId;
+    const user = req.user!;
+    const userId = user.id!;
 
     try {
         const movements = await movementService.listMovementsByDateRange(
@@ -47,7 +49,8 @@ export async function listMovementsByDateRangeController(req: Request, res: Resp
 
 export async function createPhoneMovementController(req: Request, res: Response, next: NextFunction) {
     const { phoneNumber, operator, rechargeAmount } = req.body;
-    const userId = req.params.userId;
+    const user = req.user!;
+    const userId = user.id!;
 
     try {
         await movementService.createPhoneMovement(userId, phoneNumber, operator, rechargeAmount);
@@ -64,7 +67,8 @@ export async function createPhoneMovementController(req: Request, res: Response,
 
 export async function createTransferMovementController(req: Request, res: Response, next: NextFunction) {
     const { receiverIban, transferAmount, description } = req.body;
-    const userId = req.params.userId;
+    const user = req.user!;
+    const userId = user.id!;
 
     try {
         await movementService.createTransferMovement(userId, receiverIban, transferAmount, description);

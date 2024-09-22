@@ -12,7 +12,7 @@ interface PasswordRequestBody {
 export const me = async (req: TypedRequest, res: Response, next: NextFunction) => {
     try {
         const user = req.user!;
-        res.json( user);
+        res.json( user );
     } catch (err) {
         next(err);
     }

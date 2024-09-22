@@ -5,11 +5,12 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'app/dashboard',
+    path: 'dashboard',
     canActivate: [authGuard],
     component: DashboardComponent
   },
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'dashboard',
     canActivate: [authGuard],
     component: DashboardComponent
+  },
+  {
+    path: 'profile',
+    canActivate: [authGuard],
+    component: ProfileComponent
   }
 ];
 

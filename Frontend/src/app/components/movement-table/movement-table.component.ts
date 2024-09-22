@@ -30,7 +30,7 @@ export class MovementTableComponent {
     }
       const userId = this.currentUser.id;
       const numberOfMovements = 5;
-      this.movementService.listMovementsWithBalance(userId, numberOfMovements).subscribe(
+      this.movementService.listMovementsWithBalance(numberOfMovements).subscribe(
         (data) => {
           this.movements = data.movements;
         },

@@ -52,7 +52,7 @@ export class AuthService {
   logout() {
     this.jwt.removeToken();
     this._currentUser$.next(null);
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
   fetchUser() {
