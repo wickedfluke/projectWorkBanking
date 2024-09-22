@@ -17,9 +17,16 @@ export class DashboardComponent {
   balance: number = 0;
   constructor(private router: Router, private authService: AuthService, private userService: UserService) {}
 
-  ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('user')!);
+  ngOnInit() {
+    this.authService.currentUser$.subscribe(user => this.currentUser = user)
+    this.userService.getUsers().subscribe(users => {
+      this.users = users
+  })
+    this.userService.getBalance().subscribe(balance => {
+      this.balance = balance.balance
+  })
   }
+  
 
   hideTotal(): void {
     this.visible = !this.visible;

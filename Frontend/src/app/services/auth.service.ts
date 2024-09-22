@@ -15,16 +15,20 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
   private _currentUser$ = new BehaviorSubject<User | null>(null);
 
   currentUser$ = this._currentUser$.asObservable();
 
-  constructor(protected http: HttpClient, protected jwt: JwtService, protected router: Router) {
+  constructor(
+    protected http: HttpClient,
+    protected jwt: JwtService,
+    protected router: Router
+  ) {
     if (this.isLoggedIn()) {
-      this.fetchUser();
+      this.fetchUser(); 
     }
   }
 
@@ -33,15 +37,15 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<{ user: User; token: string }>('/api/login', { username, password }).pipe(
-      tap((res) => this.jwt.setToken(res.token)),
-      tap((res) => this._currentUser$.next(res.user)),
-      tap((res) => localStorage.setItem('user', JSON.stringify(res.user))),
-      map((res) => res.user)
-    );
+    return this.http.post<{ user: User, token: string }>('/api/login', { username, password })
+      .pipe(
+        tap(res => this.jwt.setToken(res.token)),
+        tap(res => this._currentUser$.next(res.user)),
+        map(res => res.user)
+      );
   }
 
-  register(data: { firstName: string; lastName: string; username: string; password: string; picture: string }) {
+  register(data: { firstName: string, lastName: string, username: string, password: string, picture: string }) {
     return this.http.post('/api/register', data);
   }
 
@@ -52,6 +56,9 @@ export class AuthService {
   }
 
   fetchUser() {
-    this.http.get<User>('/api/users/me').subscribe((user) => this._currentUser$.next(user));
+    this.http.get<User>('/api/users/me')
+      .subscribe(user => this._currentUser$.next(user));
   }
+
+
 }

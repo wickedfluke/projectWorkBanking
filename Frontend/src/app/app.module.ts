@@ -15,10 +15,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { MovementTableComponent } from './components/movement-table/movement-table.component';
-import { PhoneRechargeComponent } from './components/phone-recharge/phone-recharge.component';
-import { ViewMoovementComponent } from './components/view-moovement/view-moovement.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { HomeRedirectComponent } from './components/home-redirect/home-redirect.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +25,15 @@ import { HomeRedirectComponent } from './components/home-redirect/home-redirect.
     EyesIconComponent,
     NavBarComponent,
     IfAuthenticatedDirective,
-    MovementTableComponent,
-    PhoneRechargeComponent,
-    ViewMoovementComponent,
-    ProfileComponent,
-    HomeRedirectComponent,
+    MovementTableComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, MatIconModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatIconModule
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -45,4 +43,4 @@ import { HomeRedirectComponent } from './components/home-redirect/home-redirect.
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

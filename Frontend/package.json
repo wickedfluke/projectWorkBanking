@@ -21,8 +21,6 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "bootstrap": "^5.3.3",
-    "chart.js": "^4.4.4",
-    "projectworkbanking": "file:..",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "Violatto-Alex-prova-finale-primo-anno": "file:..",
