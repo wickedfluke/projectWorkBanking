@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Movement } from '../../entities/movement.entity';
+import { MovementService } from '../../services/movement.service';
 
 @Component({
   selector: 'app-view-moovement',
@@ -7,8 +8,8 @@ import { Movement } from '../../entities/movement.entity';
   styleUrl: './view-moovement.component.css',
 })
 export class ViewMoovementComponent {
-  movimenti: Movement[] = [];
-
+  constructor(private movementService: MovementService) {}
+  movements: Movement[] = [];
   filtro = {
     numeroMovimenti: 8,
     dataInizio: '',
@@ -18,5 +19,9 @@ export class ViewMoovementComponent {
   esportaCSV() {
     // Implementa qui la logica per esportare i dati in formato CSV
     console.log('Esportazione in CSV...');
+  }
+
+  handleMovementsLoaded(movements: Movement[]) {
+    this.movements = movements;
   }
 }

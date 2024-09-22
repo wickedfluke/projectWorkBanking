@@ -7,35 +7,14 @@
       <br />
 
       <!-- No Movements Message -->
-      <p *ngIf="movimenti.length <= 0" class="text-warning h2 no-moovement">Non hai nessun movimento effettuato</p>
-
-      <!-- Movements Table -->
-      <!-- <div class="table-position">
-        <table class="table table-bordered table-hover" *ngIf="movimenti.length > 0">
-          <thead class="bg-warning text-dark text-center">
-            <tr>
-              <th>Data</th>
-              <th>Importo</th>
-              <th>Categoria</th>
-              <th>Descrizione</th>
-            </tr>
-          </thead>
-          <tbody class="text-center">
-            <tr *ngFor="let movimento of movimenti">
-              <td>{{ movimento.date }}</td>
-              <td>{{ movimento.balance | currency : "EUR" }}</td>
-              <td>
-                <span>{{ movimento.category }}</span>
-              </td>
-              <td>{{ movimento.description }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
+      <p *ngIf="movements.length <= 0" class="text-warning h2 no-moovement">Non hai nessun movimento effettuato</p>
+      <app-movement-table
+        (movementsLoaded)="handleMovementsLoaded($event)"
+        *ngIf="movements.length >= 0"
+      ></app-movement-table>
 
       <!-- Right Column: Filters -->
-      <div class="col-lg-4 col-md-12 filter" *ngIf="movimenti.length > 0">
+      <div class="col-lg-4 col-md-12 filter" *ngIf="movements.length > 0">
         <div class="card bg-filter p-3">
           <h4 class="card-title">Filtri</h4>
           <form>

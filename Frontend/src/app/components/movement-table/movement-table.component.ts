@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MovementService } from '../../services/movement.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrl: './movement-table.component.css',
 })
 export class MovementTableComponent {
+  constructor(private movementService: MovementService, private authService: AuthService, private router: Router) {}
   currentUser: any;
   movements: any[] = [];
-  constructor(private movementService: MovementService, private authService: AuthService, private router: Router) {}
+  @Output() movementsLoaded = new EventEmitter<any[]>();
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('user')!);
@@ -28,6 +29,8 @@ export class MovementTableComponent {
     this.movementService.listMovementsWithBalance(userId, numberOfMovements).subscribe(
       (data) => {
         this.movements = data.movements;
+        // Emissione dell'evento output con i movimenti caricati
+        this.movementsLoaded.emit(this.movements);
       },
       (error) => {
         console.error('Error fetching movements:', error);
