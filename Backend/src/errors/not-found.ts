@@ -10,7 +10,7 @@ export const notFoundHandler = (err: Error, req: Request, res: Response, next: N
     if (err instanceof NotFoundError) {
         res.status(404).json({
             error: 'NotFoundError',
-            message: 'Entity not found'
+            message: 'Entità non trovata'
         });
     } else {
         next(err);

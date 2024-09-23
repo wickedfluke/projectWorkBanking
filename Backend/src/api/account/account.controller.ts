@@ -1,4 +1,3 @@
-import { MovementModel } from './../movement/movement.model';
 import { NextFunction, Response } from "express";
 import { TypedRequest } from "../../utils/typed-request.interface";
 import userService from "./account.service";
@@ -49,10 +48,10 @@ export const password = async (req: TypedRequest<PasswordRequestBody>, res: Resp
         console.log(success);
         if (success!) {
             await logService.createLog(req, 'Password Change', true);
-            res.status(200).json({ message: 'Password updated successfully' });
+            res.status(200).json({ message: 'Password cambiata correttamente' });
         } else {
             await logService.createLog(req, 'Password Change', false);
-            res.status(400).json({ message: 'Failed to update password' });
+            res.status(400).json({ message: 'Cambiamento password fallito' });
         }
     } catch (err) {
         await logService.createLog(req, 'Password Change', false);
