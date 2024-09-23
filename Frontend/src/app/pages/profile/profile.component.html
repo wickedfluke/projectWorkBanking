@@ -16,44 +16,28 @@
             <!-- Pulsante per aprire il modale -->
             <button class="btn btn-warning mt-3 password-button"
                 (click)="openChangePasswordModal(modalContent)">Modifica password</button>
-            <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
-                Password modificata con successo!
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
-                    (click)="closeAlert()"></button>
-            </div>
-            <div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show" role="alert"></div>
-            Password modificata con successo!
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
-                (click)="closeAlert()"></button>
         </div>
-        <div *ngIf="touchAlert" class="alert alert-danger alert-dismissible fade show" role="alert"></div>
-        Inserisci tutti i campi!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
-            (click)="closeAlert()"></button>
-    </div>
 
-    <!-- Colonna per i grafici -->
-    <div class="col-md-8 user-grafh">
-        <div class="row">
-            <div class="col-md-6 chart-section">
-                <h3>Uscite Mensili</h3>
-                <div class="chart-wrapper">
-                    <canvas #lineChart></canvas>
+        <!-- Colonna per i grafici -->
+        <div class="col-md-8 user-grafh">
+            <div class="row">
+                <div class="col-md-6 chart-section">
+                    <h3>Uscite Mensili</h3>
+                    <div class="chart-wrapper">
+                        <canvas #lineChart></canvas>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 spese-section">
-                <h3>Distribuzione Spese</h3>
-                <div class="chart-wrapper">
-                    <canvas #pieChart></canvas>
+                <div class="col-md-6 spese-section">
+                    <h3>Distribuzione Spese</h3>
+                    <div class="chart-wrapper">
+                        <canvas #pieChart></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-<<!-- Modale per il cambio password -->
+    <!-- Modale per il cambio password -->
     <ng-template #modalContent>
         <div class="modal-header">
             <h4 class="modal-title" id="changePasswordModalLabel">Modifica Password</h4>
@@ -72,6 +56,21 @@
                         placeholder="Conferma la nuova password">
                 </div>
             </form>
+            <div *ngIf="touchAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                Inserisci tutti i campi!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    (click)="closeAlert()"></button>
+            </div>
+            <div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                Le password non corrispondono!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    (click)="closeAlert()"></button>
+            </div>
+            <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+                Password modificata con successo! Reindirizzamento alla pagina di login...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                    (click)="closeAlert()"></button>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>

@@ -107,9 +107,9 @@ export class ProfileComponent implements AfterViewInit {
   }
 
   openChangePasswordModal(content: any) {
-    this.modalReference = this.modalService.open(content); 
+    this.modalReference = this.modalService.open(content);
   }
-  
+
   closeModal() {
     if (this.modalReference) {
       this.modalReference.close();
@@ -121,7 +121,7 @@ export class ProfileComponent implements AfterViewInit {
       this.touchAlert = true;
       setTimeout(() => {
         this.touchAlert = false;
-      }, 10000); 
+      }, 10000);
       return;
     }
 
@@ -132,16 +132,17 @@ export class ProfileComponent implements AfterViewInit {
       this.showAlert = true;
       setTimeout(() => {
         this.showAlert = false;
-      }, 10000); 
+      }, 10000);
       return;
     }
     this.userService.changePassword(newPassword).subscribe(() => {
       this.showSuccess = true;
       setTimeout(() => {
         this.showSuccess = false;
-      }, 10000);
-      this.closeModal();
-      this.authService.logout();
+        this.closeModal();
+        this.authService.logout();
+      }, 5000);
+
     }, (error) => {
       alert('Errore:' + error.error);
     });
