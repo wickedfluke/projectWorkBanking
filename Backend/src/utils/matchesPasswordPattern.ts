@@ -13,7 +13,7 @@ export function MatchesPasswordPattern(validationOptions?: ValidationOptions) {
                     return typeof value === 'string' && passwordRegex.test(value); 
                 },
                 defaultMessage(args: ValidationArguments) {
-                    return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                    return 'La password deve contenere almeno un carattere maiuscolo, uno minuscolo, un numer e un carattere speciale'
                 }
             }
         });

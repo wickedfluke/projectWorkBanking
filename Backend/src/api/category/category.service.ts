@@ -1,6 +1,5 @@
 import { Category } from './category.entity';
 import { CategoryModel } from './category.model';
-import { NotFoundError } from '../../errors/not-found';
 import { CreateCategoryDTO } from './category.dto';
 
 export class CategoryService {
