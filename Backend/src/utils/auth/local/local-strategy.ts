@@ -14,13 +14,13 @@ passport.use(
             try {
                 const identity = await UserIdentityModel.findOne({ 'credentials.username': username });
                 if (!identity) {
-                    return done(null, false, { message: `Email ${username} not found` });
+                    return done(null, false, { message: `Email ${username} non trovata` });
                 }
                 const match = await bcrypt.compare(password, identity.credentials.hashedPassword);
                 if (match) {
                     return done(null, identity.toObject().user)
                 }
-                done(null, false, { message: 'Invalid password' });
+                done(null, false, { message: 'Password non valida' });
             } catch (err) {
                 done(err);
             }

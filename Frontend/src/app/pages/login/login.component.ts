@@ -27,7 +27,7 @@ export class LoginComponent {
     this.authService.login(this.loginData.username, this.loginData.password).subscribe(
       () => {
         hideContent(getElementById('login-error'));
-        this.router.navigate(['/app/dashboard']);
+        this.router.navigate(['/dashboard']);
       },
       (err: any) => {
         showContent(getElementById('login-error'));

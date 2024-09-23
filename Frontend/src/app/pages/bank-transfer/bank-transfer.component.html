@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <app-nav-bar></app-nav-bar>
+
+  <!-- Main Content -->
+  <div class="row my-5">
+    <!-- Form Section: Takes up 50% width on medium to larger screens -->
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">Effettua bonifico</h2>
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Inserire Nome del destinatario" />
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Inserire Cognome del destinatario" />
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Inserire IBAN del destinatario" />
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Inserire la Causale" />
+        </div>
+        <div class="mb-3">
+          <input type="number" class="form-control" placeholder="Inserire Importo" />
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-warning">Effettua bonifico</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Illustration Section: Takes up 50% width on medium to larger screens -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <img src="../../../assets/BankTransfer.png" class="img-fluid" alt="Transfer Illustration" />
+    </div>
+  </div>
+</div>

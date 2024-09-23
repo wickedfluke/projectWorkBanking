@@ -7,18 +7,20 @@ import {
     createTransferMovementController,
     exportMovementsCSV1,
     exportMovementsCSV2,
-    exportMovementsCSV3
+    exportMovementsCSV3,
+    getMovementById
 } from './movement.controller';
 import { isAuthenticated } from '../../utils/auth/authenticated-middleware';
 
 
 const router = express.Router();
 router.use(isAuthenticated)
-router.get('/:userId', listMovementsWithBalanceController);
-router.get('/category/:userId', listMovementsByCategoryController);
-router.get('/date-range/:userId', listMovementsByDateRangeController);
-router.post('/phone/:userId', createPhoneMovementController);
-router.post('/transfer/:userId', createTransferMovementController);
+router.get('/', listMovementsWithBalanceController);
+router.get('/category', listMovementsByCategoryController);
+router.get('/date-range', listMovementsByDateRangeController);
+router.get('/:movementId', getMovementById);
+router.post('/phone', createPhoneMovementController);
+router.post('/transfer', createTransferMovementController);
 router.post('/export', exportMovementsCSV1);
 router.post('/export/category', exportMovementsCSV2);
 router.post('/export/date-range', exportMovementsCSV3);

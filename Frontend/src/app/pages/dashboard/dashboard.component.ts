@@ -10,23 +10,32 @@ import { UserService } from '../../services/user.service';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  visible: boolean = false;
-  isBlurred: boolean = true;
+  eyeState: boolean = false;
   users: User[] = [];
-  currentUser: any;
-  balance: number = 0;
+  currentUser: User | any = {};
+  balance: number | string = 0;
   constructor(private router: Router, private authService: AuthService, private userService: UserService) {}
 
-  ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('user')!);
+  ngOnInit() {
+    this.getCurrentUser();
+    this.getBalance();
   }
 
-  hideTotal(): void {
-    this.visible = !this.visible;
+  getCurrentUser() {
+    this.authService.currentUser$.subscribe((user) => (this.currentUser = user));
+    this.userService.getUsers().subscribe((users) => {
+      this.users = users;
+    });
   }
 
-  toggleBlur(): void {
-    this.isBlurred = !this.isBlurred;
+  getBalance() {
+    this.userService.getBalance().subscribe((balance) => {
+      this.balance = balance.balance;
+    });
+  }
+
+  toggleHyde(): void {
+    this.eyeState = !this.eyeState;
   }
 
   navigate(path: string) {

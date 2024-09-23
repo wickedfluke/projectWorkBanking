@@ -16,7 +16,7 @@ passport.use(
                 if (user) {
                     done(null, user.toObject());
                 } else {
-                    done(null, false, { message: 'invalid token' });
+                    done(null, false, { message: 'token non valido' });
                 }
 
             } catch (err) {

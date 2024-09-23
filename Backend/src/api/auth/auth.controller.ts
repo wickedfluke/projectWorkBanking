@@ -64,7 +64,7 @@ export const add = async (req: TypedRequest<AddUserDTO>, res: Response, next: Ne
         const newUser = await userService.add(updatedUserData, credentials);
         await emailService.sendConfirmationEmail(req.body.username, newUser.id!, newUser.confirmationCode!);
         res.status(201).json({
-            message: 'User registered successfully. Please check your email to confirm registration.',
+            message: 'Utente registrato correttamente. Controlla la tua casella mail per confermare la registrazione.',
             userId: newUser.id
         });
     } catch (e) {
@@ -94,9 +94,9 @@ export const confirmEmail = async (req: Request, res: Response, next: NextFuncti
 
         if (isConfirmed) {
             await movementService.createOpeningMovement(userId as string);  // Create opening movement
-            res.status(200).json({ message: 'Email confirmed, account activated.' });
+            res.status(200).json({ message: 'Mail confermata, account attivato.' });
         } else {
-            res.status(400).json({ message: 'Invalid confirmation code.' });
+            res.status(400).json({ message: 'Codice di conferma non valido.' });
         }
     } catch (error) {
         next(error);

@@ -2,28 +2,24 @@
   <div class="container-fluid p-0">
     <!-- Navbar -->
     <app-nav-bar></app-nav-bar>
-    <div class="container-fluid" style="padding-left: 7%; padding-right: 7%;">
+    <div class="container-fluid" style="padding-left: 7%; padding-right: 7%">
       <div class="row">
         <div class="col-lg-8 col-md-12 mb-4">
           <!-- Welcome Message and Balance -->
           <div class="mt-4">
             <h2 class="welcome-message font-type" style="font-size: 48px; line-height: 55px">
               Ciao
-              <strong>{{ currentUser.fullName }}</strong>
+              <strong>{{ currentUser?.fullName ?? "Utente sconosciuto" }}</strong>
               <span>,</span>
               <br />
               il saldo del tuo conto è di:
             </h2>
 
-            <span
-              [ngClass]="{ blurred: isBlurred, notBlurred: !isBlurred }"
-              class="total-amount font-type"
-              style="font-size: 48px; line-height: 55px"
-            >
-              {{ this.balance | currency: 'EUR':'symbol':'1.2-2' }}
+            <span class="total-amount font-type" style="font-size: 48px; line-height: 55px" id="balance">
+              {{ eyeState ? (balance | currency : "EUR" : "symbol" : "1.2-2") : "-" }}
             </span>
             <span class="eye-icon">
-              <app-eyes-icon id="eyes" (click)="toggleBlur()"></app-eyes-icon>
+              <app-eyes-icon (state)="(eyeState)" id="eyes" (click)="toggleHyde()"></app-eyes-icon>
             </span>
           </div>
           <!-- Movement Table -->
@@ -32,7 +28,11 @@
 
         <!-- Image Section -->
         <div class="col-lg-4 col-md-12 d-flex justify-content-center align-items-center mb-4">
-          <img src="../../../assets/DashboardImg1.jpg" class="img-fluid right-img d-none d-md-block" alt="Img dashboard" />
+          <img
+            src="../../../assets/DashboardImg1.jpg"
+            class="img-fluid right-img d-none d-md-block"
+            alt="Img dashboard"
+          />
         </div>
       </div>
     </div>

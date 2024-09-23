@@ -1,32 +1,54 @@
 <div class="table-custom spacer">
-  <div class="table-responsive mb-4" style="padding-left: 32px; padding-right: 15px">
-    <!-- <h3 class="font-type" style="font-size: 25px;">Ultimi 5 movimenti:</h3> -->
-    <ng-container *ngIf="currentUser; else noUser">
-      <table class="table table-bordered table-hover">
-        <thead class="bg-warning">
-          <tr>
-            <th>Data</th>
-            <th>Importo</th>
-            <th>Categoria</th>
-            <th>Tipologia</th>
-            <th>Dettagli</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let movement of movements">
-            <td>{{ movement.date | date : "dd/MM/yyyy" }}</td>
-            <td>{{ movement.amount | currency : "EUR" : "symbol" }}</td>
-            <td>{{ movement.categoryName.title }}</td>
-            <td>{{ movement.categoryName.type }}</td>
-            <td>
-              <span (click)="goToMovementDetails(movement.id)" class="link-like">Visualizza</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </ng-container>
-    <ng-template #noUser>
-      <p class="text-danger">Current user is not defined. Please log in.</p>
-    </ng-template>
-  </div>
+    <div class="table-responsive mb-4" style="padding-left: 32px; padding-right: 15px;">
+        <h3 class="font-type" style="font-size: 25px;">Ultimi 5 movimenti:</h3>
+        <ng-container *ngIf="currentUser">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-warning">
+                    <tr>
+                        <th>Data</th>
+                        <th>Importo</th>
+                        <th>Categoria</th>
+                        <th>Tipologia</th>
+                        <th>Dettagli</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let movement of movements">
+                        <td>{{ movement.date | date:'dd/MM/yyyy' }}</td>
+                        <td>{{ movement.amount | currency:'EUR':'symbol' }}</td>
+                        <td>{{ movement.categoryName.title }}</td>
+                        <td>{{ movement.categoryName.type }}</td>
+                        <td>
+                            <span (click)="goToMovementDetails(modalContent, movement.id)" class="link-like">
+                                Visualizza
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+    </div>
 </div>
+
+<!-- Modal -->
+<ng-template #modalContent>
+    <div class="modal-header">
+        <h3 class="modal-title">Dettagli movimento</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalReference?.close()"></button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="selectedMovement">
+            <p><strong>Data:</strong> {{ selectedMovement.date | date:'dd/MM/yyyy' }}</p>
+            <p><strong>Importo:</strong> {{ selectedMovement.amount | currency:'EUR':'symbol' }}</p>
+            <p><strong>Categoria:</strong> {{ selectedMovement.category.title }}</p>
+            <p><strong>Tipo:</strong> {{ selectedMovement.category.type }}</p>
+            <p><strong>Descrizione:</strong> {{ selectedMovement.description }}</p>
+        </div>
+        <div *ngIf="!selectedMovement">
+            <p>Loading...</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalReference?.close()">Close</button>
+    </div>
+</ng-template>

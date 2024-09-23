@@ -56,6 +56,7 @@
             <div *ngIf="email.invalid && email.touched" class="form-text text-danger">
               L'email è obbligatoria e deve essere valida.
             </div>
+            <div></div>
             <div class="form-text text-success success-message">Success message</div>
           </div>
           <div class="mb-3 position-relative">
@@ -73,6 +74,7 @@
             <div class="eye-icon" (click)="togglePasswordVisibility('password')">
               <app-eyes-icon
                 [size]="'25px'"
+                (state)="(isPasswordVisible)"
                 [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
               ></app-eyes-icon>
             </div>
@@ -99,6 +101,7 @@
             <div class="eye-icon" (click)="togglePasswordVisibility('confirm-password')">
               <app-eyes-icon
                 [size]="'25px'"
+                (state)="(isPasswordVisible)"
                 [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
               ></app-eyes-icon>
             </div>

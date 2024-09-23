@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// Custom components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -15,10 +14,11 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AuthInterceptor } from './utils/auth.interceptor';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { MovementTableComponent } from './components/movement-table/movement-table.component';
-import { PhoneRechargeComponent } from './components/phone-recharge/phone-recharge.component';
-import { ViewMoovementComponent } from './components/view-moovement/view-moovement.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { HomeRedirectComponent } from './components/home-redirect/home-redirect.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
+import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +30,19 @@ import { HomeRedirectComponent } from './components/home-redirect/home-redirect.
     NavBarComponent,
     IfAuthenticatedDirective,
     MovementTableComponent,
-    PhoneRechargeComponent,
-    ViewMoovementComponent,
     ProfileComponent,
-    HomeRedirectComponent,
+    PhoneRechargeComponent,
+    BankTransferComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, MatIconModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatIconModule,
+    NgbModule,
+    ReactiveFormsModule 
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -45,4 +52,4 @@ import { HomeRedirectComponent } from './components/home-redirect/home-redirect.
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

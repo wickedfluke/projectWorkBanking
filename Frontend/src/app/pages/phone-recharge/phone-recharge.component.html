@@ -2,10 +2,10 @@
 <div class="container custom-container">
   <div class="row align-items-center">
     <!-- Parte sinistra: Form più grande -->
-    <div class="col-lg-6 col-md-12">
-      <span class="h2 title-h2">Effettua la ricarica</span>
+    <div class="col-lg-6 col-md-12 form-recharge">
+      <span class="h2 font-type title-h2">Effettua la ricarica</span>
       <div class="form-container">
-        <form style="margin-top: 25px">
+        <form style="margin-top: 25px" id="form">
           <div class="mb-3">
             <label for="phoneNumber" class="form-label">Numero di Telefono</label>
             <input
@@ -13,11 +13,13 @@
               class="form-control"
               id="phoneNumber"
               placeholder="Inserisci qui il tuo numero di telefono"
+              [(ngModel)]="phoneNumber"
+              name="phoneNumber"
             />
           </div>
           <div class="mb-3">
             <label for="operator" class="form-label">Seleziona il tuo Operatore</label>
-            <select class="form-select" id="operator">
+            <select class="form-select" id="operator" [(ngModel)]="operator" name="operator">
               <option value="" selected>Seleziona un operatore</option>
               <option value="Iliad">Iliad</option>
               <option value="Vodafone">Vodafone</option>
@@ -32,7 +34,7 @@
           </div>
           <div class="mb-3">
             <label for="amount" class="form-label">Seleziona il taglio della Ricarica</label>
-            <select class="form-select" id="amount">
+            <select class="form-select" id="amount" [(ngModel)]="amount" name="amount">
               <option value="5">5€</option>
               <option value="10">10€</option>
               <option value="20">20€</option>
@@ -41,29 +43,43 @@
               <!-- Aggiungi altre opzioni se necessario -->
             </select>
           </div>
-          <button type="submit" class="btn btn-warning w-100">Effettua ricarica</button>
+          <button
+            type="submit"
+            id="btn-submit"
+            class="btn btn-warning"
+            (click)="createPhoneMovement(phoneNumber, operator, amount, $event)"
+          >
+            Effettua ricarica
+          </button>
         </form>
+        <br />
+        <div *ngIf="showSuccessAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+          Ricarica effettuata con successo!
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            (click)="closeAlert()"
+          ></button>
+        </div>
       </div>
     </div>
-
     <!-- Parte destra: Immagine e saldo sotto -->
     <div class="col-lg-6 col-md-12 text-center container-phone">
       <div class="d-flex flex-column align-items-center">
         <!-- Saldo sotto l'immagine -->
         <div class="balance mt-2" style="margin-bottom: 30px">
           Saldo Residuo:
-          <strong>5.834,50€</strong>
+          <strong>{{ balance | currency : "EUR" : "symbol" : "1.2-2" }}</strong>
         </div>
         <!-- Immagine del telefono -->
-        <img src="../../../assets/phone.png" alt="Phone Icon" class="phone-icon mb-3" />
+        <img
+          src="../../../assets/phone.png"
+          alt="Phone Icon"
+          class="phone-icon mb-3 img-fluid right-img d-none d-md-block"
+        />
       </div>
     </div>
   </div>
-</div>
-
-<!-- Icona della casa in basso a sinistra -->
-<div class="home-icon">
-  <a href="#">
-    <img src="https://via.placeholder.com/50.png?text=Home" alt="Home Icon" />
-  </a>
 </div>
