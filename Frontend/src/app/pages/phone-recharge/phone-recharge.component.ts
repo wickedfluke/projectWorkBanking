@@ -11,7 +11,7 @@ import { Movement } from '../../entities/movement.entity';
   styleUrl: './phone-recharge.component.css'
 })
 export class PhoneRechargeComponent {
-
+  showSuccessAlert: boolean = false;
   currentUser: any;
   users: User[] = [];
   balance: number = 0;
@@ -32,12 +32,17 @@ export class PhoneRechargeComponent {
 
   createPhoneMovement(phoneNumber: string, operator: string, rechargeAmount: number, event: Event) {
     event.preventDefault();
-
     this.movementService.createPhoneMovement(phoneNumber, operator, rechargeAmount).subscribe(() => {
       this.userService.getBalance().subscribe(balance => {
         this.balance = balance.balance
       })
-    })
-    alert('Phone recharge successful!')
+      this.showSuccessAlert = true;
+      setTimeout(() => {
+        this.showSuccessAlert = false;
+      }, 10000); 
+    });
+  }
+  closeAlert() {
+    this.showSuccessAlert = false;
   }
 }

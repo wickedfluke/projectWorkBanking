@@ -22,6 +22,9 @@ export class ProfileComponent implements AfterViewInit {
   email: string = '';
   passwordForm: FormGroup | undefined;
   modalReference: NgbModalRef | undefined;
+  showAlert: boolean = false;
+  showSuccess: boolean = false;
+  touchAlert: boolean = false;
 
   constructor(private authService: AuthService, private userService: UserService, private fb: FormBuilder, private modalService: NgbModal) {
     Chart.register(...registerables);
@@ -115,7 +118,10 @@ export class ProfileComponent implements AfterViewInit {
 
   submitChangePassword() {
     if (this.passwordForm!.invalid) {
-      alert('Compilare tutti i campi');
+      this.touchAlert = true;
+      setTimeout(() => {
+        this.touchAlert = false;
+      }, 10000); 
       return;
     }
 
@@ -123,15 +129,27 @@ export class ProfileComponent implements AfterViewInit {
     const confirmPassword = this.passwordForm!.value.confirmPassword;
 
     if (newPassword !== confirmPassword) {
-      alert('Le password non corrispondono');
+      this.showAlert = true;
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 10000); 
       return;
     }
     this.userService.changePassword(newPassword).subscribe(() => {
-      alert('Password cambiata con successo');
+      this.showSuccess = true;
+      setTimeout(() => {
+        this.showSuccess = false;
+      }, 10000);
       this.closeModal();
       this.authService.logout();
     }, (error) => {
       alert('Errore:' + error.error);
     });
+  }
+
+  closeAlert() {
+    this.showAlert = false;
+    this.showSuccess = false;
+    this.touchAlert = false;
   }
 }

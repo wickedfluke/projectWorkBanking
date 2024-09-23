@@ -39,6 +39,7 @@ export class IfAuthenticatedDirective implements OnInit, OnDestroy {
     } else {
       this.viewContainer.clear();
       this.hasContent = false;
+      this.authSrv.logout();
     }
   }
 }

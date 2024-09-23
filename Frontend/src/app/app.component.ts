@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser'; // Importa il servizio Title
+import { Title } from '@angular/platform-browser';
 import { AuthService } from './services/auth.service';
 
 @Component({
