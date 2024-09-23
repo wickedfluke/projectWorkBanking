@@ -19,13 +19,13 @@ export class MovementService {
     const params = new HttpParams()
       .set('number', number.toString())
       .set('categoryId', categoryId);
-    return this.http.get<any>(`${this.apiUrl}/category/}`, { params });
+    return this.http.get<any>(`${this.apiUrl}/category/`, { params });
   }
 
   listMovementsByDateRange(number: number, startDate: string, endDate: string): Observable<any> {
     const params = new HttpParams().set('number', number.toString());
     const body = { startDate, endDate };
-    return this.http.post<any>(`${this.apiUrl}/date-range/`, body, { params });
+    return this.http.post<any>(`${this.apiUrl}/date-range`, body, { params });
   }
 
   createPhoneMovement(phoneNumber: string, operator: string, rechargeAmount: number): Observable<any> {
@@ -39,7 +39,8 @@ export class MovementService {
   }
 
   exportMovementsToCSV(number: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/export`, { number }, { responseType: 'text' });
+    const params = new HttpParams().set('number', number.toString());
+    return this.http.post(`${this.apiUrl}/export`, {}, { params, responseType: 'text' });
   }
 
   exportMovementsByCategoryToCSV(number: number, categoryId: string): Observable<any> {

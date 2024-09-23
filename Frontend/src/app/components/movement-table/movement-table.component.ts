@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MovementService } from '../../services/movement.service';
 import { AuthService } from '../../services/auth.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-movement-table',
@@ -10,7 +11,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MovementTableComponent {
   currentUser: any;
-  movements: any[] = [];
+  @Input() movements: any[] = [];
   selectedMovement: any = null;
   modalReference: NgbModalRef | undefined;
   constructor(private movementService: MovementService, private authService: AuthService, private modalService: NgbModal) { }

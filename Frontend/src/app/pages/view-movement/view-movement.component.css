@@ -1,0 +1,75 @@
+.container {
+    margin-top: 50px;
+}
+
+.title {
+    position: relative;
+    top: 45px;
+}
+
+.btn {
+    border: none;
+}
+.btn:focus{
+    background-color: #ef600d !important;
+}
+
+.table {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.table-position {
+    position: relative;
+    top: 30px;
+}
+
+.no-moovement {
+    position: relative;
+    top: 240px;
+    left: 200px;
+    font-size: 50px;
+}
+
+.filter {
+    position: relative;
+    top: 120px;
+}
+
+.bg-filter {
+    background: #ffe1a1;
+}
+
+.home-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.home-icon img {
+    width: 50px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.max-height {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+th {
+    background: #ffe1a1;
+}
+
+button.btn {
+    background-color: #ffa500;
+    color: white;
+}

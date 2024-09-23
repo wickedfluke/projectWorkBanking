@@ -7,6 +7,7 @@ import { authGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
+import { ViewMovementComponent } from './pages/view-movement/view-movement.component';
 
 const routes: Routes = [
   {
@@ -30,11 +31,6 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'dashboard',
-    canActivate: [authGuard],
-    component: DashboardComponent
-  },
-  {
     path: 'profile',
     canActivate: [authGuard],
     component: ProfileComponent
@@ -44,6 +40,11 @@ const routes: Routes = [
     canActivate: [authGuard],
     component: PhoneRechargeComponent
   },
+  {
+    path: 'view',
+    canActivate: [authGuard],
+    component: ViewMovementComponent
+  }
 ];
 
 @NgModule({

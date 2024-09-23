@@ -18,6 +18,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
+import { ViewMovementComponent } from './pages/view-movement/view-movement.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.co
     IfAuthenticatedDirective,
     MovementTableComponent,
     ProfileComponent,
-    PhoneRechargeComponent
+    PhoneRechargeComponent,
+    ViewMovementComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

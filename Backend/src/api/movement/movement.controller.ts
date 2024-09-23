@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { movementService } from './movement.service';
 import { Parser } from 'json2csv';
 import { logService } from '../log/log.service';
+import moment from 'moment';
 
 export async function listMovementsWithBalanceController(req: Request, res: Response) {
     const { number } = req.query;
@@ -86,16 +87,17 @@ export async function createTransferMovementController(req: Request, res: Respon
 export const exportMovementsCSV1 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = req.user!.id!;
-        const { number } = req.params;
-
+        const number  = req.query.number;
         const result = await movementService.listMovementsWithBalance(Number(number), userId);
         const movements = result.movements;
-
-        const fields = ['data', 'importo', 'nomeCategoria'];
+        const formattedMovements = movements.map((movement: any) => ({
+            ...movement,
+            date: moment(movement.date).format('DD/MM/YYYY') 
+        }));
+        const fields = ['date', 'amount', 'categoryName.title'];
         const opts = { fields };
-
         const parser = new Parser(opts);
-        const csv = parser.parse(movements);
+        const csv = parser.parse(formattedMovements);
         res.header('Content-Type', 'text/csv');
         res.attachment('movements.csv');
 
@@ -108,8 +110,12 @@ export const exportMovementsCSV1 = async (req: Request, res: Response, next: Nex
 export const exportMovementsCSV2 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = req.user!.id!;
-        const { categoryId } = req.query;
-        const { number } = req.params;
+        const categoryId  = req.query.categoryId;
+        const number  = req.query.number;
+
+        console.log(categoryId);
+        console.log(number);
+        console.log(userId);
 
         if (typeof categoryId !== 'string') {
             return res.status(400).json({ error: 'Invalid category ID' });
@@ -117,12 +123,16 @@ export const exportMovementsCSV2 = async (req: Request, res: Response, next: Nex
 
         const result = await movementService.listMovementsByCategory(Number(number), categoryId, userId);
         const movements = result.movements;
+        const formattedMovements = movements.map((movement: any) => ({
+            ...movement,
+            date: moment(movement.date).format('DD/MM/YYYY') 
+        }));
 
-        const fields = ['data', 'importo', 'nomeCategoria'];
+        const fields = ['date', 'amount', 'categoryName.title'];
         const opts = { fields };
 
         const parser = new Parser(opts);
-        const csv = parser.parse(movements);
+        const csv = parser.parse(formattedMovements);
         res.header('Content-Type', 'text/csv');
         res.attachment('movements.csv');
 
@@ -135,7 +145,7 @@ export const exportMovementsCSV2 = async (req: Request, res: Response, next: Nex
 export const exportMovementsCSV3 = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = req.user!.id!;
-        const { number } = req.query;
+        const number  = req.query.number;
         const { startDate, endDate } = req.body;
 
         if (typeof startDate !== 'string' || typeof endDate !== 'string') {
@@ -144,12 +154,15 @@ export const exportMovementsCSV3 = async (req: Request, res: Response, next: Nex
 
         const result = await movementService.listMovementsByDateRange(Number(number), startDate, endDate, userId);
         const movements = result.movements;
-
-        const fields = ['data', 'importo', 'nomeCategoria'];
+        const formattedMovements = movements.map((movement: any) => ({
+            ...movement,
+            date: moment(movement.date).format('DD/MM/YYYY') 
+        }));
+        const fields = ['date', 'amount', 'categoryName.title'];
         const opts = { fields };
 
         const parser = new Parser(opts);
-        const csv = parser.parse(movements);
+        const csv = parser.parse(formattedMovements);
         res.header('Content-Type', 'text/csv');
         res.attachment('movements.csv');
 

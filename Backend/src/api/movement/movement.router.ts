@@ -17,7 +17,7 @@ const router = express.Router();
 router.use(isAuthenticated)
 router.get('/', listMovementsWithBalanceController);
 router.get('/category', listMovementsByCategoryController);
-router.get('/date-range', listMovementsByDateRangeController);
+router.post('/date-range', listMovementsByDateRangeController);
 router.get('/:movementId', getMovementById);
 router.post('/phone', createPhoneMovementController);
 router.post('/transfer', createTransferMovementController);
