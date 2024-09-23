@@ -1,0 +1,26 @@
+h2 {
+  color: #333;
+}
+
+form {
+  input {
+    background-color: #f8fafc;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  button {
+    background-color: #ffcc00;
+    width: 50%;
+    transform: translateX(50%);
+    color: #fff;
+    font-weight: bold;
+    padding: 15px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

@@ -1,5 +1,18 @@
+.custom-container {
+  /* box-sizing: content-box; */
+}
+
+.font-type {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.form-recharge {
+  transform: translateY(-10%);
+}
+
 .title-h2 {
   position: relative;
+  font-size: 3rem;
   left: 10px;
 }
 
@@ -13,7 +26,7 @@
 }
 
 .phone-icon {
-  width: 200px; /* Diminuito un po' per migliorare la visualizzazione */
+  width: 300px; /* Diminuito un po' per migliorare la visualizzazione */
   height: auto;
 }
 
@@ -27,6 +40,15 @@
   margin: 0 auto;
 }
 
+#btn-submit {
+  background-color: #ec9552;
+  color: #fff;
+  margin-top: 3rem;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+}
+
 .home-icon {
   position: fixed;
   bottom: 20px;
@@ -35,4 +57,10 @@
 
 .home-icon img {
   width: 50px;
+}
+
+@media (max-width: 768px) {
+  .balance {
+    display: none;
+  }
 }

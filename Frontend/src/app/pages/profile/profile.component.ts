@@ -31,14 +31,13 @@ export class ProfileComponent implements AfterViewInit {
   }
 
   ngOnInit() {
-    this.authService.currentUser$.subscribe(user => this.currentUser = user)
+    this.authService.currentUser$.subscribe((user) => (this.currentUser = user));
     this.passwordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
     });
     this.authService.fetchUsername().subscribe((email) => {
       this.email = email;
-      console.log('Email:', this.email);
     });
   }
 
@@ -135,17 +134,19 @@ export class ProfileComponent implements AfterViewInit {
       }, 10000);
       return;
     }
-    this.userService.changePassword(newPassword).subscribe(() => {
-      this.showSuccess = true;
-      setTimeout(() => {
-        this.showSuccess = false;
-        this.closeModal();
-        this.authService.logout();
-      }, 5000);
-
-    }, (error) => {
-      alert('Errore:' + error.error);
-    });
+    this.userService.changePassword(newPassword).subscribe(
+      () => {
+        this.showSuccess = true;
+        setTimeout(() => {
+          this.showSuccess = false;
+          this.closeModal();
+          this.authService.logout();
+        }, 5000);
+      },
+      (error) => {
+        alert('Errore:' + error.error);
+      }
+    );
   }
 
   closeAlert() {

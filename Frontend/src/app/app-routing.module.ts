@@ -8,6 +8,7 @@ import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 import { ViewMovementComponent } from './pages/view-movement/view-movement.component';
+import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,12 @@ const routes: Routes = [
     path: 'view',
     canActivate: [authGuard],
     component: ViewMovementComponent
-  }
+  },
+  {
+    path: 'transfer',
+    canActivate: [authGuard],
+    component: BankTransferComponent,
+  },
 ];
 
 @NgModule({

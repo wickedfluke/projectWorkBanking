@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 import { ViewMovementComponent } from './pages/view-movement/view-movement.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { LoadingComponent } from './components/loading/loading.component';
     ProfileComponent,
     PhoneRechargeComponent,
     ViewMovementComponent,
-    LoadingComponent
+    LoadingComponent,
+    BankTransferComponent
+
   ],
   imports: [
     BrowserModule,

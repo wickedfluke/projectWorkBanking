@@ -23,9 +23,13 @@ export class RegisterComponent {
     if (form.invalid) return;
     this.authService.register(this.registerData).subscribe(
       (response) => {
+        alert("Registrazione avvenuta con successo, controlla la casella email per confermare l'account");
         this.router.navigate(['/login']);
       },
       (error) => {
+        if (error.error === 'Email già in uso') {
+          alert('Username already exists');
+        }
         console.log(error);
       }
     );

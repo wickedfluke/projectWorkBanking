@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavBarComponent {
   constructor(private authService: AuthService) {}
+  nav_items = ['Ricarica cellulare', 'Visualizza Movimenti', 'Effettua Bonifico', 'Visualizza profilo'];
 
   logout() {
     this.authService.logout();

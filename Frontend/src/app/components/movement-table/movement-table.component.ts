@@ -44,7 +44,6 @@ export class MovementTableComponent {
   }
 
   goToMovementDetails(content: any, movementId: string): void {
-
     this.movementService.getMovementById(movementId).subscribe(
       (movement) => {
         this.selectedMovement = movement;
