@@ -21,6 +21,8 @@ import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.co
 import { ViewMovementComponent } from './pages/view-movement/view-movement.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
+import { SuccessPopupComponent } from './components/success-popup/success-popup.component';
+import { BankTransferCheckComponent } from './pages/bank-transfer-check/bank-transfer-check.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,9 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
     PhoneRechargeComponent,
     ViewMovementComponent,
     LoadingComponent,
-    BankTransferComponent
-
+    BankTransferComponent,
+    SuccessPopupComponent,
+    BankTransferCheckComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
     HttpClientModule,
     MatIconModule,
     NgbModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
   ],
   providers: [
     {
@@ -57,4 +60,4 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

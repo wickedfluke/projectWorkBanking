@@ -5,7 +5,7 @@
     <div class="col-lg-6 col-md-12 form-recharge">
       <span class="h2 font-type title-h2">Effettua la ricarica</span>
       <div class="form-container">
-        <form style="margin-top: 25px" id="form">
+        <form style="margin-top: 25px" id="form" #rechargeForm="ngForm">
           <div class="mb-3">
             <label for="phoneNumber" class="form-label">Numero di Telefono</label>
             <input
@@ -15,11 +15,12 @@
               placeholder="Inserisci qui il tuo numero di telefono"
               [(ngModel)]="phoneNumber"
               name="phoneNumber"
+              required
             />
           </div>
           <div class="mb-3">
             <label for="operator" class="form-label">Seleziona il tuo Operatore</label>
-            <select class="form-select" id="operator" [(ngModel)]="operator" name="operator">
+            <select class="form-select" id="operator" [(ngModel)]="operator" name="operator" required>
               <option value="" selected>Seleziona un operatore</option>
               <option value="Iliad">Iliad</option>
               <option value="Vodafone">Vodafone</option>
@@ -34,7 +35,8 @@
           </div>
           <div class="mb-3">
             <label for="amount" class="form-label">Seleziona il taglio della Ricarica</label>
-            <select class="form-select" id="amount" [(ngModel)]="amount" name="amount">
+            <select class="form-select" id="amount" [(ngModel)]="amount" name="amount" required>
+              <option value="" selected>Scegli il taglio della ricarica</option>
               <option value="5">5€</option>
               <option value="10">10€</option>
               <option value="20">20€</option>
@@ -56,16 +58,6 @@
           </div>
         </form>
         <br />
-        <div *ngIf="showSuccessAlert" class="alert alert-success alert-dismissible fade show" role="alert">
-          Ricarica effettuata con successo!
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            (click)="closeAlert()"
-          ></button>
-        </div>
       </div>
     </div>
     <!-- Parte destra: Immagine e saldo sotto -->
@@ -86,3 +78,9 @@
     </div>
   </div>
 </div>
+
+<app-success-popup
+  [show]="showSuccessAlert"
+  [message]="'Ricarica effettuata con successo!'"
+  (closed)="closeAlert()"
+></app-success-popup>

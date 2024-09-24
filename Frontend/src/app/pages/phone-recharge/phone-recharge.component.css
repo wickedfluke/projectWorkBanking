@@ -40,10 +40,15 @@
   margin: 0 auto;
 }
 
+app-success-popup {
+  width: 100vw;
+  height: auto;
+}
+
 #btn-submit {
   background-color: #ec9552;
   color: #fff;
-  margin-top: 3rem;
+  margin-top: 1rem;
   padding: 4px;
   display: flex;
   justify-content: center;

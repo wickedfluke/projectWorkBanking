@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { MovementService } from '../../services/movement.service';
 import { Movement } from '../../entities/movement.entity';
 import { Category } from '../../entities/category.entity';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-view-movement',
@@ -10,11 +12,16 @@ import { Category } from '../../entities/category.entity';
   styleUrls: ['./view-movement.component.css'],
 })
 export class ViewMovementComponent {
+  constructor(
+    private movementService: MovementService,
+    private categoryService: CategoryService,
+    private titleSrv: Title
+  ) { }
   movements: Movement[] = [];
-  balance: number = 0; 
-  categories: Category[] = []; 
+  balance: number = 0;
+  categories: Category[] = [];
   loading = false;
-  
+
   filtro = {
     numeroMovimenti: 5,
     dataInizio: '',
@@ -22,22 +29,20 @@ export class ViewMovementComponent {
   };
 
   selectedCategory: string | null = '';
-  filterMode: 'date' | 'category' = 'category'; 
-  
+
+  filterMode: 'date' | 'category' = 'category';
+
   setFilterMode(mode: 'date' | 'category') {
     this.filterMode = mode;
-}
+  }
   ngOnInit() {
+    this.titleSrv.setTitle('Visualizza movimenti');
     this.loadMovements();
     this.categoryService.listCategory().subscribe((categories) => {
       this.categories = categories;
     });
-    
   }
 
-  constructor(private movementService: MovementService, private categoryService: CategoryService) {}
-
-  
   loadMovements() {
     const { numeroMovimenti, dataInizio, dataFine } = this.filtro;
     this.loading = true;
@@ -54,10 +59,11 @@ export class ViewMovementComponent {
     } else {
       this.movementService.listMovementsWithBalance(numeroMovimenti).subscribe((data) => {
         this.movements = data.movements;
-        this.balance = data.balance; 
+        this.balance = data.balance;
       });
       this.loading = false;
-    } 
+    }
+
   }
 
   onCategoryChange() {
@@ -75,8 +81,8 @@ export class ViewMovementComponent {
     const { numeroMovimenti, dataInizio, dataFine } = this.filtro;
 
     if (dataInizio && dataFine) {
-      const formattedStartDate = new Date(dataInizio).toISOString().split('T')[0]; 
-      const formattedEndDate = new Date(dataFine).toISOString().split('T')[0];    
+      const formattedStartDate = new Date(dataInizio).toISOString().split('T')[0];
+      const formattedEndDate = new Date(dataFine).toISOString().split('T')[0];
       this.movementService.exportMovementsByDateRangeToCSV(numeroMovimenti, formattedStartDate, formattedEndDate).subscribe((csvData) => {
         this.downloadCSV(csvData);
       });
@@ -90,7 +96,6 @@ export class ViewMovementComponent {
       });
     }
   }
-  
   downloadCSV(csvData: string) {
     const blob = new Blob([csvData], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
