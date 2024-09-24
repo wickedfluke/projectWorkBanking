@@ -30,7 +30,10 @@ export class LoginComponent {
         this.router.navigate(['/dashboard']);
       },
       (err: any) => {
-        showContent(getElementById('login-error'));
+        const errorElement = getElementById('login-error');
+        errorElement.innerText = err.error.message;
+        showContent(errorElement);
+        console.log(err.message);
       }
     );
   }

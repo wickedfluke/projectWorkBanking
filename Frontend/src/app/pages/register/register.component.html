@@ -1,8 +1,8 @@
-<div class="body">
+<div class="container-fluid body">
   <div class="row w-100">
     <!-- Left Column: Registration Form -->
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
-      <div class="register-form w-75">
+    <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">
+      <div class="register-form w-100 p-3" style="max-width: 500px;">
         <h2 class="text-center mb-4">
           <span class="h2" (click)="navigate('login')">Login</span>
           <span class="separate">|</span>
@@ -56,7 +56,6 @@
             <div *ngIf="email.invalid && email.touched" class="form-text text-danger">
               L'email è obbligatoria e deve essere valida.
             </div>
-            <div></div>
             <div class="form-text text-success success-message">Success message</div>
           </div>
           <div class="mb-3 position-relative">
@@ -121,8 +120,8 @@
       </div>
     </div>
     <!-- Right Column: Image -->
-    <div class="col-md-6 d-flex justify-content-center align-items-center illustration">
-      <img src="../../../assets/registerImage.png" id="img-register" alt="Illustration" />
+    <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center illustration">
+      <img src="../../../assets/registerImage.png" id="img-register" class="img-fluid" alt="Illustration" />
     </div>
   </div>
 </div>

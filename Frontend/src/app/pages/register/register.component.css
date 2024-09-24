@@ -1,3 +1,9 @@
+.body {
+  /* Prevent scrolling */
+  overflow: hidden;
+  height: 100vh;
+}
+
 .separate {
   cursor: default;
   text-decoration: none;
@@ -26,6 +32,9 @@ h2 .actual {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: auto; /* Ensures horizontal centering */
 }
 
 .form-control:focus {
@@ -80,15 +89,16 @@ h2 .actual {
   #img-register {
     display: none;
   }
-  .col-md-6 {
-    flex: 0 0 100%;
-    max-width: 100%;
+  
+  .register-form {
+    margin: auto;
+    padding: 2rem 1rem;
+    max-width: 90%;
   }
 }
 
 @media (min-width: 769px) {
   .body {
-    /* Prevent scrolling */
     overflow: hidden;
     height: 100vh;
   }

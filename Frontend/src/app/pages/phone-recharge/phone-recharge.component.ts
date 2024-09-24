@@ -3,8 +3,6 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../entities/user.entity';
 import { MovementService } from '../../services/movement.service';
-import { Movement } from '../../entities/movement.entity';
-import { fixWidth, getElementById, getWidth } from '../../functions/utils.html';
 
 @Component({
   selector: 'app-phone-recharge',
@@ -33,18 +31,6 @@ export class PhoneRechargeComponent {
     this.userService.getBalance().subscribe((balance) => {
       this.balance = balance.balance;
     });
-    this.centerBtnSubmit();
-  }
-
-  centerBtnSubmit() {
-    fixWidth('btn-submit', 'phoneNumber', 30);
-    const formEl = getElementById('form');
-    formEl!.style.position = 'relative';
-    const widthForm = getWidth('form'); // Larghezza del form
-    const btnSubmitEl = getElementById('btn-submit');
-    const widthButton = getWidth('btn-submit'); // Larghezza del pulsante
-    btnSubmitEl!.style.position = 'absolute';
-    btnSubmitEl!.style.left = `${(widthForm - widthButton) / 2}px`; // Centra esattamente
   }
 
   createPhoneMovement(phoneNumber: string, operator: string, rechargeAmount: number, event: Event) {

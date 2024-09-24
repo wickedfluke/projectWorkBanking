@@ -47,7 +47,6 @@ export class MovementTableComponent {
     this.movementService.getMovementById(movementId).subscribe(
       (movement) => {
         this.selectedMovement = movement;
-        console.log('Selected movement:', this.selectedMovement);
         this.modalReference = this.modalService.open(content);
       },
       (error) => {

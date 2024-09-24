@@ -50,7 +50,7 @@ export class MovementService {
 
   exportMovementsByDateRangeToCSV(number: number, startDate: string, endDate: string): Observable<any> {
     const body = { startDate, endDate };
-    return this.http.post(`${this.apiUrl}/export/date-range`, { number }, { responseType: 'text' });
+    return this.http.post(`${this.apiUrl}/export/date-range?number=${number}`, body, { responseType: 'text' });
   }
 
   getMovementById(movementId: string): Observable<any> {

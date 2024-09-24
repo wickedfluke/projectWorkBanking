@@ -31,6 +31,15 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
                 return;
             }
 
+            if (!user.isActive) {
+                await logService.createLog(req, 'Login Attempt', false);
+                res.status(400).json({
+                    error: 'LoginError',
+                    message: 'Account non attivato. Controlla la tua casella mail per confermare la registrazione.'
+                });
+                return;
+            }
+
             const token = jwt.sign(JSON.parse(JSON.stringify(user)), JWT_SECRET, { expiresIn: '30 minutes' });
 
             await logService.createLog(req, 'Login Attempt', true);

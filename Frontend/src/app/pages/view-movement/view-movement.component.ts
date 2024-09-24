@@ -75,7 +75,9 @@ export class ViewMovementComponent {
     const { numeroMovimenti, dataInizio, dataFine } = this.filtro;
 
     if (dataInizio && dataFine) {
-      this.movementService.exportMovementsByDateRangeToCSV(numeroMovimenti, dataInizio, dataFine).subscribe((csvData) => {
+      const formattedStartDate = new Date(dataInizio).toISOString().split('T')[0]; 
+      const formattedEndDate = new Date(dataFine).toISOString().split('T')[0];    
+      this.movementService.exportMovementsByDateRangeToCSV(numeroMovimenti, formattedStartDate, formattedEndDate).subscribe((csvData) => {
         this.downloadCSV(csvData);
       });
     } else if (this.selectedCategory) {
@@ -84,7 +86,6 @@ export class ViewMovementComponent {
       });
     } else {
       this.movementService.exportMovementsToCSV(numeroMovimenti).subscribe((csvData) => {
-        console.log(csvData);
         this.downloadCSV(csvData);
       });
     }
