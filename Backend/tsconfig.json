@@ -3,6 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "outDir": "dist",
+    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
@@ -13,5 +14,6 @@
     "strictPropertyInitialization": false,
     "experimentalDecorators": true
   },
-  "exclude": ["test"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

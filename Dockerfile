@@ -37,5 +37,5 @@ COPY --from=build-frontend /app/Frontend/dist /app/Backend/public
 # Espone la porta 3000 per l'app Express
 EXPOSE 3000
 
-# Comando per avviare il server Express
-CMD ["node", "./Backend/index.js"]
+# Comando per avviare il server Express, ora eseguiamo index.js da dist
+CMD ["node", "./Backend/dist/index.js"]
