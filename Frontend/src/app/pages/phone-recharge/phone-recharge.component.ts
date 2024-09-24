@@ -25,15 +25,13 @@ export class PhoneRechargeComponent {
     private authService: AuthService,
     private userService: UserService,
     private movementService: MovementService,
-    private movementService: MovementService,
-    private titleSrv: Titles
+    private titleSrv: Title
   ) { }
 
 ngOnInit() {
   this.titleSrv.setTitle('Ricarica telefono');
   this.getCurrentUserAndUsers();
   this.getBalance();
-  this.centerBtnSubmit();
 }
 
 getCurrentUserAndUsers() {

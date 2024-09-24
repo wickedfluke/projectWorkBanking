@@ -36,14 +36,6 @@ export class ProfileComponent implements AfterViewInit {
   showSuccess: boolean = false;
   touchAlert: boolean = false;
 
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private fb: FormBuilder,
-    private modalService: NgbModal
-  ) {
-    Chart.register(...registerables);
-  }
 
   ngOnInit() {
     this.titleSrv.setTitle('Profilo');
