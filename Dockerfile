@@ -30,4 +30,4 @@ COPY ./Backend ./Backend
 EXPOSE 3000
 
 # Avvia il server Express
-CMD ["node", "./Backend/server.js"]
+CMD ["node", "./Backend/index.ts"]
