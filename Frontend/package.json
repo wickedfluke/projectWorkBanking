@@ -1,6 +1,6 @@
 {
   "name": "frontand",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -20,7 +20,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "@ng-bootstrap/ng-bootstrap": "^17.0.1",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.4",
@@ -28,7 +28,7 @@
     "projectworkbanking": "file:..",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "Violatto-Alex-prova-finale-primo-anno": "file:..",
+    "vite": "^5.1.7",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -42,6 +42,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.4.2"
+    "typescript": "~5.3.0"
   }
 }
