@@ -16,7 +16,7 @@ h2 strong {
   color: black;
   display: inline-block;
   font-style: italic;
-  user-select: none;
+  -webkit-user-select: none;
 }
 
 .eye-icon {

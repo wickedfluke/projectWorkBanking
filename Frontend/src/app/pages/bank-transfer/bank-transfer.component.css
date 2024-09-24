@@ -1,26 +1,145 @@
-h2 {
-  color: #333;
+* {
+  box-sizing: border-box;
+}
+
+.font-type {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-style: italic;
+}
+
+.title-h2 {
+  position: relative;
+  font-size: 3rem;
+  left: 30px;
+}
+
+.span-description {
+  position: relative;
+  left: 35px;
+  font-size: medium;
 }
 
 form {
-  input {
-    background-color: #f8fafc;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-  }
+  margin-top: 20px;
+}
 
-  button {
-    background-color: #ffcc00;
-    width: 50%;
-    transform: translateX(50%);
-    color: #fff;
-    font-weight: bold;
-    padding: 15px;
-  }
+form input {
+  background-color: #f8fafc;
+  width: 90%;
+  transform: translateX(5%);
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+form input:first-child {
+  margin-top: 10px;
+}
+
+form input:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+form button {
+  background-color: #ec9552;
+  width: 30%;
+  transform: translateX(120%);
+  color: #fff;
+  font-weight: normal;
+  font-style: italic;
+  padding: 4px;
+}
+
+form button:hover {
+  background-color: #c06c2d;
 }
 
 img {
+  width: 75%;
   max-width: 100%;
   height: auto;
+  position: relative;
+  left: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-weight: bold;
+}
+
+.card {
+  border-radius: 15px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 2px gray !important;
+  width: 100%; /* Ensure the card takes full width */
+}
+
+.btn-warning {
+  background-color: #ec9552;
+  color: white;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #c9702c;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+div h5,
+div p {
+  width: 90%;
+}
+
+#btn-submit {
+  transform: translateX(80%);
+}
+
+#edit-data {
+  margin-right: 5px;
+}
+
+.d-flex {
+  justify-content: space-between; /* Adjust spacing between buttons */
+}
+
+.btn {
+  flex: 1; /* Allow buttons to grow equally */
+  margin: 0 5px; /* Add side margins for spacing */
+}
+
+.btn-md {
+  font-size: 0.75rem; /* Optional: Increase font size for better visibility */
+  padding: 8px; /* Adjust padding if needed */
+}
+
+@media (min-width: 768px) {
+  .body {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .img-fluid {
+    display: none;
+  }
 }

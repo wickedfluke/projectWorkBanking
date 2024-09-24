@@ -5,6 +5,7 @@ import { User } from '../../entities/user.entity';
 import { MovementService } from '../../services/movement.service';
 import { Movement } from '../../entities/movement.entity';
 import { fixWidth, getElementById, getWidth } from '../../functions/utils.html';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-phone-recharge',
@@ -22,18 +23,32 @@ export class PhoneRechargeComponent {
   constructor(
     private authService: AuthService,
     private userService: UserService,
+<<<<<<< Updated upstream
     private movementService: MovementService
+=======
+    private movementService: MovementService,
+    private titleSrv: Title
+>>>>>>> Stashed changes
   ) {}
 
   ngOnInit() {
+    this.titleSrv.setTitle('Ricarica telefono');
+    this.getCurrentUserAndUsers();
+    this.getBalance();
+    this.centerBtnSubmit();
+  }
+
+  getCurrentUserAndUsers() {
     this.authService.currentUser$.subscribe((user) => (this.currentUser = user));
     this.userService.getUsers().subscribe((users) => {
       this.users = users;
     });
+  }
+
+  getBalance() {
     this.userService.getBalance().subscribe((balance) => {
       this.balance = balance.balance;
     });
-    this.centerBtnSubmit();
   }
 
   centerBtnSubmit() {

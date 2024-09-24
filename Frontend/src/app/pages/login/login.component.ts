@@ -16,6 +16,7 @@ export class LoginComponent {
     username: '',
     password: '',
   };
+  isPasswordVisible = false;
   passwordVisible: boolean = false;
   pageTitle = 'Login home banking';
 
@@ -33,6 +34,12 @@ export class LoginComponent {
         showContent(getElementById('login-error'));
       }
     );
+  }
+
+  togglePasswordVisibility(id: string) {
+    this.isPasswordVisible = !this.isPasswordVisible;
+    const passwordField = document.getElementById(id) as HTMLInputElement;
+    passwordField.type = this.isPasswordVisible ? 'text' : 'password';
   }
 
   navigate(path: string) {

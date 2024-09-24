@@ -19,6 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
+import { SuccessPopupComponent } from './components/success-popup/success-popup.component';
+import { BankTransferCheckComponent } from './pages/bank-transfer-check/bank-transfer-check.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,15 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
     MovementTableComponent,
     ProfileComponent,
     PhoneRechargeComponent,
+<<<<<<< Updated upstream
     BankTransferComponent
+=======
+    ViewMovementComponent,
+    LoadingComponent,
+    BankTransferComponent,
+    SuccessPopupComponent,
+    BankTransferCheckComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -41,7 +51,7 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
     HttpClientModule,
     MatIconModule,
     NgbModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
   ],
   providers: [
     {
@@ -52,4 +62,4 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

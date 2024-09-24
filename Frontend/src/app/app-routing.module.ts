@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -12,6 +12,11 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full',
+  },
+  {
+    path: 'animation',
     redirectTo: '/dashboard',
     pathMatch: 'full',
   },
@@ -39,6 +44,14 @@ const routes: Routes = [
     path: 'recharge',
     canActivate: [authGuard],
     component: PhoneRechargeComponent,
+<<<<<<< Updated upstream
+=======
+  },
+  {
+    path: 'view',
+    canActivate: [authGuard],
+    component: ViewMovementComponent,
+>>>>>>> Stashed changes
   },
   {
     path: 'transfer',

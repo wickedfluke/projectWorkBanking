@@ -22,7 +22,7 @@
             />
             <!-- <div class="form-text text-success">Success message</div> -->
           </div>
-          <div class="mb-3">
+          <div class="mb-3 position-relative">
             <label for="password" class="form-label">Password</label>
             <input
               type="password"
@@ -32,6 +32,13 @@
               [(ngModel)]="loginData.password"
               placeholder="Inserisci qui la tua password"
             />
+            <div class="eye-icon" (click)="togglePasswordVisibility('password')">
+              <app-eyes-icon
+                [size]="'25px'"
+                (state)="(isPasswordVisible)"
+                [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
+              ></app-eyes-icon>
+            </div>
             <!-- <div class="form-text text-success">Success message</div> -->
           </div>
           <div class="d-grid">

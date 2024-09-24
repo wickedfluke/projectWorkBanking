@@ -1,0 +1,65 @@
+/* Layout e stile generale */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Stile della card che contiene i dati */
+.card {
+  border-radius: 15px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 2px gray !important;
+}
+
+/* Stile per titoli e paragrafi */
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-weight: bold;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Pulsante per confermare */
+.btn-warning {
+  background-color: #ff7f00;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #ff6600;
+}
+
+/* Immagine che si adatta allo spazio */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Stile per centrare l'immagine e farla apparire simmetrica rispetto al form */
+.align-self-center {
+  align-self: center;
+}
+
+#btn-submit {
+  transform: translateX(80%);
+}
+
+img {
+  position: relative;
+  left: 20px;
+}
+
+@media (max-width: 768px) {
+  .img-fluid {
+    display: none;
+  }
+}
