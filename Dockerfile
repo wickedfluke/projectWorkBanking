@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copia i file package.json e installa le dipendenze del backend
 COPY ./Backend/package*.json ./Backend/
-RUN cd ./Backend && npm install
+RUN cd ./Backend && npm install --force
 
 # Copia il codice sorgente del backend
 COPY ./Backend ./Backend
