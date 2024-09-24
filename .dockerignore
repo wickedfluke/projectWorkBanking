@@ -1,0 +1,5 @@
+node_modules
+npm-debug.log
+Frontend/node_modules
+Frontend/dist
+Backend/node_modules
