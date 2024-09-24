@@ -13,21 +13,13 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 
-
 app.use('/api', apiRouter);
-
-
-app.use((req, res, next) => {
-    if (!req.path.startsWith('/api')) {
-        res.sendFile(path.join(__dirname, 'public', 'frontand', 'browser', 'index.html'));
-    } else {
-        next();
-    }
-});
-
 
 app.use(express.static(path.join(__dirname, 'public', 'frontand', 'browser')));
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'frontand', 'browser', 'index.html'));
+});
 
 app.use(errorHandlers);
 
