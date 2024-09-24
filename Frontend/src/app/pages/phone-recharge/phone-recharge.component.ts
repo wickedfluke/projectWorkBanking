@@ -28,6 +28,9 @@ export class PhoneRechargeComponent {
 =======
     private movementService: MovementService,
     private titleSrv: Title
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   ) {}
 
@@ -35,7 +38,10 @@ export class PhoneRechargeComponent {
     this.titleSrv.setTitle('Ricarica telefono');
     this.getCurrentUserAndUsers();
     this.getBalance();
+<<<<<<< Updated upstream
     this.centerBtnSubmit();
+=======
+>>>>>>> Stashed changes
   }
 
   getCurrentUserAndUsers() {
@@ -51,6 +57,7 @@ export class PhoneRechargeComponent {
     });
   }
 
+<<<<<<< Updated upstream
   centerBtnSubmit() {
     fixWidth('btn-submit', 'phoneNumber', 30);
     const formEl = getElementById('form');
@@ -62,6 +69,8 @@ export class PhoneRechargeComponent {
     btnSubmitEl!.style.left = `${(widthForm - widthButton) / 2}px`; // Centra esattamente
   }
 
+=======
+>>>>>>> Stashed changes
   createPhoneMovement(phoneNumber: string, operator: string, rechargeAmount: number, event: Event) {
     event.preventDefault();
     this.movementService.createPhoneMovement(phoneNumber, operator, rechargeAmount).subscribe(() => {

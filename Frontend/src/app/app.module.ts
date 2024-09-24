@@ -20,7 +20,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
 import { SuccessPopupComponent } from './components/success-popup/success-popup.component';
-import { BankTransferCheckComponent } from './pages/bank-transfer-check/bank-transfer-check.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +40,10 @@ import { BankTransferCheckComponent } from './pages/bank-transfer-check/bank-tra
     LoadingComponent,
     BankTransferComponent,
     SuccessPopupComponent,
+<<<<<<< Updated upstream
     BankTransferCheckComponent,
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   ],
   imports: [

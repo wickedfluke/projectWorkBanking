@@ -8,14 +8,12 @@
 }
 
 .title-h2 {
-  position: relative;
   font-size: 3rem;
-  left: 30px;
+  margin-left: 30px;
 }
 
 .span-description {
-  position: relative;
-  left: 35px;
+  margin-left: 35px;
   font-size: medium;
 }
 
@@ -23,10 +21,11 @@ form {
   margin-top: 20px;
 }
 
-form input {
+form input,
+form select {
   background-color: #f8fafc;
   width: 90%;
-  transform: translateX(5%);
+  margin-left: 5%;
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 5px;
@@ -36,7 +35,8 @@ form input:first-child {
   margin-top: 10px;
 }
 
-form input:focus {
+form input:focus,
+form select:focus {
   border-color: #ffc107;
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
 }
@@ -44,7 +44,7 @@ form input:focus {
 form button {
   background-color: #ec9552;
   width: 30%;
-  transform: translateX(120%);
+  margin-left: 70%;
   color: #fff;
   font-weight: normal;
   font-style: italic;
@@ -59,8 +59,7 @@ img {
   width: 75%;
   max-width: 100%;
   height: auto;
-  position: relative;
-  left: 20px;
+  margin-left: 20px;
 }
 
 .container {
@@ -82,7 +81,6 @@ h5 {
   border-radius: 15px;
   background-color: #f8f9fa;
   box-shadow: 0 2px 2px gray !important;
-  width: 100%; /* Ensure the card takes full width */
 }
 
 .btn-warning {
@@ -101,41 +99,22 @@ h5 {
   display: block;
 }
 
-.align-self-center {
-  align-self: center;
-}
-
-div h5,
-div p {
-  width: 90%;
-}
-
-#btn-submit {
-  transform: translateX(80%);
-}
-
-#edit-data {
-  margin-right: 5px;
-}
-
 .d-flex {
-  justify-content: space-between; /* Adjust spacing between buttons */
+  justify-content: space-between;
 }
 
 .btn {
-  flex: 1; /* Allow buttons to grow equally */
-  margin: 0 5px; /* Add side margins for spacing */
+  flex: 1;
+  margin: 0 5px;
+}
+
+#btn-check {
+  transform: translateX(-115%);
 }
 
 .btn-md {
-  font-size: 0.75rem; /* Optional: Increase font size for better visibility */
-  padding: 8px; /* Adjust padding if needed */
-}
-
-@media (min-width: 768px) {
-  .body {
-    overflow-x: hidden;
-  }
+  font-size: 0.75rem;
+  padding: 8px;
 }
 
 @media (max-width: 768px) {
