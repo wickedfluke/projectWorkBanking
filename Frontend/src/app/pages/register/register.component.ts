@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent {
   constructor(private router: Router, private authService: AuthService) {}
   isPasswordVisible = false;
+  showSuccessAlert: boolean = false;
   registerData: any = {
     firstName: '',
     lastName: '',
@@ -23,8 +24,10 @@ export class RegisterComponent {
     if (form.invalid) return;
     this.authService.register(this.registerData).subscribe(
       (response) => {
-        alert("Registrazione avvenuta con successo, controlla la casella email per confermare l'account");
-        this.router.navigate(['/login']);
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 10000);
       },
       (error) => {
         if (error.error === 'Email già in uso') {
@@ -43,5 +46,9 @@ export class RegisterComponent {
 
   navigate(path: string) {
     this.router.navigate([path]);
+  }
+
+  closeAlert() {
+    this.showSuccessAlert = false;
   }
 }

@@ -26,40 +26,44 @@ export class PhoneRechargeComponent {
     private userService: UserService,
     private movementService: MovementService,
     private titleSrv: Title
+
   ) { }
 
-ngOnInit() {
-  this.titleSrv.setTitle('Ricarica telefono');
-  this.getCurrentUserAndUsers();
-  this.getBalance();
-}
+  ngOnInit() {
+    this.titleSrv.setTitle('Ricarica telefono');
+    this.getCurrentUserAndUsers();
+    this.getBalance();
+  }
 
-getCurrentUserAndUsers() {
-  this.authService.currentUser$.subscribe((user) => (this.currentUser = user));
-  this.userService.getUsers().subscribe((users) => {
-    this.users = users;
-  });
-}
 
-getBalance() {
-  this.userService.getBalance().subscribe((balance) => {
-    this.balance = balance.balance;
-  });
-}
+  getCurrentUserAndUsers() {
+    this.authService.currentUser$.subscribe((user) => (this.currentUser = user));
+    this.userService.getUsers().subscribe((users) => {
+      this.users = users;
+    });
+  }
 
-createPhoneMovement(phoneNumber: string, operator: string, rechargeAmount: number, event: Event) {
-  event.preventDefault();
-  this.movementService.createPhoneMovement(phoneNumber, operator, rechargeAmount).subscribe(() => {
+  getBalance() {
     this.userService.getBalance().subscribe((balance) => {
       this.balance = balance.balance;
     });
-    this.showSuccessAlert = true;
-    setTimeout(() => {
-      this.showSuccessAlert = false;
-    }, 10000);
-  });
-}
-closeAlert() {
-  this.showSuccessAlert = false;
-}
+  }
+
+  createPhoneMovement(phoneNumber: string, operator: string, rechargeAmount: number, event: Event) {
+    event.preventDefault();
+    this.movementService.createPhoneMovement(phoneNumber, operator, rechargeAmount).subscribe(() => {
+      this.userService.getBalance().subscribe((balance) => {
+        this.balance = balance.balance;
+      });
+      this.showSuccessAlert = true;
+      setTimeout(() => {
+        this.showSuccessAlert = false;
+      }, 10000);
+    });
+  }
+  closeAlert() {
+    this.showSuccessAlert = false;
+  }
+
+
 }

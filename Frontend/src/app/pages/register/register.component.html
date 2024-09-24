@@ -125,3 +125,9 @@
     </div>
   </div>
 </div>
+
+<app-success-popup
+  [show]="showSuccessAlert"
+  [message]="'Registrazione avvenuta con successo! Verifica la tua casella di posta per confermare la tua email.'"
+  (closed)="closeAlert()"
+></app-success-popup>

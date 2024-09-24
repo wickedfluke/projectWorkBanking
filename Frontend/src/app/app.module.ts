@@ -38,7 +38,7 @@ import { SuccessPopupComponent } from './components/success-popup/success-popup.
     ViewMovementComponent,
     LoadingComponent,
     BankTransferComponent,
-    SuccessPopupComponent
+    SuccessPopupComponent,
   ],
   imports: [
     BrowserModule,
