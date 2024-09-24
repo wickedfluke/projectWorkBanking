@@ -6,12 +6,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./success-popup.component.css'],
 })
 export class SuccessPopupComponent {
-  @Input() show: boolean = false; // Per controllare se mostrare il popup
-  @Input() message: string = 'Ricarica effettuata con successo!'; // Messaggio personalizzato
-  @Output() closed = new EventEmitter<void>(); // Evento emesso quando si chiude il popup
+  @Input() show: boolean = false; 
+  @Input() message: string = 'Operazione completata!'; 
+  @Output() closed = new EventEmitter<void>(); 
 
   closePopup() {
-    this.show = false; // Nasconde il popup
-    this.closed.emit(); // Emette l'evento di chiusura
+    this.show = false; 
+    this.closed.emit(); 
   }
 }

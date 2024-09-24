@@ -30,7 +30,7 @@ export class PhoneRechargeComponent {
   ) { }
 
   ngOnInit() {
-    this.titleSrv.setTitle('Ricarica telefono');
+    this.titleSrv.setTitle('Ricarica Cellulare');
     this.getCurrentUserAndUsers();
     this.getBalance();
   }
@@ -49,8 +49,20 @@ export class PhoneRechargeComponent {
     });
   }
 
+  isPhoneNumberValid(): boolean {
+    const phoneRegex = /^\d{9,10}$/;
+    return phoneRegex.test(this.phoneNumber);
+  }
+
+  isFormValid(): boolean {
+    return this.isPhoneNumberValid() && this.operator.trim() !== '' && this.amount > 0;
+  }
+
   createPhoneMovement(phoneNumber: string, operator: string, rechargeAmount: number, event: Event) {
     event.preventDefault();
+    if (!this.isFormValid()) {
+      return;
+    }
     this.movementService.createPhoneMovement(phoneNumber, operator, rechargeAmount).subscribe(() => {
       this.userService.getBalance().subscribe((balance) => {
         this.balance = balance.balance;

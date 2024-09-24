@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 import { ViewMovementComponent } from './pages/view-movement/view-movement.component';
 import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
     canActivate: [authGuard],
     component: BankTransferComponent,
   },
+  {
+    path: 'home',
+    component: HomeComponent
+  }
 ];
 
 @NgModule({

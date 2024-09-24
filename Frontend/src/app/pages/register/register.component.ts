@@ -50,5 +50,6 @@ export class RegisterComponent {
 
   closeAlert() {
     this.showSuccessAlert = false;
+    this.router.navigate(['/login']);
   }
 }

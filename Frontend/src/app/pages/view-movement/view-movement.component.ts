@@ -36,7 +36,7 @@ export class ViewMovementComponent {
     this.filterMode = mode;
   }
   ngOnInit() {
-    this.titleSrv.setTitle('Visualizza movimenti');
+    this.titleSrv.setTitle('Visualizzazione Movimenti');
     this.loadMovements();
     this.categoryService.listCategory().subscribe((categories) => {
       this.categories = categories;

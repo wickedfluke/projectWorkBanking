@@ -54,14 +54,14 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: #ec9552;
   color: white;
   cursor: pointer;
   font-size: 16px;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: rgb(239, 96, 13);
 }
 
 @keyframes rotate {

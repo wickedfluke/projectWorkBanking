@@ -4,65 +4,30 @@
     <span class="h2 font-type title-h2">Effettua bonifico</span>
     <form (ngSubmit)="onSubmit()">
       <span class="font-type span-description">Inserisci i dati per fare il bonifico:</span>
-      <div *ngIf="errors.length > 0" class="alert alert-danger" role="alert">
+      <div *ngIf="errors.length > 0" class="alert alert-danger" role="alert" style="margin-left: 36px; margin-right: 36px;">
         <ul>
           <li *ngFor="let error of errors">{{ error }}</li>
         </ul>
       </div>
       <div class="mb-3">
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="transferData.firstName"
-          name="firstName"
-          placeholder="Inserire Nome del destinatario"
-          required
-        />
+        <input type="text" class="form-control" [(ngModel)]="transferData.firstName" name="firstName"
+          placeholder="Inserire Nome del destinatario" required />
       </div>
       <div class="mb-3">
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="transferData.lastName"
-          name="lastName"
-          placeholder="Inserire Cognome del destinatario"
-          required
-        />
+        <input type="text" class="form-control" [(ngModel)]="transferData.lastName" name="lastName"
+          placeholder="Inserire Cognome del destinatario" required />
       </div>
       <div class="mb-3">
-        <input
-          type="text"
-          class="form-control"
-          [minLength]="27"
-          [maxLength]="27"
-          [(ngModel)]="transferData.iban"
-          name="iban"
-          placeholder="Inserire IBAN del destinatario"
-          (focusout)="validateIban()"
-          required
-        />
+        <input type="text" class="form-control" [minLength]="27" [maxLength]="27" [(ngModel)]="transferData.iban"
+          name="iban" placeholder="Inserire IBAN del destinatario" (focusout)="validateIban()" required />
       </div>
       <div class="mb-3">
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="transferData.description"
-          name="description"
-          placeholder="Inserire la Causale"
-          required
-        />
+        <input type="text" class="form-control" [(ngModel)]="transferData.description" name="description"
+          placeholder="Inserire la Causale" required />
       </div>
       <div class="mb-3">
-        <input
-          type="number"
-          min="1"
-          class="form-control"
-          [(ngModel)]="transferData.amount"
-          name="amount"
-          placeholder="Inserire Importo"
-          (focusout)="validateAmount()"
-          required
-        />
+        <input type="number" min="1" class="form-control" [(ngModel)]="transferData.amount" name="amount"
+          placeholder="Inserire Importo" (focusout)="validateAmount()" required />
       </div>
 
       <!-- Centered Button -->
@@ -98,16 +63,10 @@
   </div>
 
   <div class="col-md-6 d-flex justify-content-center align-items-center">
-    <img
-      src="../../../assets/BankTransfer.png"
-      class="img-fluid right-img d-none d-md-block"
-      alt="Transfer Illustration"
-    />
+    <img src="../../../assets/BankTransfer.png" class="img-fluid right-img d-none d-md-block"
+      alt="Transfer Illustration" />
   </div>
 </div>
 
-<app-success-popup
-  [show]="showSuccessComponent"
-  (closed)="closeAlert()"
-  [message]="'Bonifico effettuato con successo'"
-></app-success-popup>
+<app-success-popup [show]="showSuccessComponent" (closed)="closeAlert()"
+  [message]="'Bonifico effettuato con successo'"></app-success-popup>

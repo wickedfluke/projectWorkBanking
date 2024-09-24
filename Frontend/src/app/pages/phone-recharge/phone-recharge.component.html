@@ -16,7 +16,11 @@
               [(ngModel)]="phoneNumber"
               name="phoneNumber"
               required
+              #phoneInput="ngModel"
             />
+            <div *ngIf="!isPhoneNumberValid() && phoneInput.touched" class="text-danger">
+              Il numero di telefono deve essere di 9 o 10 cifre.
+            </div>
           </div>
           <div class="mb-3">
             <label for="operator" class="form-label">Seleziona il tuo Operatore</label>
@@ -51,6 +55,7 @@
               type="submit"
               id="btn-submit"
               class="btn btn-warning"
+              [disabled]="!isFormValid()"
               (click)="createPhoneMovement(phoneNumber, operator, amount, $event)"
             >
               Effettua ricarica

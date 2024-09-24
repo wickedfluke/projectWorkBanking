@@ -27,7 +27,7 @@ export class BankTransferComponent implements OnInit {
     description: '',
   };
 
-  // Error tracking
+  
   errors: string[] = [];
 
   constructor(
@@ -39,7 +39,7 @@ export class BankTransferComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleSrv.setTitle('Effettua bonifico');
+    this.titleSrv.setTitle('Bonifici');
     this.getCurrentUserAndUsers();
   }
 
@@ -61,12 +61,12 @@ export class BankTransferComponent implements OnInit {
   }
 
   onSubmit() {
-    this.errors = []; // Clear previous errors
+    this.errors = []; 
 
     this.validateIban();
     this.validateAmount();
 
-    // Check if there are any errors
+    
     if (this.errors.length === 0) {
       this.showCheckTransfer = true;
       this.showDataInsert = false;
@@ -80,9 +80,6 @@ export class BankTransferComponent implements OnInit {
       .subscribe(
         () => {
           this.showSuccessComponent = true;
-          setTimeout(() => {
-            this.router.navigate(['/dashboard']);
-          }, 5000);
         },
         (err) => {
           console.error('Transfer failed', err);
@@ -94,10 +91,10 @@ export class BankTransferComponent implements OnInit {
     const ibanError = 'IBAN deve essere di 27 caratteri.';
     if (this.transferData.iban.length !== 27) {
       if (!this.errors.includes(ibanError)) {
-        this.errors.push(ibanError); // Add error if it doesn't already exist
+        this.errors.push(ibanError); 
       }
     } else {
-      // Remove the error if IBAN is valid
+      
       this.errors = this.errors.filter((error) => error !== ibanError);
     }
   }
@@ -106,10 +103,10 @@ export class BankTransferComponent implements OnInit {
     const amountError = "L'importo deve essere maggiore di 0.";
     if (this.transferData.amount <= 0) {
       if (!this.errors.includes(amountError)) {
-        this.errors.push(amountError); // Add error if it doesn't already exist
+        this.errors.push(amountError); 
       }
     } else {
-      // Remove the error if amount is valid
+      
       this.errors = this.errors.filter((error) => error !== amountError);
     }
   }
@@ -121,5 +118,6 @@ export class BankTransferComponent implements OnInit {
 
   closeAlert() {
     this.showSuccessComponent = false;
+    this.router.navigate(['/dashboard']); 
   }
 }

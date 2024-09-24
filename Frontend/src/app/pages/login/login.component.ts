@@ -22,7 +22,33 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.titleSrv.setTitle(this.pageTitle);
+    this.startLoginTimeout();
   }
+
+  startLoginTimeout() {
+    setTimeout(() => {
+      this.showCustomAlert();
+
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 3000); 
+    }, 30000); 
+  }
+
+  showCustomAlert() {
+    const alertElement = getElementById('custom-alert');
+    const overlayElement = getElementById('page-overlay');
+    alertElement.style.display = 'block';
+    overlayElement.style.display = 'block';
+  }
+
+  hideCustomAlert() {
+    const alertElement = getElementById('custom-alert');
+    const overlayElement = getElementById('page-overlay');
+    alertElement.style.display = 'none';
+    overlayElement.style.display = 'none';
+  }
+
 
   login(form: NgForm) {
     this.authService.login(this.loginData.username, this.loginData.password).subscribe(

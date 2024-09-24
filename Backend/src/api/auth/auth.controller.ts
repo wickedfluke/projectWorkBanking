@@ -26,7 +26,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
                 await logService.createLog(req, 'Login Attempt', false);
                 res.status(400).json({
                     error: 'LoginError',
-                    message: info.message
+                    message: 'Username o password non validi.'
                 });
                 return;
             }

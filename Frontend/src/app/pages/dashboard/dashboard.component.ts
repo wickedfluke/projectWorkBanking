@@ -15,6 +15,7 @@ export class DashboardComponent {
   users: User[] = [];
   currentUser: User | any = {};
   balance: number | string = 0;
+  loading = false;
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -23,12 +24,14 @@ export class DashboardComponent {
   ) {}
 
   ngOnInit() {
+    this.loading = true;
     this.getCurrentUserAndUsers();
     this.getBalance();
+    this.loading = false;
   }
   
   getCurrentUser() {
-    this.titleSrv.setTitle('Dashboard home banking');
+    this.titleSrv.setTitle('Dashboard myBanking');
     this.getCurrentUserAndUsers();
     this.getBalance();
   }
