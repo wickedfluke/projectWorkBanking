@@ -1,4 +1,19 @@
-# Stage 1: Setup del backend Express
+# Stage 1: Build del frontend Angular
+FROM node:18-alpine as build-frontend
+
+WORKDIR /app
+
+# Copia il file package.json e installa le dipendenze del frontend
+COPY ./Frontend/package*.json ./Frontend/
+RUN cd ./Frontend && npm install --force
+
+# Copia il codice sorgente del frontend
+COPY ./Frontend ./Frontend
+
+# Compila il frontend Angular
+RUN cd ./Frontend && npm run build --prod
+
+# Stage 2: Setup del backend Express
 FROM node:18-alpine as build-backend
 
 WORKDIR /app
@@ -16,8 +31,8 @@ RUN npm install -g typescript
 # Compila il codice TypeScript in JavaScript
 RUN cd ./Backend && tsc
 
-# Copia il frontend (già costruito) nella cartella pubblica del backend
-COPY ./Frontend/dist /app/Backend/public
+# Copia il frontend costruito nella cartella pubblica del backend
+COPY --from=build-frontend /app/Frontend/dist /app/Backend/public
 
 # Espone la porta 3000 per l'app Express
 EXPOSE 3000
