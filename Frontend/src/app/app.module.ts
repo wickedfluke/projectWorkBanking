@@ -22,7 +22,6 @@ import { ViewMovementComponent } from './pages/view-movement/view-movement.compo
 import { LoadingComponent } from './components/loading/loading.component';
 import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
 import { SuccessPopupComponent } from './components/success-popup/success-popup.component';
-import { BankTransferCheckComponent } from './pages/bank-transfer-check/bank-transfer-check.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,7 @@ import { BankTransferCheckComponent } from './pages/bank-transfer-check/bank-tra
     ViewMovementComponent,
     LoadingComponent,
     BankTransferComponent,
-    SuccessPopupComponent,
-    BankTransferCheckComponent,
+    SuccessPopupComponent
   ],
   imports: [
     BrowserModule,

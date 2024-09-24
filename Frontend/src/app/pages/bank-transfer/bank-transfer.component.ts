@@ -4,12 +4,11 @@ import { MovementService } from '../../services/movement.service';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../entities/user.entity';
-import { first } from 'rxjs';
 
 @Component({
   selector: 'app-bank-transfer',
   templateUrl: './bank-transfer.component.html',
-  styleUrls: ['./bank-transfer.component.css'], // Corrected to "styleUrls"
+  styleUrls: ['./bank-transfer.component.css'], 
 })
 export class BankTransferComponent {
   constructor(
@@ -20,8 +19,8 @@ export class BankTransferComponent {
   ) {}
   users: User[] = [];
   currentUser: User | any = {};
-  showCheckTransfer = false; // Initially hide the confirmation section
-  showDataInsert = true; // Initially show the form
+  showCheckTransfer = false; 
+  showDataInsert = true; 
   transferData = {
     firstName: '',
     lastName: '',
@@ -46,7 +45,7 @@ export class BankTransferComponent {
   }
 
   onSubmit() {
-    // Show confirmation section and hide form
+    
     this.showCheckTransfer = true;
     this.showDataInsert = false;
   }
@@ -57,17 +56,17 @@ export class BankTransferComponent {
       .subscribe(
         (res) => {
           console.log('Transfer successful', res);
-          // Handle success, e.g., show a success message
+          
         },
         (err) => {
           console.error('Transfer failed', err);
-          // Handle error, e.g., show an error message
+          
         }
       );
   }
 
   editTransfer() {
-    // Reset and show the data insert form again
+    
     this.showCheckTransfer = false;
     this.showDataInsert = true;
   }
