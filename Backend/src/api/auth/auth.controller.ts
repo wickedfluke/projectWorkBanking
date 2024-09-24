@@ -91,7 +91,7 @@ export const generateFakeIban = (): string => {
     const checkDigits = '60';
     const bankCode = '05428';
     const branchCode = '11101';
-    const accountNumber = uuidv4().slice(0, 12).replace(/-/g, '').toUpperCase();
+    const accountNumber = uuidv4().slice(0, 14).replace(/-/g, '').toUpperCase();
     return `${country}${checkDigits}${bankCode}${branchCode}${accountNumber}`;
 };
 
