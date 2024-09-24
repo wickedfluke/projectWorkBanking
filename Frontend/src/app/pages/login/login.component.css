@@ -52,6 +52,18 @@ h2 .actual {
   border: none;
 }
 
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px; /* Distanza dal bordo destro dell'input */
+  cursor: pointer;
+  z-index: 1; /* Assicurati che l'icona sia sopra l'input */
+}
+
+.eye-icon app-eyes-icon {
+  font-size: 1.2rem; /* Dimensione dell'icona */
+}
+
 .btn-primary:hover {
   background-color: #d97706;
 }

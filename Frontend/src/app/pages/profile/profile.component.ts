@@ -7,6 +7,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,15 @@ import { Validators } from '@angular/forms';
 export class ProfileComponent implements AfterViewInit {
   @ViewChild('lineChart') lineChart!: ElementRef;
   @ViewChild('pieChart') pieChart!: ElementRef;
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private fb: FormBuilder,
+    private modalService: NgbModal,
+    private titleSrv: Title
+  ) {
+    Chart.register(...registerables);
+  }
   currentUser: any;
   users: User[] = [];
   balance: number = 0;
@@ -26,11 +36,17 @@ export class ProfileComponent implements AfterViewInit {
   showSuccess: boolean = false;
   touchAlert: boolean = false;
 
-  constructor(private authService: AuthService, private userService: UserService, private fb: FormBuilder, private modalService: NgbModal) {
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private fb: FormBuilder,
+    private modalService: NgbModal
+  ) {
     Chart.register(...registerables);
   }
 
   ngOnInit() {
+    this.titleSrv.setTitle('Profilo');
     this.authService.currentUser$.subscribe((user) => (this.currentUser = user));
     this.passwordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],

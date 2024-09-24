@@ -1,36 +1,106 @@
-<div class="container-fluid">
-  <app-nav-bar></app-nav-bar>
+<app-nav-bar></app-nav-bar>
+<div class="row my-5">
+  <!-- Form Section: Takes up 50% width on medium to larger screens -->
+  <div class="col-md-6 form" *ngIf="showDataInsert">
+    <span class="h2 font-type title-h2">Effettua bonifico</span>
+    <form (ngSubmit)="onSubmit()">
+      <span class="font-type span-description">Inserisci i dati per fare il bonifico:</span>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="transferData.firstName"
+          name="firstName"
+          placeholder="Inserire Nome del destinatario"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="transferData.lastName"
+          name="lastName"
+          placeholder="Inserire Cognome del destinatario"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="transferData.iban"
+          name="iban"
+          placeholder="Inserire IBAN del destinatario"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="transferData.description"
+          name="description"
+          placeholder="Inserire la Causale"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="number"
+          min="1"
+          class="form-control"
+          [(ngModel)]="transferData.amount"
+          name="amount"
+          placeholder="Inserire Importo"
+          required
+        />
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-warning">Controlla Dati</button>
+      </div>
+    </form>
+  </div>
 
-  <!-- Main Content -->
-  <div class="row my-5">
-    <!-- Form Section: Takes up 50% width on medium to larger screens -->
-    <div class="col-md-6">
-      <h2 class="text-center mb-4">Effettua bonifico</h2>
-      <form>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Inserire Nome del destinatario" />
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Inserire Cognome del destinatario" />
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Inserire IBAN del destinatario" />
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="Inserire la Causale" />
-        </div>
-        <div class="mb-3">
-          <input type="number" class="form-control" placeholder="Inserire Importo" />
-        </div>
-        <div class="d-grid gap-2">
-          <button type="submit" class="btn btn-warning">Effettua bonifico</button>
-        </div>
-      </form>
-    </div>
+  <!-- Success Message Section: Takes up 50% width on medium to larger screens -->
+  <div class="col-md-6 form" *ngIf="showCheckTransfer">
+    <div class="container mt-5">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-12">
+          <h1>Riepilogo Bonifico</h1>
+          <p class="text-muted">Ricontrolla i dati</p>
 
-    <!-- Illustration Section: Takes up 50% width on medium to larger screens -->
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
-      <img src="../../../assets/BankTransfer.png" class="img-fluid" alt="Transfer Illustration" />
+          <div class="card p-4 mb-4 shadow-sm">
+            <div class="mb-3">
+              <h5>Da: {{ currentUser.fullName }}</h5>
+              <p>IBAN: {{ currentUser.iban }}</p>
+            </div>
+            <div class="mb-3">
+              <h5>A: {{ fullName }}</h5>
+              <p>IBAN: {{ transferData.iban }}</p>
+            </div>
+            <div class="mb-3">
+              <p>Causale: {{ transferData.description }}</p>
+              <p>Importo: € {{ transferData.amount }}</p>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-warning btn-md flex-fill me-2" (click)="editTransfer()">Modifica Dati</button>
+
+            <button class="btn btn-warning btn-md flex-fill ms-2" (click)="confirmTransfer()">Conferma Bonifico</button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Illustration Section: Takes up 50% width on medium to larger screens -->
+  <div class="col-md-6 d-flex justify-content-center align-items-center">
+    <img
+      src="../../../assets/BankTransfer.png"
+      class="img-fluid right-img d-none d-md-block"
+      alt="Transfer Illustration"
+    />
   </div>
 </div>

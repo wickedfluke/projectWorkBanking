@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../../entities/user.entity';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,13 +15,24 @@ export class DashboardComponent {
   users: User[] = [];
   currentUser: User | any = {};
   balance: number | string = 0;
-  constructor(private router: Router, private authService: AuthService, private userService: UserService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private userService: UserService,
+    private titleSrv: Title
+  ) {}
 
   ngOnInit() {
     this.getCurrentUserAndUsers();
     this.getBalance();
   }
   
+  getCurrentUser() {
+    this.titleSrv.setTitle('Dashboard home banking');
+    this.getCurrentUserAndUsers();
+    this.getBalance();
+  }
+
   getCurrentUserAndUsers() {
     this.authService.currentUser$.subscribe((user) => (this.currentUser = user));
     this.userService.getUsers().subscribe((users) => {
