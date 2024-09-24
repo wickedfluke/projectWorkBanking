@@ -32,10 +32,10 @@ RUN npm install -g typescript
 RUN cd ./Backend && tsc
 
 # Copia il frontend costruito nella cartella pubblica del backend
-COPY --from=build-frontend /app/Frontend/dist /app/Backend/public
+COPY --from=build-frontend /app/Frontend/dist /app/Backend/dist/public
 
 # Espone la porta 3000 per l'app Express
 EXPOSE 3000
 
-# Comando per avviare il server Express, ora eseguiamo index.js da dist
+# Comando per avviare il server Express
 CMD ["node", "./Backend/dist/index.js"]
