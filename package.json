@@ -12,7 +12,10 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
-},
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "projectworkbanking": "file:"
+  }
 }
