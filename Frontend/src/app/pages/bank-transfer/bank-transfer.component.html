@@ -1,10 +1,10 @@
 <app-nav-bar></app-nav-bar>
-<div class="container">
-  <div class="row my-5">
+<div class="container font-type">
+  <div class="row">
     <div class="col-md-6 form" *ngIf="showDataInsert">
-      <span class="h2 font-type title-h2">Effettua bonifico</span>
+      <p class="font-type title mb-4 ">Effettua bonifico </p>
       <form (ngSubmit)="onSubmit()">
-        <span class="font-type span-description">Inserisci i dati per fare il bonifico:</span>
+        <p class="font-type description mt-5">Inserisci i dati per fare il bonifico:</p>
         <div class="mb-3">
           <input
             type="text"
@@ -73,10 +73,10 @@
       </form>
     </div>
 
-    <div class="col-md-6 form" *ngIf="showCheckTransfer">
-      <div class="container mt-5">
-        <h1>Riepilogo Bonifico</h1>
-        <p class="text-muted">Ricontrolla i dati</p>
+    <div class="col-md-6 form font-type" *ngIf="showCheckTransfer">
+      <div class="container">
+        <p class="title mb-4">Riepilogo Bonifico</p>
+        <p class="font-type">Ricontrolla i dati</p>
         <div class="card p-4 mb-4 shadow-sm">
           <div class="mb-3">
             <h5>Da: {{ currentUser.fullName }}</h5>
@@ -93,8 +93,8 @@
           <div id="transfer-error" class="text-danger" role="alert"></div>
         </div>
         <div class="d-flex justify-content-between">
-          <button class="btn btn-warning btn-md flex-fill me-2" (click)="editTransfer()">Modifica Dati</button>
-          <button class="btn btn-warning btn-md flex-fill ms-2" (click)="confirmTransfer()">Conferma Bonifico</button>
+          <button class="btn btn-warning btn-md flex-fill me-2  font-type" (click)="editTransfer()">Modifica Dati</button>
+          <button class="btn btn-warning btn-md flex-fill ms-2  font-type" (click)="confirmTransfer()">Conferma Bonifico</button>
         </div>
       </div>
     </div>

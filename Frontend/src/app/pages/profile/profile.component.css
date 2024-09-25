@@ -65,10 +65,10 @@ div .home-icon {
 
 .home-icon {
   position: absolute;
-  bottom: 25%;
-  left: 25%;
-  padding: 10px;
-  width: 45px;
+  bottom: 30px;
+  left: 30px;
+  padding: 15px;
+  width: 55px;
   height: auto;
 }
 
@@ -81,13 +81,4 @@ div .home-icon {
   background-color: #ec9552;
   border-radius: 30%;
   box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
-}
-
-.home-icon {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  padding: 10px;
-  width: 45px;
-  height: auto;
 }
