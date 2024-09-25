@@ -36,7 +36,6 @@
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
 
 }
-
 .form-container {
   max-width: 600px;
   margin: 0 auto;
@@ -56,14 +55,19 @@ app-success-popup {
   justify-content: center;
 }
 
-.home-icon {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
+div .home-icon {
+  background-color: #ec9552;
+  border-radius: 30%;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
 }
 
-.home-icon img {
-  width: 50px;
+.home-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  width: 45px;
+  height: auto;
 }
 
 @media (max-width: 768px) {

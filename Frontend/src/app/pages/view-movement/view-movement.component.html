@@ -2,79 +2,114 @@
 <app-loading [isLoading]="loading"></app-loading>
 
 <div *ngIf="!loading">
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 mb-4">
-                <div class="table-responsive">
-                    <!-- Final balance display -->
-                    <h1 style="font-size: 36px;">Visualizzazione movimenti</h1>
-                    <h2>Saldo Finale: {{ balance | currency: 'EUR':'symbol' }}</h2>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-8 col-md-12 mb-4">
+        <div class="table-responsive">
+          <!-- Final balance display -->
+          <h1 style="font-size: 36px">Visualizzazione movimenti</h1>
+          <h2>Saldo Finale: {{ balance | currency : "EUR" : "symbol" }}</h2>
 
-                    <!-- Movements table -->
-                    <app-movement-table [movements]="movements"></app-movement-table>
-                </div>
-            </div>
-
-            <!-- Right Column: Filters -->
-            <div class="col-lg-4 col-md-12">
-                <div class="card bg-filter p-4 shadow-sm" style="position: sticky; top: 20px;">
-                    <h4 class="card-title">Filtri</h4>
-                    <form>
-                        <!-- Switch Buttons -->
-                        <div class="mb-3 text-center">
-                            <button type="button" class="btn btn-primary w-100 mt-2"
-                                [class.active]="filterMode === 'category'" (click)="setFilterMode('category')">Filtra
-                                per Categoria</button>
-                            <button type="button" class="btn btn-primary w-100 mt-2"
-                                [class.active]="filterMode === 'date'" (click)="setFilterMode('date')">Filtra per
-                                Data</button>
-                        </div>
-
-                        <!-- Filter by number of movements -->
-                        <div class="mb-3">
-                            <label for="numeroMovimenti" class="form-label">Seleziona numero movimenti</label>
-                            <input type="number" class="form-control" id="numeroMovimenti"
-                                [(ngModel)]="filtro.numeroMovimenti" name="numeroMovimenti" min="1" />
-                        </div>
-
-                        <!-- Filter by category (shown only if filterMode is 'category') -->
-                        <div class="mb-3" *ngIf="filterMode === 'category'">
-                            <label for="categoriaMovimento" class="form-label">Seleziona Categoria</label>
-                            <select class="form-control" id="categoriaMovimento" [(ngModel)]="selectedCategory"
-                                name="categoriaMovimento" (change)="onCategoryChange()">
-                                <option value="">Categoria</option>
-                                <option *ngFor="let category of categories" [value]="category.id">{{ category.title }}
-                                </option>
-                            </select>
-                            <button type="button" class="btn btn-primary w-100 mt-2" (click)="clearCategory()">Rimuovi
-                                filtro categoria</button>
-                        </div>
-
-                        <!-- Filter by date range (shown only if filterMode is 'date') -->
-                        <div *ngIf="filterMode === 'date'">
-                            <div class="mb-3">
-                                <label for="dataInizio" class="form-label">Inserisci data Inizio</label>
-                                <input type="date" id="dataInizio" class="form-control" [(ngModel)]="filtro.dataInizio"
-                                    name="dataInizio" />
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="dataFine" class="form-label">Inserisci data Fine</label>
-                                <input type="date" id="dataFine" class="form-control" [(ngModel)]="filtro.dataFine"
-                                    name="dataFine" />
-                            </div>
-                        </div>
-
-                        <!-- Apply filters button -->
-                        <button type="button" class="btn btn-primary w-100" (click)="applyFilters()">Applica
-                            Filtri</button>
-
-                        <!-- Export CSV button -->
-                        <button type="button" class="btn btn-success w-100 mt-2" (click)="exportMovements()">Esporta in
-                            .csv</button>
-                    </form>
-                </div>
-            </div>
+          <!-- Movements table -->
+          <app-movement-table [movements]="movements"></app-movement-table>
         </div>
+      </div>
+
+      <!-- Right Column: Filters -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card bg-filter p-4 shadow-sm" style="position: sticky; top: 20px">
+          <h4 class="card-title">Filtri</h4>
+          <form>
+            <!-- Switch Buttons -->
+            <div class="mb-3 text-center">
+              <button
+                type="button"
+                class="btn btn-primary w-100 mt-2"
+                [class.active]="filterMode === 'category'"
+                (click)="setFilterMode('category')"
+              >
+                Filtra per Categoria
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary w-100 mt-2"
+                [class.active]="filterMode === 'date'"
+                (click)="setFilterMode('date')"
+              >
+                Filtra per Data
+              </button>
+            </div>
+
+            <!-- Filter by number of movements -->
+            <div class="mb-3">
+              <label for="numeroMovimenti" class="form-label">Seleziona numero movimenti</label>
+              <input
+                type="number"
+                class="form-control"
+                id="numeroMovimenti"
+                [(ngModel)]="filtro.numeroMovimenti"
+                name="numeroMovimenti"
+                min="1"
+              />
+            </div>
+
+            <!-- Filter by category (shown only if filterMode is 'category') -->
+            <div class="mb-3" *ngIf="filterMode === 'category'">
+              <label for="categoriaMovimento" class="form-label">Seleziona Categoria</label>
+              <select
+                class="form-control"
+                id="categoriaMovimento"
+                [(ngModel)]="selectedCategory"
+                name="categoriaMovimento"
+                (change)="onCategoryChange()"
+              >
+                <option value="">Seleziona una categoria</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.title }}</option>
+              </select>
+              <button type="button" class="btn btn-primary w-100 mt-2" (click)="clearCategory()">
+                Rimuovi filtro categoria
+              </button>
+            </div>
+
+            <!-- Filter by date range (shown only if filterMode is 'date') -->
+            <div *ngIf="filterMode === 'date'">
+              <div class="mb-3">
+                <label for="dataInizio" class="form-label">Inserisci data Inizio</label>
+                <input
+                  type="date"
+                  id="dataInizio"
+                  class="form-control"
+                  [(ngModel)]="filtro.dataInizio"
+                  name="dataInizio"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="dataFine" class="form-label">Inserisci data Fine</label>
+                <input type="date" id="dataFine" class="form-control" [(ngModel)]="filtro.dataFine" name="dataFine" />
+              </div>
+            </div>
+
+            <!-- Apply filters button -->
+            <button type="button" class="btn btn-primary w-100" (click)="applyFilters()">Applica Filtri</button>
+
+            <!-- Export CSV button -->
+            <button type="button" class="btn btn-success w-100 mt-2" (click)="exportMovements()">
+              Esporta in .csv
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+
+<div>
+  <a href="/dashboard">
+    <img
+      src="../../../assets/HomeIcon.svg"
+      class="img-fluid home-icon right-img d-none d-md-block"
+      alt="Img dashboard"
+    />
+  </a>
 </div>

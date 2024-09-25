@@ -28,7 +28,6 @@ export class BankTransferComponent implements OnInit {
     description: '',
   };
 
-  
   errors: string[] = [];
 
   constructor(
@@ -63,11 +62,9 @@ export class BankTransferComponent implements OnInit {
 
   onSubmit() {
     this.errors = []; 
-
     this.validateIban();
     this.validateAmount();
 
-    
     if (this.errors.length === 0) {
       this.showCheckTransfer = true;
       this.showDataInsert = false;
@@ -97,7 +94,6 @@ export class BankTransferComponent implements OnInit {
         this.errors.push(ibanError); 
       }
     } else {
-      
       this.errors = this.errors.filter((error) => error !== ibanError);
     }
   }
@@ -109,7 +105,6 @@ export class BankTransferComponent implements OnInit {
         this.errors.push(amountError); 
       }
     } else {
-      
       this.errors = this.errors.filter((error) => error !== amountError);
     }
   }

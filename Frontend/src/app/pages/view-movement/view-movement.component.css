@@ -1,76 +1,80 @@
 .container {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .title {
-    position: relative;
-    top: 45px;
+  position: relative;
+  top: 45px;
 }
 
 .btn {
-    border: none;
+  border: none;
 }
-.btn:focus{
-    background-color: #ef600d !important;
+.btn:focus {
+  background-color: #ef600d !important;
 }
 
 .table {
-    margin-top: 50px;
-    width: 100%;
+  margin-top: 50px;
+  width: 100%;
 }
 
 .table-position {
-    position: relative;
-    top: 30px;
+  position: relative;
+  top: 30px;
 }
 
 .no-moovement {
-    position: relative;
-    top: 240px;
-    left: 200px;
-    font-size: 50px;
+  position: relative;
+  top: 240px;
+  left: 200px;
+  font-size: 50px;
 }
 
 .filter {
-    position: relative;
-    top: 120px;
+  position: relative;
+  top: 120px;
 }
 
 .bg-filter {
-    background: #ffe1a1;
-}
-
-.home-icon {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-}
-
-.home-icon img {
-    width: 50px;
+  background: #ffe1a1;
 }
 
 .card {
-    border: none;
-    border-radius: 10px;
+  border: none;
+  border-radius: 10px;
 }
 
 .card-title {
-    font-weight: bold;
-    text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
 
 .max-height {
-    max-height: 500px;
-    overflow-y: auto;
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 th {
-    background: #ffe1a1;
+  background: #ffe1a1;
 }
 
 button.btn {
-    background-color: #ffa500;
-    color: white;
+  background-color: #ffa500;
+  color: white;
 }
 
+div .home-icon {
+  background-color: #ec9552;
+  border-radius: 30%;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
+}
+
+.home-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  width: 45px;
+  height: auto;
+}

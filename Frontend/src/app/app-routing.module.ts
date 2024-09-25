@@ -10,6 +10,8 @@ import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.co
 import { ViewMovementComponent } from './pages/view-movement/view-movement.component';
 import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 
 const routes: Routes = [
   {
@@ -46,7 +48,6 @@ const routes: Routes = [
     path: 'recharge',
     canActivate: [authGuard],
     component: PhoneRechargeComponent
-
   },
   {
     path: 'view',
@@ -61,6 +62,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'confirm-email',
+    component: EmailConfirmationComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   }
 ];
 

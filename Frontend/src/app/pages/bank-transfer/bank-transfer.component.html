@@ -68,5 +68,18 @@
   </div>
 </div>
 
-<app-success-popup [show]="showSuccessComponent" (closed)="closeAlert()"
-  [message]="'Bonifico effettuato con successo'"></app-success-popup>
+<div>
+  <a href="/dashboard">
+    <img
+      src="../../../assets/HomeIcon.svg"
+      class="img-fluid home-icon right-img d-none d-md-block"
+      alt="Img dashboard"
+    />
+  </a>
+</div>
+
+<app-success-popup
+  [show]="showSuccessComponent"
+  (closed)="closeAlert()"
+  [message]="'Bonifico effettuato con successo'"
+></app-success-popup>
