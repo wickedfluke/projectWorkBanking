@@ -2,14 +2,13 @@
   <div class="row w-100">
     <!-- Left Column: Login Form -->
     <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center login-container">
-      <div class="login-form w-100 p-3" style="max-width: 500px;">
-
+      <div class="login-form w-100 p-3" style="max-width: 500px">
         <h2 class="text-center mb-4">
           <span class="h2 actual">Login</span>
           <span class="separate">|</span>
           <span class="h2" (click)="navigate('register')">Registrati</span>
         </h2>
-        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input
@@ -17,7 +16,7 @@
               class="form-control"
               id="email"
               name="username"
-              [(ngModel)]="loginData.username"
+              formControlName="username"
               placeholder="Inserisci qui la tua mail"
             />
           </div>
@@ -28,7 +27,7 @@
               class="form-control"
               id="password"
               name="password"
-              [(ngModel)]="loginData.password"
+              formControlName="password"
               placeholder="Inserisci qui la tua password"
             />
             <div class="eye-icon" (click)="togglePasswordVisibility('password')">
@@ -45,10 +44,10 @@
           </div>
         </form>
 
-        <div id="page-overlay" class="page-overlay" style="display: none;"></div>
+        <div id="page-overlay" class="page-overlay" style="display: none"></div>
         <div id="login-error" class="text-danger mt-3">Credenziali non valide. Riprova.</div>
       </div>
-      <div id="custom-alert" class="custom-alert" style="display: none;">
+      <div id="custom-alert" class="custom-alert" style="display: none">
         <div class="alert-content">
           <h4>Tempo scaduto per il login</h4>
         </div>
