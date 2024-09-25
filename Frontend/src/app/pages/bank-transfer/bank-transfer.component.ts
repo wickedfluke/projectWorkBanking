@@ -7,7 +7,6 @@ import { User } from '../../entities/user.entity';
 import { Router } from '@angular/router';
 import { getElementById, showContent } from '../../functions/utils.html';
 
-
 @Component({
   selector: 'app-bank-transfer',
   templateUrl: './bank-transfer.component.html',
@@ -15,6 +14,7 @@ import { getElementById, showContent } from '../../functions/utils.html';
 })
 export class BankTransferComponent implements OnInit {
   users: User[] = [];
+  userIbans: string[] = [];
   currentUser: User | any = {};
   showCheckTransfer = false;
   showDataInsert = true;
@@ -36,7 +36,7 @@ export class BankTransferComponent implements OnInit {
     private movementSrv: MovementService,
     private userService: UserService,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.titleSrv.setTitle('Bonifici');
@@ -57,11 +57,16 @@ export class BankTransferComponent implements OnInit {
   private loadUsers() {
     this.userService.getUsers().subscribe((users) => {
       this.users = users;
+      this.getIbans();
     });
   }
 
+  private getIbans() {
+    this.userIbans = this.users.map((user) => user.iban);
+  }
+
   onSubmit() {
-    this.errors = []; 
+    this.errors = [];
     this.validateIban();
     this.validateAmount();
 
@@ -69,7 +74,6 @@ export class BankTransferComponent implements OnInit {
       this.showCheckTransfer = true;
       this.showDataInsert = false;
     }
-
   }
 
   confirmTransfer() {
@@ -88,21 +92,21 @@ export class BankTransferComponent implements OnInit {
   }
 
   validateIban() {
-    const ibanError = 'IBAN deve essere di 27 caratteri.';
-    if (this.transferData.iban.length !== 27) {
-      if (!this.errors.includes(ibanError)) {
-        this.errors.push(ibanError); 
-      }
-    } else {
-      this.errors = this.errors.filter((error) => error !== ibanError);
-    }
+    const ibanErrorLenght = 'IBAN deve essere di 27 caratteri.';
+    const ibanNotFound = 'IBAN non trovato nel database.';
+    if (this.transferData.iban.length !== 27)
+      if (!this.errors.includes(ibanErrorLenght)) this.errors.push(ibanErrorLenght);
+      else this.errors = this.errors.filter((error) => error !== ibanErrorLenght);
+    if (!this.userIbans.includes(this.transferData.iban))
+      if (!this.errors.includes(ibanNotFound)) this.errors.push(ibanNotFound);
+      else this.errors = this.errors.filter((error) => error !== ibanNotFound);
   }
 
   validateAmount() {
     const amountError = "L'importo deve essere maggiore di 0.";
     if (this.transferData.amount <= 0) {
       if (!this.errors.includes(amountError)) {
-        this.errors.push(amountError); 
+        this.errors.push(amountError);
       }
     } else {
       this.errors = this.errors.filter((error) => error !== amountError);
@@ -116,6 +120,6 @@ export class BankTransferComponent implements OnInit {
 
   closeAlert() {
     this.showSuccessComponent = false;
-    this.router.navigate(['/dashboard']); 
+    this.router.navigate(['/dashboard']);
   }
 }
