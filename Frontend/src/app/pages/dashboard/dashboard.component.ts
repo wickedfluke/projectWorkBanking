@@ -29,7 +29,7 @@ export class DashboardComponent {
     this.getBalance();
     this.loading = false;
   }
-  
+
   getCurrentUser() {
     this.titleSrv.setTitle('Dashboard myBanking');
     this.getCurrentUserAndUsers();
