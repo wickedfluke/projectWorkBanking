@@ -2,20 +2,33 @@
   margin-top: 70px;
 }
 
+.font-type {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-size: large;
+}
+
+.page-title {
+  font-size: xxx-large;
+  margin-bottom: 6%;
+}
+
 .user-detail {
   padding: 20px;
+  margin-right: 20%;
+  margin-top: 5%;
+  margin-left: 3%;
 }
 
 .user-info {
   margin-bottom: 20px;
-  border-left: 1px solid orange;
+  border-left: 1px solid #EC9552;
   padding-left: 10px;
 }
 
 .user-info p {
   margin: 4px;
   padding: 5px 0;
-  border-bottom: 1px solid orange;
+  border-bottom: 1px solid #EC9552;
 }
 
 .user-info p:last-child {
@@ -23,10 +36,9 @@
 }
 
 .password-button {
-  background-color: orange;
+  background-color: EC9552;
   color: white;
   border: none;
-  padding: 10px 15px;
   cursor: pointer;
 }
 
@@ -46,17 +58,17 @@ canvas {
 }
 
 div .home-icon {
-  background-color: #ec9552;
+  background-color: #EC9552;
   border-radius: 30%;
   box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
 }
 
 .home-icon {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  padding: 10px;
-  width: 45px;
+  bottom: 30px;
+  left: 30px;
+  padding: 15px;
+  width: 55px;
   height: auto;
 }
 

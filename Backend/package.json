@@ -43,6 +43,7 @@
     "passport-local": "^1.0.0",
     "projectworkbanking": "file:..",
     "reflect-metadata": "^0.1.13",
+    "sim-express": "file:",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
