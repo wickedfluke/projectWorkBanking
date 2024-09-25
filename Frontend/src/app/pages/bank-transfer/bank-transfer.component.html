@@ -4,7 +4,16 @@
     <span class="h2 font-type title-h2">Effettua bonifico</span>
     <form (ngSubmit)="onSubmit()">
       <span class="font-type span-description">Inserisci i dati per fare il bonifico:</span>
+<<<<<<< Updated upstream
       <div *ngIf="errors.length > 0" class="alert alert-danger" role="alert">
+=======
+      <div
+        *ngIf="errors.length > 0"
+        class="alert alert-danger"
+        role="alert"
+        style="margin-left: 36px; margin-right: 36px"
+      >
+>>>>>>> Stashed changes
         <ul>
           <li *ngFor="let error of errors">{{ error }}</li>
         </ul>
@@ -106,6 +115,19 @@
   </div>
 </div>
 
+<<<<<<< Updated upstream
+=======
+<div>
+  <a href="/dashboard">
+    <img
+      src="../../../assets/HomeIcon.svg"
+      class="img-fluid home-icon right-img d-none d-md-block"
+      alt="Img dashboard"
+    />
+  </a>
+</div>
+
+>>>>>>> Stashed changes
 <app-success-popup
   [show]="showSuccessComponent"
   (closed)="closeAlert()"

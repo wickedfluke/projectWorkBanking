@@ -1,0 +1,26 @@
+.body,
+html {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.error-container {
+  max-width: 600px;
+}
+
+.error-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  color: #ff7043;
+}
+
+img {
+  width: 80%;
+}

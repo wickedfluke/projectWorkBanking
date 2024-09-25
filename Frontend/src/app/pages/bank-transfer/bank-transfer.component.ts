@@ -25,7 +25,10 @@ export class BankTransferComponent implements OnInit {
     description: '',
   };
 
+<<<<<<< Updated upstream
   // Error tracking
+=======
+>>>>>>> Stashed changes
   errors: string[] = [];
 
   constructor(
@@ -59,12 +62,19 @@ export class BankTransferComponent implements OnInit {
   }
 
   onSubmit() {
+<<<<<<< Updated upstream
     this.errors = []; // Clear previous errors
+=======
+    this.errors = [];
+>>>>>>> Stashed changes
 
     this.validateIban();
     this.validateAmount();
 
+<<<<<<< Updated upstream
     // Check if there are any errors
+=======
+>>>>>>> Stashed changes
     if (this.errors.length === 0) {
       this.showCheckTransfer = true;
       this.showDataInsert = false;
@@ -91,10 +101,16 @@ export class BankTransferComponent implements OnInit {
     const ibanError = 'IBAN deve essere di 27 caratteri.';
     if (this.transferData.iban.length !== 27) {
       if (!this.errors.includes(ibanError)) {
+<<<<<<< Updated upstream
         this.errors.push(ibanError); // Add error if it doesn't already exist
       }
     } else {
       // Remove the error if IBAN is valid
+=======
+        this.errors.push(ibanError);
+      }
+    } else {
+>>>>>>> Stashed changes
       this.errors = this.errors.filter((error) => error !== ibanError);
     }
   }
@@ -103,10 +119,16 @@ export class BankTransferComponent implements OnInit {
     const amountError = "L'importo deve essere maggiore di 0.";
     if (this.transferData.amount <= 0) {
       if (!this.errors.includes(amountError)) {
+<<<<<<< Updated upstream
         this.errors.push(amountError); // Add error if it doesn't already exist
       }
     } else {
       // Remove the error if amount is valid
+=======
+        this.errors.push(amountError);
+      }
+    } else {
+>>>>>>> Stashed changes
       this.errors = this.errors.filter((error) => error !== amountError);
     }
   }
@@ -118,5 +140,9 @@ export class BankTransferComponent implements OnInit {
 
   closeAlert() {
     this.showSuccessComponent = false;
+<<<<<<< Updated upstream
+=======
+    this.router.navigate(['/dashboard']);
+>>>>>>> Stashed changes
   }
 }

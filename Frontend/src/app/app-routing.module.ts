@@ -8,6 +8,12 @@ import { LoginGuard } from './guards/login.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PhoneRechargeComponent } from './pages/phone-recharge/phone-recharge.component';
 import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.component';
+<<<<<<< Updated upstream
+=======
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   {
@@ -46,7 +52,10 @@ const routes: Routes = [
     component: PhoneRechargeComponent,
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   },
@@ -55,6 +64,9 @@ const routes: Routes = [
     canActivate: [authGuard],
     component: ViewMovementComponent,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -64,6 +76,21 @@ const routes: Routes = [
     canActivate: [authGuard],
     component: BankTransferComponent,
   },
+<<<<<<< Updated upstream
+=======
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'confirm-email',
+    component: EmailConfirmationComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
+>>>>>>> Stashed changes
 ];
 
 @NgModule({

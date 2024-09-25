@@ -1,51 +1,81 @@
 .dashboard {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
 .user-detail {
-    padding: 20px;
+  padding: 20px;
 }
 
 .user-info {
-    margin-bottom: 20px;
-    border-left: 1px solid orange;
-    padding-left: 10px;
+  margin-bottom: 20px;
+  border-left: 1px solid orange;
+  padding-left: 10px;
 }
 
 .user-info p {
-    margin: 4px;
-    padding: 5px 0;
-    border-bottom: 1px solid orange;
+  margin: 4px;
+  padding: 5px 0;
+  border-bottom: 1px solid orange;
 }
 
 .user-info p:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .password-button {
-    background-color: orange;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
 }
 
 /* Uniformare i grafici */
 .chart-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
 }
 
 canvas {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 400px;
-    max-height: 400px;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 400px;
+  max-height: 400px;
+}
+
+div .home-icon {
+  background-color: #ec9552;
+  border-radius: 30%;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
+}
+
+.home-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  width: 45px;
+  height: auto;
 }
 
 .chart-section,
 .spese-section {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+
+div .home-icon {
+  background-color: #ec9552;
+  border-radius: 30%;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
+}
+
+.home-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px;
+  width: 45px;
+  height: auto;
 }
