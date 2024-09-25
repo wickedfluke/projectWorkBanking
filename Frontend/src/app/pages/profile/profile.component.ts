@@ -49,6 +49,12 @@ export class ProfileComponent {
 
   openChangePasswordModal(content: any) {
     this.modalReference = this.modalService.open(content);
+    this.modalReference.result.finally(() => {
+      this.passwordForm!.reset();
+      this.showAlert = false;
+      this.showSuccess = false;
+      this.touchAlert = false;
+    });
   }
 
   closeModal() {
