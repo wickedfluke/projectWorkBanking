@@ -75,6 +75,10 @@ th {
   padding: 2%;
 }
 
+app-eyes-icon {
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   #img-login {
     display: none;
