@@ -30,7 +30,7 @@ export class LoginComponent {
       this.showCustomAlert();
 
       setTimeout(() => {
-        this.router.navigate(['/login']);
+        window.location.reload();
       }, 3000); 
     }, 30000); 
   }
