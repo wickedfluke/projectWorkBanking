@@ -33,7 +33,7 @@ export class ProfileComponent {
   showAlert: boolean = false;
   showSuccess: boolean = false;
   touchAlert: boolean = false;
-
+  isPasswordVisible = false;
 
   ngOnInit() {
     this.titleSrv.setTitle('Profilo');
@@ -89,6 +89,12 @@ export class ProfileComponent {
         alert('Errore:' + error.error);
       }
     );
+  }
+
+  togglePasswordVisibility(id: string) {
+    this.isPasswordVisible = !this.isPasswordVisible;
+    const passwordField = document.getElementById(id) as HTMLInputElement;
+    passwordField.type = this.isPasswordVisible ? 'text' : 'password';
   }
 
   closeAlert() {
