@@ -2,7 +2,7 @@
 <div class="container dashboard">
   <div class="row">
     <!-- Colonna per i dettagli utente -->
-    <div class="col-md-4 user-detail">
+    <div class="col-md-12 user-detail">
       <h2>Profilo:</h2>
 
       <div class="user-info">
@@ -33,101 +33,54 @@
         Modifica password
       </button>
     </div>
-
-    <!-- Colonna per i grafici -->
-    <div class="col-md-8 user-grafh">
-      <div class="row">
-        <div class="col-md-6 chart-section">
-          <h3>Uscite Mensili</h3>
-          <div class="chart-wrapper">
-            <canvas #lineChart></canvas>
-          </div>
-        </div>
-
-        <div class="col-md-6 spese-section">
-          <h3>Distribuzione Spese</h3>
-          <div class="chart-wrapper">
-            <canvas #pieChart></canvas>
-          </div>
-        </div>
+  </div>
+</div>
+<!-- Modale per il cambio password -->
+<ng-template #modalContent>
+  <div class="modal-header">
+    <h4 class="modal-title" id="changePasswordModalLabel">Modifica Password</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="passwordForm!">
+      <div class="mb-3">
+        <label for="newPassword" class="form-label">Nuova Password</label>
+        <input type="password" formControlName="newPassword" class="form-control" id="newPassword"
+          placeholder="Inserisci la nuova password" />
       </div>
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Conferma Nuova Password</label>
+        <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
+          placeholder="Conferma la nuova password" />
+      </div>
+    </form>
+    <div *ngIf="touchAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+      Inserisci tutti i campi!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+        (click)="closeAlert()"></button>
+    </div>
+    <div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+      Le password non corrispondono!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+        (click)="closeAlert()"></button>
+    </div>
+    <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+      Password modificata con successo! Reindirizzamento alla pagina di login...
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+        (click)="closeAlert()"></button>
     </div>
   </div>
-  <!-- Modale per il cambio password -->
-  <ng-template #modalContent>
-    <div class="modal-header">
-      <h4 class="modal-title" id="changePasswordModalLabel">Modifica Password</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="passwordForm!">
-        <div class="mb-3">
-          <label for="newPassword" class="form-label">Nuova Password</label>
-          <input
-            type="password"
-            formControlName="newPassword"
-            class="form-control"
-            id="newPassword"
-            placeholder="Inserisci la nuova password"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="confirmPassword" class="form-label">Conferma Nuova Password</label>
-          <input
-            type="password"
-            formControlName="confirmPassword"
-            class="form-control"
-            id="confirmPassword"
-            placeholder="Conferma la nuova password"
-          />
-        </div>
-      </form>
-      <div *ngIf="touchAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
-        Inserisci tutti i campi!
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-          (click)="closeAlert()"
-        ></button>
-      </div>
-      <div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
-        Le password non corrispondono!
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-          (click)="closeAlert()"
-        ></button>
-      </div>
-      <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
-        Password modificata con successo! Reindirizzamento alla pagina di login...
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-          (click)="closeAlert()"
-        ></button>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
-      <button type="button" class="btn btn-warning" (click)="submitChangePassword()" style="color: white !important">
-        Salva
-      </button>
-    </div>
-  </ng-template>
-
-  <div>
-    <a href="/dashboard">
-      <img
-        src="../../../assets/HomeIcon.svg"
-        class="img-fluid home-icon right-img d-none d-md-block"
-        alt="Img dashboard"
-      />
-    </a>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
+    <button type="button" class="btn btn-warning" (click)="submitChangePassword()" style="color: white !important">
+      Salva
+    </button>
   </div>
+</ng-template>
+
+<div>
+  <a href="/dashboard">
+    <img src="../../../assets/HomeIcon.svg" class="img-fluid home-icon right-img d-none d-md-block"
+      alt="Img dashboard" />
+  </a>
 </div>
