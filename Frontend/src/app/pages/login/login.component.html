@@ -15,44 +15,47 @@
               type="email"
               class="form-control"
               id="email"
-              name="username"
               formControlName="username"
               placeholder="Inserisci qui la tua mail"
             />
+            <!-- Visualizza messaggi di errore per l'email -->
           </div>
+
           <div class="mb-3 position-relative">
             <label for="password" class="form-label">Password</label>
             <input
               type="password"
               class="form-control"
               id="password"
-              name="password"
               formControlName="password"
               placeholder="Inserisci qui la tua password"
             />
             <div class="eye-icon" (click)="togglePasswordVisibility('password')">
               <app-eyes-icon
                 [size]="'25px'"
-                (state)="(isPasswordVisible)"
                 [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
               ></app-eyes-icon>
             </div>
-            <!-- <div class="form-text text-success">Success message</div> -->
+            <!-- Visualizza messaggi di errore per la password -->
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+              <small *ngIf="loginForm.get('password')?.errors?.['required']">La password è obbligatoria.</small>
+            </div>
           </div>
+
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Continua</button>
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Continua</button>
           </div>
         </form>
 
-        <div id="page-overlay" class="page-overlay" style="display: none"></div>
-        <div id="login-error" class="text-danger mt-3">Credenziali non valide. Riprova.</div>
-      </div>
-      <div id="custom-alert" class="custom-alert" style="display: none">
-        <div class="alert-content">
-          <h4>Tempo scaduto per il login</h4>
+        <!-- Messaggio di errore globale -->
+        <div *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</div>
+        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-danger">
+          <small *ngIf="loginForm.get('username')?.errors?.['required']">L'email è obbligatoria.</small>
+          <small *ngIf="loginForm.get('username')?.errors?.['email']">Inserisci un'email valida.</small>
         </div>
       </div>
     </div>
+
     <!-- Right Column: Image -->
     <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center illustration">
       <img src="../../../assets/loginImage.png" id="img-login" class="img-fluid" alt="Illustration" />

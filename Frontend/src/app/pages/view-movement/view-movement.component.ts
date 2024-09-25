@@ -31,6 +31,10 @@ export class ViewMovementComponent {
 
   filterMode: 'date' | 'category' = 'category';
 
+  get isFilterApplied(): boolean {
+    return !!(this.filtro.dataInizio && this.filtro.dataFine) || !!this.selectedCategory;
+  }
+
   setFilterMode(mode: 'date' | 'category') {
     this.filterMode = mode;
   }
@@ -83,6 +87,11 @@ export class ViewMovementComponent {
 
   clearCategory() {
     this.selectedCategory = null;
+  }
+
+  clearDate() {
+    this.filtro.dataInizio = '';
+    this.filtro.dataFine = '';
   }
 
   exportMovements() {

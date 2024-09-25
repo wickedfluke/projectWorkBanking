@@ -2,34 +2,33 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { getElementById, hideContent, showContent } from '../../functions/utils.html';
+import { FormBuilder, Validators } from '@angular/forms';
 import { debounceTime, delay, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'], // Corretto: 'styleUrl' => 'styleUrls'
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private titleSrv: Title,
-    private fb: FormBuilder
-  ) {}
-
   loginForm = this.fb.group({
     username: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
   isPasswordVisible = false;
-  passwordVisible: boolean = false;
   pageTitle = 'Login home banking';
+  errorMessage: string | null = null; // Aggiungi una proprietà per gestire il messaggio di errore
 
   private destroyed$ = new Subject<void>();
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private titleSrv: Title,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.titleSrv.setTitle(this.pageTitle);
@@ -46,44 +45,41 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(
         debounceTime(30000),
         takeUntil(this.destroyed$),
-        tap((_) => this.showCustomAlert()),
+        tap(() => this.showCustomAlert()),
         delay(2000),
-        tap((_) => this.hideCustomAlert())
+        tap(() => this.hideCustomAlert())
       )
-      .subscribe((_) => {
+      .subscribe(() => {
         this.loginForm.reset({ username: '', password: '' }, { emitEvent: false });
       });
   }
 
   showCustomAlert() {
-    const alertElement = getElementById('custom-alert');
-    const overlayElement = getElementById('page-overlay');
-    alertElement.style.display = 'block';
-    overlayElement.style.display = 'block';
+    // Visualizza l'alert senza manipolare direttamente il DOM
+    this.errorMessage = 'Tempo scaduto per il login';
   }
 
   hideCustomAlert() {
-    const alertElement = getElementById('custom-alert');
-    const overlayElement = getElementById('page-overlay');
-    alertElement.style.display = 'none';
-    overlayElement.style.display = 'none';
+    // Nascondi l'alert
+    this.errorMessage = null;
   }
 
   login() {
     if (this.loginForm.invalid) return;
+
     const { username, password } = this.loginForm.value;
     this.authService.login(username!, password!).subscribe(
       () => {
-        hideContent(getElementById('login-error'));
+        this.errorMessage = null;
         this.router.navigate(['/dashboard']);
       },
       (err: any) => {
-        const errorElement = getElementById('login-error');
-        errorElement.innerText = err.error.message;
+        // Gestione degli errori con messaggi definiti
         if (err.error.message === 'username must be an email') {
-          errorElement.innerText = "L'username deve essere un indirizzo email.";
+          this.errorMessage = "L'username deve essere un indirizzo email.";
+        } else {
+          this.errorMessage = 'Credenziali non valide. Riprova.';
         }
-        showContent(errorElement);
       }
     );
   }
