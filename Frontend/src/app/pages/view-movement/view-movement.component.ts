@@ -5,7 +5,6 @@ import { Movement } from '../../entities/movement.entity';
 import { Category } from '../../entities/category.entity';
 import { Title } from '@angular/platform-browser';
 
-
 @Component({
   selector: 'app-view-movement',
   templateUrl: './view-movement.component.html',
@@ -16,7 +15,7 @@ export class ViewMovementComponent {
     private movementService: MovementService,
     private categoryService: CategoryService,
     private titleSrv: Title
-  ) { }
+  ) {}
   movements: Movement[] = [];
   balance: number = 0;
   categories: Category[] = [];
@@ -45,6 +44,7 @@ export class ViewMovementComponent {
 
   loadMovements() {
     const { numeroMovimenti, dataInizio, dataFine } = this.filtro;
+    if (numeroMovimenti <= 1) return;
     this.loading = true;
     if (dataInizio && dataFine) {
       this.movementService.listMovementsByDateRange(numeroMovimenti, dataInizio, dataFine).subscribe((data) => {
@@ -63,7 +63,6 @@ export class ViewMovementComponent {
       });
       this.loading = false;
     }
-
   }
 
   onCategoryChange() {
@@ -83,13 +82,17 @@ export class ViewMovementComponent {
     if (dataInizio && dataFine) {
       const formattedStartDate = new Date(dataInizio).toISOString().split('T')[0];
       const formattedEndDate = new Date(dataFine).toISOString().split('T')[0];
-      this.movementService.exportMovementsByDateRangeToCSV(numeroMovimenti, formattedStartDate, formattedEndDate).subscribe((csvData) => {
-        this.downloadCSV(csvData);
-      });
+      this.movementService
+        .exportMovementsByDateRangeToCSV(numeroMovimenti, formattedStartDate, formattedEndDate)
+        .subscribe((csvData) => {
+          this.downloadCSV(csvData);
+        });
     } else if (this.selectedCategory) {
-      this.movementService.exportMovementsByCategoryToCSV(numeroMovimenti, this.selectedCategory).subscribe((csvData) => {
-        this.downloadCSV(csvData);
-      });
+      this.movementService
+        .exportMovementsByCategoryToCSV(numeroMovimenti, this.selectedCategory)
+        .subscribe((csvData) => {
+          this.downloadCSV(csvData);
+        });
     } else {
       this.movementService.exportMovementsToCSV(numeroMovimenti).subscribe((csvData) => {
         this.downloadCSV(csvData);

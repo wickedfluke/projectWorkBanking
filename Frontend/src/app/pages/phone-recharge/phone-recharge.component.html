@@ -17,10 +17,16 @@
               name="phoneNumber"
               required
               maxlength="10"
+              pattern="[0-9]*"
               #phoneInput="ngModel"
             />
+            <!-- Verifica se il numero non è valido in base alla lunghezza -->
             <div *ngIf="!isPhoneNumberValid() && phoneInput.touched" class="text-danger">
               Il numero di telefono deve essere di 9 o 10 cifre.
+            </div>
+            <!-- Verifica specifica per il pattern -->
+            <div *ngIf="phoneInput.invalid && phoneInput.touched" class="text-danger">
+              <div *ngIf="phoneInput.errors?.['pattern']">Il numero di telefono deve contenere solo cifre.</div>
             </div>
           </div>
           <div class="mb-3">
