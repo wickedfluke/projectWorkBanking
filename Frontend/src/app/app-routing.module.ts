@@ -16,12 +16,7 @@ import { EmailConfirmationComponent } from './pages/email-confirmation/email-con
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: 'animation',
-    redirectTo: '/dashboard',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
   {
