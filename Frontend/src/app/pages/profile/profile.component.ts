@@ -55,6 +55,7 @@ export class ProfileComponent {
     if (this.modalReference) {
       this.modalReference.close();
     }
+    this.passwordForm!.reset();
   }
 
   submitChangePassword() {
