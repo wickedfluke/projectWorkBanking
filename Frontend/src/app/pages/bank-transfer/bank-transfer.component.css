@@ -3,31 +3,27 @@
 }
 
 .font-type {
-  font-family: "IBM Plex Sans", sans-serif;
-  font-style: italic;
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-size: large;
 }
 
-.title-h2 {
-  font-size: 3rem;
-  margin-left: 30px;
+.title {
+  font-size: xxx-large;
 }
 
-.span-description {
-  margin-left: 35px;
-  font-size: medium;
+.description {
+  margin-left: 0.5%;
 }
 
-form {
-  margin-top: 20px;
+.row{
+  margin-top: 10%;
 }
 
 form input,
 form select {
   background-color: #f8fafc;
   width: 90%;
-  margin-left: 5%;
-  border: 1px solid #ddd;
-  padding: 15px;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 
@@ -47,7 +43,6 @@ form button {
   margin-left: 70%;
   color: #fff;
   font-weight: normal;
-  font-style: italic;
   padding: 4px;
 }
 
@@ -56,10 +51,11 @@ form button:hover {
 }
 
 .right-img {
-  width: 75%;
+  margin-top: -14%;
+  width: 100%;
   max-width: 100%;
   height: auto;
-  margin-left: 20px;
+  margin-left: 25%;
 }
 
 .container {
@@ -67,20 +63,9 @@ form button:hover {
   margin: 0 auto;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-h5 {
-  font-weight: bold;
-}
-
 .card {
   border-radius: 15px;
   background-color: #f8f9fa;
-  box-shadow: 0 2px 2px gray !important;
 }
 
 .btn-warning {
@@ -110,20 +95,19 @@ div .home-icon {
 
 .home-icon {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  padding: 10px;
-  width: 45px;
+  bottom: 30px;
+  left: 30px;
+  padding: 15px;
+  width: 55px;
   height: auto;
 }
 
 #btn-check {
-  transform: translateX(-115%);
+  transform: translateX(-135%);
 }
 
 .btn-md {
-  font-size: 0.75rem;
-  padding: 8px;
+  font-size: 1rem;
 }
 
 @media (max-width: 768px) {
