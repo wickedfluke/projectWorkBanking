@@ -25,7 +25,7 @@
           <div class="mb-3">
             <label for="operator" class="form-label">Seleziona il tuo Operatore</label>
             <select class="form-select" id="operator" [(ngModel)]="operator" name="operator" required>
-              <option value="" selected>Seleziona un operatore</option>
+              <option value="" selected>Operatore</option>
               <option value="Iliad">Iliad</option>
               <option value="Vodafone">Vodafone</option>
               <option value="WindTre">WindTre</option>
@@ -40,7 +40,7 @@
           <div class="mb-3">
             <label for="amount" class="form-label">Seleziona il taglio della Ricarica</label>
             <select class="form-select" id="amount" [(ngModel)]="amount" name="amount" required>
-              <option value="" selected>Scegli il taglio della ricarica</option>
+              <option value="0" selected>Taglio</option>
               <option value="5">5€</option>
               <option value="10">10€</option>
               <option value="20">20€</option>
@@ -48,6 +48,7 @@
               <option value="50">50€</option>
               <!-- Aggiungi altre opzioni se necessario -->
             </select>
+            <div id="recharge-error" class="text-danger mt-3" role="alert"></div>
           </div>
           <!-- Contenitore del pulsante centrato -->
           <div class="d-grid gap-2 col-6 mx-auto">

@@ -3,10 +3,9 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../entities/user.entity';
 import { MovementService } from '../../services/movement.service';
-import { Movement } from '../../entities/movement.entity';
-import { fixWidth, getElementById, getWidth } from '../../functions/utils.html';
 import { Title } from '@angular/platform-browser';
-
+import { Router } from '@angular/router';
+import { getElementById, showContent } from '../../functions/utils.html';
 
 @Component({
   selector: 'app-phone-recharge',
@@ -25,7 +24,8 @@ export class PhoneRechargeComponent {
     private authService: AuthService,
     private userService: UserService,
     private movementService: MovementService,
-    private titleSrv: Title
+    private titleSrv: Title,
+    private router: Router
 
   ) { }
 
@@ -71,10 +71,18 @@ export class PhoneRechargeComponent {
       setTimeout(() => {
         this.showSuccessAlert = false;
       }, 10000);
-    });
+    },
+    (err: any) => {
+      const errorElement = getElementById('recharge-error');
+      errorElement.innerText = err.error.error;
+      showContent(errorElement);
+    }
+  
+  );
   }
   closeAlert() {
     this.showSuccessAlert = false;
+    this.router.navigate(['/dashboard']);
   }
 
 

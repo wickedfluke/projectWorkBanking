@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../entities/user.entity';
 import { Router } from '@angular/router';
+import { getElementById, showContent } from '../../functions/utils.html';
 
 
 @Component({
@@ -81,8 +82,10 @@ export class BankTransferComponent implements OnInit {
         () => {
           this.showSuccessComponent = true;
         },
-        (err) => {
-          console.error('Transfer failed', err);
+        (err: any) => {
+          const errorElement = getElementById('transfer-error');
+          errorElement.innerText = err.error.error;
+          showContent(errorElement);
         }
       );
   }

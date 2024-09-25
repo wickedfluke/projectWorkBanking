@@ -42,7 +42,7 @@
                             <label for="categoriaMovimento" class="form-label">Seleziona Categoria</label>
                             <select class="form-control" id="categoriaMovimento" [(ngModel)]="selectedCategory"
                                 name="categoriaMovimento" (change)="onCategoryChange()">
-                                <option value="">Seleziona una categoria</option>
+                                <option value="">Categoria</option>
                                 <option *ngFor="let category of categories" [value]="category.id">{{ category.title }}
                                 </option>
                             </select>
