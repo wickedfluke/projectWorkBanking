@@ -59,8 +59,10 @@ export class LoginComponent {
       (err: any) => {
         const errorElement = getElementById('login-error');
         errorElement.innerText = err.error.message;
+        if (err.error.message === 'username must be an email') {
+          errorElement.innerText = 'L\'username deve essere un indirizzo email.';
+        }
         showContent(errorElement);
-        console.log(err.message);
       }
     );
   }

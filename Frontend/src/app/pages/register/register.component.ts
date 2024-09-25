@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { getElementById, showContent } from '../../functions/utils.html';
 
 @Component({
   selector: 'app-register',
@@ -29,11 +30,19 @@ export class RegisterComponent {
           this.router.navigate(['/login']);
         }, 10000);
       },
-      (error) => {
-        if (error.error === 'Email già in uso') {
-          alert('Username already exists');
+      (err) => {
+        const errorElement = getElementById('register-error');
+        if(err.error.message) {
+          let errorMessage = err.error.message;
+          errorMessage = errorMessage.replace("username must be an email", "L'username deve essere un'email valida");
+          errorMessage = errorMessage.replace(",password must be longer than or equal to 8 characters", '');
+          errorMessage = errorMessage.replace(/;/g, ';\n');
+          errorElement.innerText = errorMessage;
+          showContent(errorElement);
+          return;
         }
-        console.log(error);
+        errorElement.innerText = err.error;
+        showContent(errorElement);
       }
     );
   }
@@ -51,5 +60,13 @@ export class RegisterComponent {
   closeAlert() {
     this.showSuccessAlert = false;
     this.router.navigate(['/login']);
+  }
+
+  markFormTouched(form: NgForm) {
+    if (form) {
+      Object.keys(form.controls).forEach((control) => {
+        form.controls[control].markAsTouched();
+      });
+    }
   }
 }

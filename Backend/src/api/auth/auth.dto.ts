@@ -13,7 +13,7 @@ export class AddUserDTO {
 
     @MinLength(8)
     @MatchesPasswordPattern({
-        message: 'La password deve contenere almeno un carattere maiuscolo, uno minuscolo, un numer e un carattere speciale'
+        message: 'La password deve contenere almeno un carattere maiuscolo, uno minuscolo, un numero e un carattere speciale'
     })
     password: string;
 }

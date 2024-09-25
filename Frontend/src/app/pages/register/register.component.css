@@ -1,5 +1,4 @@
 .body {
-  /* Prevent scrolling */
   overflow: hidden;
   height: 100vh;
 }
@@ -34,7 +33,7 @@ h2 .actual {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
-  margin: auto; /* Ensures horizontal centering */
+  margin: auto;
 }
 
 .form-control:focus {
@@ -66,23 +65,23 @@ h2 .actual {
 }
 
 .form-control {
-  padding-right: 50px; /* Spazio sufficiente per l'icona e un po' di margine */
+  padding-right: 50px;
 }
 
 .eye-icon {
   position: absolute;
   top: 50%;
-  right: 15px; /* Distanza dal bordo destro dell'input */
+  right: 15px;
   cursor: pointer;
-  z-index: 1; /* Assicurati che l'icona sia sopra l'input */
+  z-index: 1;
 }
 
 .eye-icon app-eyes-icon {
-  font-size: 1.2rem; /* Dimensione dell'icona */
+  font-size: 1.2rem;
 }
 
 .form-text {
-  margin-top: 0.25rem; /* Spazio sopra i messaggi di errore */
+  margin-top: 0.25rem;
 }
 
 @media (max-width: 768px) {
