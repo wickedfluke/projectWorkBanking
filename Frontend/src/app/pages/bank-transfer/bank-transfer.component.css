@@ -55,7 +55,7 @@ form button:hover {
   background-color: #c06c2d;
 }
 
-img {
+.right-img {
   width: 75%;
   max-width: 100%;
   height: auto;
@@ -91,12 +91,6 @@ h5 {
 
 .btn-warning:hover {
   background-color: #c9702c;
-}
-
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 .d-flex {

@@ -1,80 +1,117 @@
 <app-nav-bar></app-nav-bar>
-<div class="row my-5">
-  <div class="col-md-6 form" *ngIf="showDataInsert">
-    <span class="h2 font-type title-h2">Effettua bonifico</span>
-    <form (ngSubmit)="onSubmit()">
-      <span class="font-type span-description">Inserisci i dati per fare il bonifico:</span>
-      <div class="mb-3">
-        <input type="text" class="form-control" [(ngModel)]="transferData.firstName" name="firstName"
-          placeholder="Inserire Nome del destinatario" required id="firstName"/>
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" [(ngModel)]="transferData.lastName" name="lastName"
-          placeholder="Inserire Cognome del destinatario" required />
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" [minLength]="27" [maxLength]="27" [(ngModel)]="transferData.iban"
-          name="iban" placeholder="Inserire IBAN del destinatario" (focusout)="validateIban()" required />
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" [(ngModel)]="transferData.description" name="description"
-          placeholder="Inserire la Causale" required />
-      </div>
-      <div class="mb-3">
-        <input type="number" min="1" class="form-control" [(ngModel)]="transferData.amount" name="amount"
-          placeholder="Inserire Importo" (focusout)="validateAmount()" required />
-      </div>
-      <div *ngIf="errors.length > 0" class="text-danger" style="margin-left: 36px; margin-right: 36px;">
-        <ul>
-          <li *ngFor="let error of errors">{{ error }}</li>
-        </ul>
-      </div>
-      <!-- Centered Button -->
-      <div class="d-flex justify-content-center mt-4">
-        <button type="submit" id="btn-check" class="btn btn-warning">Controlla Dati</button>
-      </div>
-    </form>
-  </div>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-md-6 form" *ngIf="showDataInsert">
+      <span class="h2 font-type title-h2">Effettua bonifico</span>
+      <form (ngSubmit)="onSubmit()">
+        <span class="font-type span-description">Inserisci i dati per fare il bonifico:</span>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="transferData.firstName"
+            name="firstName"
+            placeholder="Inserire Nome del destinatario"
+            required
+            id="firstName"
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="transferData.lastName"
+            name="lastName"
+            placeholder="Inserire Cognome del destinatario"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            [minLength]="27"
+            [maxLength]="27"
+            [(ngModel)]="transferData.iban"
+            name="iban"
+            placeholder="Inserire IBAN del destinatario"
+            (focusout)="validateIban()"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="transferData.description"
+            name="description"
+            placeholder="Inserire la Causale"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="number"
+            min="1"
+            class="form-control"
+            [(ngModel)]="transferData.amount"
+            name="amount"
+            placeholder="Inserire Importo"
+            (focusout)="validateAmount()"
+            required
+          />
+        </div>
+        <div *ngIf="errors.length > 0" class="text-danger" style="margin-left: 36px; margin-right: 36px">
+          <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
+        </div>
+        <!-- Centered Button -->
+        <div class="d-flex justify-content-center mt-4">
+          <button type="submit" id="btn-check" class="btn btn-warning">Controlla Dati</button>
+        </div>
+      </form>
+    </div>
 
-  <div class="col-md-6 form" *ngIf="showCheckTransfer">
-    <div class="container mt-5">
-      <h1>Riepilogo Bonifico</h1>
-      <p class="text-muted">Ricontrolla i dati</p>
-      <div class="card p-4 mb-4 shadow-sm">
-        <div class="mb-3">
-          <h5>Da: {{ currentUser.fullName }}</h5>
-          <p>IBAN: {{ currentUser.iban }}</p>
+    <div class="col-md-6 form" *ngIf="showCheckTransfer">
+      <div class="container mt-5">
+        <h1>Riepilogo Bonifico</h1>
+        <p class="text-muted">Ricontrolla i dati</p>
+        <div class="card p-4 mb-4 shadow-sm">
+          <div class="mb-3">
+            <h5>Da: {{ currentUser.fullName }}</h5>
+            <p>IBAN: {{ currentUser.iban }}</p>
+          </div>
+          <div class="mb-3">
+            <h5>A: {{ fullName }}</h5>
+            <p>IBAN: {{ transferData.iban }}</p>
+          </div>
+          <div class="mb-3">
+            <p>Causale: {{ transferData.description }}</p>
+            <p>Importo: € {{ transferData.amount }}</p>
+          </div>
+          <div id="transfer-error" class="text-danger" role="alert"></div>
         </div>
-        <div class="mb-3">
-          <h5>A: {{ fullName }}</h5>
-          <p>IBAN: {{ transferData.iban }}</p>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-warning btn-md flex-fill me-2" (click)="editTransfer()">Modifica Dati</button>
+          <button class="btn btn-warning btn-md flex-fill ms-2" (click)="confirmTransfer()">Conferma Bonifico</button>
         </div>
-        <div class="mb-3">
-          <p>Causale: {{ transferData.description }}</p>
-          <p>Importo: € {{ transferData.amount }}</p>
-        </div>
-        <div id="transfer-error" class="text-danger" role="alert"></div>
-      </div>
-      <div class="d-flex justify-content-between">
-        <button class="btn btn-warning btn-md flex-fill me-2" (click)="editTransfer()">Modifica Dati</button>
-        <button class="btn btn-warning btn-md flex-fill ms-2" (click)="confirmTransfer()">Conferma Bonifico</button>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-6 d-flex justify-content-center align-items-center">
-    <img src="../../../assets/BankTransfer.png" class="img-fluid right-img d-none d-md-block"
-      alt="Transfer Illustration" />
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <img
+        src="../../../assets/BankTransfer.png"
+        class="img-fluid right-img d-none d-md-block"
+        alt="Transfer Illustration"
+      />
+    </div>
   </div>
 </div>
 
 <div>
   <a href="/dashboard">
-    <img
-      src="../../../assets/HomeIcon.svg"
-      class="img-fluid home-icon right-img d-none d-md-block"
-      alt="Img dashboard"
-    />
+    <img src="../../../assets/HomeIcon.svg" class="img-fluid home-icon d-none d-md-block" alt="Img dashboard" />
   </a>
 </div>
 
