@@ -21,8 +21,20 @@ export class RegisterComponent {
     checkPassword: '',
   };
 
+  namePattern = /^[a-zA-ZÀ-ÿ'’-]+$/;
+
   onRegister(form: NgForm) {
     if (form.invalid) return;
+     if (!this.namePattern.test(this.registerData.firstName) || !this.namePattern.test(this.registerData.lastName)) {
+      const errorElement = getElementById('register-error');
+      errorElement.innerText = "Il nome e il cognome possono contenere solo lettere, apostrofo (') e trattino (-).";
+      showContent(errorElement);
+      return;
+    }
+
+    this.registerData.firstName = this.registerData.firstName.trim()  
+    this.registerData.lastName = this.registerData.lastName.trim()
+
     this.authService.register(this.registerData).subscribe(
       (response) => {
         this.showSuccessAlert = true;
