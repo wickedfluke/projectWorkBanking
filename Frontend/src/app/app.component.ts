@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Dashboard myBanking';
+  title = 'myBanking';
   currentUser$ = this.authSrv.currentUser$;
   private tokenCheckInterval: any;
 
