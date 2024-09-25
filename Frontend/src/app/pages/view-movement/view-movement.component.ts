@@ -33,6 +33,15 @@ export class ViewMovementComponent {
   setFilterMode(mode: 'date' | 'category') {
     this.filterMode = mode;
   }
+
+  checkNegativeValue() {
+    if (this.filtro.numeroMovimenti < 1) {
+      setTimeout(() => {
+        this.filtro.numeroMovimenti = 1;
+      }, 0);
+    }
+  }
+
   ngOnInit() {
     this.titleSrv.setTitle('Visualizza movimenti');
     this.loadMovements();
@@ -43,6 +52,10 @@ export class ViewMovementComponent {
 
   loadMovements() {
     const { numeroMovimenti, dataInizio, dataFine } = this.filtro;
+<<<<<<< Updated upstream
+=======
+    if (numeroMovimenti <= 0) return;
+>>>>>>> Stashed changes
     this.loading = true;
     if (dataInizio && dataFine) {
       this.movementService.listMovementsByDateRange(numeroMovimenti, dataInizio, dataFine).subscribe((data) => {
