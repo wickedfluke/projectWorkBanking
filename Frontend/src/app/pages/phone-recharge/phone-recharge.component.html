@@ -5,7 +5,7 @@
     <div class="col-lg-6 col-md-12 form-recharge">
       <span class="h2 font-type title-h2">Effettua la ricarica</span>
       <div class="form-container">
-        <form style="margin-top: 25px" id="form" #rechargeForm="ngForm">
+        <form id="form" #rechargeForm="ngForm">
           <div class="mb-3">
             <label for="phoneNumber" class="form-label">Numero di Telefono</label>
             <input
@@ -77,7 +77,7 @@
     <div class="col-lg-6 col-md-12 text-center container-phone">
       <div class="d-flex flex-column align-items-center">
         <!-- Saldo sotto l'immagine -->
-        <div class="balance mt-2" style="margin-bottom: 30px">
+        <div class="balance mt-2">
           Saldo Residuo:
           <strong>{{ balance | currency : "EUR" : "symbol" : "1.2-2" }}</strong>
         </div>

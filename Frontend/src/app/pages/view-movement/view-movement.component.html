@@ -7,8 +7,8 @@
       <div class="col-lg-8 col-md-12 mb-4">
         <div class="table-responsive">
           <!-- Final balance display -->
-          <h1 style="font-size: 36px">Visualizzazione movimenti</h1>
-          <h2 *ngIf="!isFilterApplied">Saldo Finale: {{ balance | currency : 'EUR' : 'symbol' }}</h2>
+          <h1 class="custom-h1">Visualizzazione movimenti</h1>
+          <h2 *ngIf="!isFilterApplied">Saldo Finale: {{ balance | currency : "EUR" : "symbol" }}</h2>
 
           <!-- Movements table -->
           <app-movement-table [movements]="movements"></app-movement-table>
@@ -17,7 +17,7 @@
 
       <!-- Right Column: Filters -->
       <div class="col-lg-4 col-md-12">
-        <div class="card bg-filter p-4 shadow-sm" style="position: sticky; top: 20px">
+        <div class="card bg-filter p-4 form-filter shadow-sm">
           <h4 class="card-title">Filtri</h4>
           <form>
             <!-- Switch Buttons -->

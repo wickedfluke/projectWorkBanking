@@ -8,14 +8,14 @@
 }
 
 .title {
-  font-size: xxx-large;
+  font-size: 3rem;
 }
 
 .description {
   margin-left: 0.5%;
 }
 
-.row{
+.row {
   margin-top: 10%;
 }
 
@@ -80,6 +80,11 @@ form button:hover {
 
 .d-flex {
   justify-content: space-between;
+}
+
+.error.list {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .btn {

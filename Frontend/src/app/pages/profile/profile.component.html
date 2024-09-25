@@ -5,11 +5,26 @@
     <div class="col-md-4 user-detail">
       <p class="page-title mb-5">Il mio Profilo</p>
       <div class="user-info">
-        <p><strong>Nome: </strong>{{ currentUser.firstName }}</p>
-        <p><strong>Cognome: </strong>{{ currentUser.lastName }}</p>
-        <p><strong>Email: </strong>{{ this.email }}</p>
-        <p><strong>Iban: </strong>{{ currentUser.iban }}</p>
-        <p><strong>Data Apertura Conto: </strong>{{ currentUser.openDate | date: "dd/MM/yyyy" }}</p>
+        <p>
+          <strong>Nome:</strong>
+          {{ currentUser.firstName }}
+        </p>
+        <p>
+          <strong>Cognome:</strong>
+          {{ currentUser.lastName }}
+        </p>
+        <p>
+          <strong>Email:</strong>
+          {{ this.email }}
+        </p>
+        <p>
+          <strong>Iban:</strong>
+          {{ currentUser.iban }}
+        </p>
+        <p>
+          <strong>Data Apertura Conto:</strong>
+          {{ currentUser.openDate | date : "dd/MM/yyyy" }}
+        </p>
       </div>
 
       <!-- Pulsante per aprire il modale -->
@@ -20,15 +35,9 @@
 
     <!-- Colonna per l'immagine a destra -->
     <div class="col-md-5 d-flex justify-content-end align-items-center">
-      <img
-        src="../../../assets/profile-icon.png"
-        class="img-fluid d-none d-md-block"
-        alt="Transfer Illustration"
-      />
+      <img src="../../../assets/profile-icon.png" class="img-fluid d-none d-md-block" alt="Transfer Illustration" />
     </div>
   </div>
-
-
 </div>
 <!-- Modale per il cambio password -->
 <ng-template #modalContent>
@@ -100,7 +109,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
-    <button type="button" class="btn btn-warning" (click)="submitChangePassword()" style="color: white !important">
+    <button type="button" class="btn btn-warning close-change-password-form" (click)="submitChangePassword()">
       Salva
     </button>
   </div>
@@ -108,7 +117,6 @@
 
 <div>
   <a href="/dashboard">
-    <img src="../../../assets/HomeIcon.svg" class="img-fluid home-icon right-img d-none d-md-block"
-      alt="home-icon" />
+    <img src="../../../assets/HomeIcon.svg" class="img-fluid home-icon right-img d-none d-md-block" alt="home-icon" />
   </a>
 </div>

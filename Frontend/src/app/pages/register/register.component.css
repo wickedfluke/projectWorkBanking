@@ -1,5 +1,4 @@
 .body {
-  overflow: hidden;
   height: 100vh;
 }
 
@@ -51,7 +50,7 @@ h2 .actual {
 }
 
 .illustration img {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
 }
 
@@ -88,17 +87,10 @@ h2 .actual {
   #img-register {
     display: none;
   }
-  
+
   .register-form {
     margin: auto;
     padding: 2rem 1rem;
     max-width: 90%;
-  }
-}
-
-@media (min-width: 769px) {
-  .body {
-    overflow: hidden;
-    height: 100vh;
   }
 }

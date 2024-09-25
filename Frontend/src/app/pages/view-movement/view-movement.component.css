@@ -7,6 +7,10 @@
   top: 45px;
 }
 
+.custom-h1 {
+  font-size: 36px;
+}
+
 .btn {
   border: none;
 }
@@ -34,6 +38,11 @@
 .filter {
   position: relative;
   top: 120px;
+}
+
+.form-filter {
+  position: sticky;
+  top: 20px;
 }
 
 .bg-filter {
@@ -79,8 +88,8 @@ div .home-icon {
   height: auto;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: #ffc107;
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
-
 }

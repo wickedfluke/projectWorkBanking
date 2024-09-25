@@ -6,6 +6,10 @@
   transform: translateY(-10%);
 }
 
+#form {
+  margin-top: 25px;
+}
+
 .title-h2 {
   position: relative;
   font-size: 3rem;
@@ -29,12 +33,13 @@
 .balance {
   font-size: 1.2rem;
   margin-top: 10px;
+  margin-bottom: 30px;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: #ffc107;
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
-
 }
 .form-container {
   max-width: 600px;
@@ -75,5 +80,3 @@ div .home-icon {
     display: none;
   }
 }
-
-

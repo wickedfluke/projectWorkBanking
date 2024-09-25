@@ -2,7 +2,7 @@
 <div class="container font-type">
   <div class="row">
     <div class="col-md-6 form" *ngIf="showDataInsert">
-      <p class="font-type title mb-4 ">Effettua bonifico </p>
+      <p class="font-type title mb-4">Effettua bonifico</p>
       <form #transferForm="ngForm" (ngSubmit)="onSubmit()">
         <p class="font-type description mt-5">Inserisci i dati per fare il bonifico:</p>
         <div class="mb-3">
@@ -67,7 +67,7 @@
             #amount="ngModel"
           />
         </div>
-        <div *ngIf="errors.length > 0" class="text-danger" style="margin-left: 36px; margin-right: 36px">
+        <div *ngIf="errors.length > 0" class="text-danger error-list">
           <ul>
             <li *ngFor="let error of errors">{{ error }}</li>
           </ul>
@@ -102,8 +102,12 @@
           <div id="transfer-error" class="text-danger" role="alert"></div>
         </div>
         <div class="d-flex justify-content-between">
-          <button class="btn btn-warning btn-md flex-fill me-2  font-type" (click)="editTransfer()">Modifica Dati</button>
-          <button class="btn btn-warning btn-md flex-fill ms-2  font-type" (click)="confirmTransfer()">Conferma Bonifico</button>
+          <button class="btn btn-warning btn-md flex-fill me-2 font-type" (click)="editTransfer()">
+            Modifica Dati
+          </button>
+          <button class="btn btn-warning btn-md flex-fill ms-2 font-type" (click)="confirmTransfer()">
+            Conferma Bonifico
+          </button>
         </div>
       </div>
     </div>

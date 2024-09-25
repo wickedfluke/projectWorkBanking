@@ -8,7 +8,7 @@
 }
 
 .page-title {
-  font-size: xxx-large;
+  font-size: 3rem;
   margin-bottom: 6%;
 }
 
@@ -21,14 +21,14 @@
 
 .user-info {
   margin-bottom: 20px;
-  border-left: 1px solid #EC9552;
+  border-left: 1px solid #ec9552;
   padding-left: 10px;
 }
 
 .user-info p {
   margin: 4px;
   padding: 5px 0;
-  border-bottom: 1px solid #EC9552;
+  border-bottom: 1px solid #ec9552;
 }
 
 .user-info p:last-child {
@@ -40,6 +40,10 @@
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.close-change-password-form {
+  color: white !important;
 }
 
 /* Uniformare i grafici */
@@ -58,7 +62,7 @@ canvas {
 }
 
 div .home-icon {
-  background-color: #EC9552;
+  background-color: #ec9552;
   border-radius: 30%;
   box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
 }
@@ -92,10 +96,10 @@ div .home-icon {
   height: auto;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: #ffc107;
   box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
-
 }
 .eye-icon {
   position: absolute;

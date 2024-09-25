@@ -3,12 +3,12 @@
     <!-- Navbar -->
     <app-nav-bar></app-nav-bar>
     <app-loading [isLoading]="loading"></app-loading>
-    <div class="container-fluid" style="padding-left: 7%; padding-right: 7%">
+    <div class="container-fluid main">
       <div class="row">
         <div class="col-lg-8 col-md-12 mb-4">
           <!-- Welcome Message and Balance -->
           <div class="mt-4">
-            <h2 class="welcome-message font-type" style="font-size: 48px; line-height: 55px">
+            <h2 class="welcome-message font-type">
               Ciao
               <strong>{{ currentUser?.fullName ?? "Utente sconosciuto" }}</strong>
               <span>,</span>
@@ -16,7 +16,7 @@
               il saldo del tuo conto è di:
             </h2>
 
-            <span class="total-amount font-type" style="font-size: 48px; line-height: 55px" id="balance">
+            <span class="total-amount font-type" id="balance">
               {{ eyeState ? (balance | currency : "EUR" : "symbol" : "1.2-2") : "-" }}
             </span>
             <span class="eye-icon">
@@ -24,8 +24,8 @@
             </span>
           </div>
           <!-- Movement Table -->
-          <br>
-          <h3 class="font-type" style="font-size: 25px;">Ultimi 5 movimenti:</h3>
+          <br />
+          <h3 class="font-type last-movements">Ultimi 5 movimenti:</h3>
           <app-movement-table></app-movement-table>
         </div>
 

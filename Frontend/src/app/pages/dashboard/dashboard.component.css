@@ -6,9 +6,16 @@ h2 strong {
   color: #fdba46;
 }
 
+.main {
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
 .welcome-message {
   font-size: 1.75rem;
   color: #333;
+  font-size: 3rem;
+  line-height: 55px;
 }
 
 .total-amount {
@@ -16,12 +23,21 @@ h2 strong {
   color: black;
   display: inline-block;
   font-style: italic;
-  -webkit-user-select: none;
+  -webkit-user-select: none; /* Safari e Chrome */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer e Edge */
+  user-select: none; /* Standard per browser moderni */
+  font-size: 3rem;
+  line-height: 55px;
 }
 
 .eye-icon {
   font-size: 1.5rem;
   margin-left: 15px;
+}
+
+.last-movements {
+  font-size: 1.5rem;
 }
 
 .table-hover tbody tr:hover {
