@@ -43,31 +43,72 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="passwordForm!">
-      <div class="mb-3">
-        <label for="newPassword" class="form-label">Nuova Password</label>
-        <input type="password" formControlName="newPassword" class="form-control" id="newPassword"
-          placeholder="Inserisci la nuova password" />
+      <div class="mb-3 position-relative">
+        <label for="confirm-password" class="form-label">Inserisci la password</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          id="password"
+          placeholder="Inserisci la password"
+          required
+        />
+        <div class="eye-icon" (click)="togglePasswordVisibility('password')">
+          <app-eyes-icon
+            [size]="'25px'"
+            (state)="(isPasswordVisible)"
+            [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
+          ></app-eyes-icon>
+        </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 position-relative">
         <label for="confirmPassword" class="form-label">Conferma Nuova Password</label>
-        <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
-          placeholder="Conferma la nuova password" />
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control"
+          id="confirmPassword"
+          placeholder="Conferma la nuova password"
+          required
+        />
+        <div class="eye-icon" (click)="togglePasswordVisibility('confirmPassword')">
+          <app-eyes-icon
+            [size]="'25px'"
+            (state)="(isPasswordVisible)"
+            [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
+          ></app-eyes-icon>
+        </div>
       </div>
     </form>
     <div *ngIf="touchAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
       Inserisci tutti i campi!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
-        (click)="closeAlert()"></button>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        (click)="closeAlert()"
+      ></button>
     </div>
     <div *ngIf="showAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
       Le password non corrispondono!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
-        (click)="closeAlert()"></button>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        (click)="closeAlert()"
+      ></button>
     </div>
     <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
       Password modificata con successo! Reindirizzamento alla pagina di login...
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
-        (click)="closeAlert()"></button>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        (click)="closeAlert()"
+      ></button>
     </div>
   </div>
   <div class="modal-footer">
@@ -80,7 +121,10 @@
 
 <div>
   <a href="/dashboard">
-    <img src="../../../assets/HomeIcon.svg" class="img-fluid home-icon right-img d-none d-md-block"
-      alt="Img dashboard" />
+    <img
+      src="../../../assets/HomeIcon.svg"
+      class="img-fluid home-icon right-img d-none d-md-block"
+      alt="Img dashboard"
+    />
   </a>
 </div>
