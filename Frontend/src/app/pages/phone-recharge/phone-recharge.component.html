@@ -16,6 +16,7 @@
               [(ngModel)]="phoneNumber"
               name="phoneNumber"
               required
+              max="10"
               #phoneInput="ngModel"
             />
             <div *ngIf="!isPhoneNumberValid() && phoneInput.touched" class="text-danger">
