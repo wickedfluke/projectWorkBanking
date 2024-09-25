@@ -54,11 +54,7 @@
           required
         />
         <div class="eye-icon" (click)="togglePasswordVisibility('newPassword')">
-          <app-eyes-icon
-            [size]="'25px'"
-            (state)="(isPasswordVisible)"
-            [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
-          ></app-eyes-icon>
+          <app-eyes-icon [size]="'25px'" (state)="(isPasswordVisible)"></app-eyes-icon>
         </div>
       </div>
       <div class="mb-3 position-relative">
@@ -72,11 +68,7 @@
           required
         />
         <div class="eye-icon" (click)="togglePasswordVisibility('confirmPassword')">
-          <app-eyes-icon
-            [size]="'25px'"
-            (state)="(isPasswordVisible)"
-            [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
-          ></app-eyes-icon>
+          <app-eyes-icon [size]="'25px'" (state)="(isPasswordVisible)"></app-eyes-icon>
         </div>
       </div>
     </form>

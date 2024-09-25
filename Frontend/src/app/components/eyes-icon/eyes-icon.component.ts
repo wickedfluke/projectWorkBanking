@@ -4,6 +4,9 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   selector: 'app-eyes-icon',
   templateUrl: './eyes-icon.component.html',
   styleUrls: ['./eyes-icon.component.css'],
+  host: {
+    '(click)': 'onClick()',
+  },
 })
 export class EyesIconComponent {
   @Output() state = new EventEmitter<boolean>();
