@@ -58,19 +58,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   showCustomAlert() {
     const alertElement = getElementById('custom-alert');
     const overlayElement = getElementById('page-overlay');
-    if (alertElement && overlayElement) {
-      alertElement.style.display = 'block';
-      overlayElement.style.display = 'block';
-    }
+    alertElement.style.display = 'block';
+    overlayElement.style.display = 'block';
   }
 
   hideCustomAlert() {
     const alertElement = getElementById('custom-alert');
     const overlayElement = getElementById('page-overlay');
-    if (alertElement && overlayElement) {
-      alertElement.style.display = 'none';
-      overlayElement.style.display = 'none';
-    }
+    alertElement.style.display = 'none';
+    overlayElement.style.display = 'none';
   }
 
   login() {
@@ -78,33 +74,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     const { username, password } = this.loginForm.value;
     this.authService.login(username!, password!).subscribe(
       () => {
-        const errorElement = getElementById('login-error');
-        if (errorElement) {
-          hideContent(errorElement);
-        }
+        hideContent(getElementById('login-error'));
         this.router.navigate(['/dashboard']);
       },
       (err: any) => {
         const errorElement = getElementById('login-error');
-        if (errorElement) {
-          
-          console.log('Error element:', errorElement);
-          console.log('Error message:', err.error.message);
-
-          
-          if (err.error && err.error.message) {
-            errorElement.innerText = err.error.message;
-          } else {
-            errorElement.innerText = 'Errore sconosciuto. Riprova.';
-          }
-          
-          if (err.error.message === 'username must be an email') {
-            errorElement.innerText = 'L\'username deve essere un indirizzo email.';
-          }
-
-          
-          showContent(errorElement);
+        errorElement.innerText = err.error.message;
+        if (err.error.message === 'username must be an email') {
+          errorElement.innerText = "L'username deve essere un indirizzo email.";
         }
+        showContent(errorElement);
       }
     );
   }
@@ -112,9 +91,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   togglePasswordVisibility(id: string) {
     this.isPasswordVisible = !this.isPasswordVisible;
     const passwordField = document.getElementById(id) as HTMLInputElement;
-    if (passwordField) {
-      passwordField.type = this.isPasswordVisible ? 'text' : 'password';
-    }
+    passwordField.type = this.isPasswordVisible ? 'text' : 'password';
   }
 
   navigate(path: string) {
