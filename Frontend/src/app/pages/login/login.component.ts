@@ -38,31 +38,51 @@ export class LoginComponent {
   showCustomAlert() {
     const alertElement = getElementById('custom-alert');
     const overlayElement = getElementById('page-overlay');
-    alertElement.style.display = 'block';
-    overlayElement.style.display = 'block';
+    if (alertElement && overlayElement) {
+      alertElement.style.display = 'block';
+      overlayElement.style.display = 'block';
+    }
   }
 
   hideCustomAlert() {
     const alertElement = getElementById('custom-alert');
     const overlayElement = getElementById('page-overlay');
-    alertElement.style.display = 'none';
-    overlayElement.style.display = 'none';
+    if (alertElement && overlayElement) {
+      alertElement.style.display = 'none';
+      overlayElement.style.display = 'none';
+    }
   }
-
 
   login(form: NgForm) {
     this.authService.login(this.loginData.username, this.loginData.password).subscribe(
       () => {
-        hideContent(getElementById('login-error'));
+        const errorElement = getElementById('login-error');
+        if (errorElement) {
+          hideContent(errorElement);
+        }
         this.router.navigate(['/dashboard']);
       },
       (err: any) => {
         const errorElement = getElementById('login-error');
-        errorElement.innerText = err.error.message;
-        if (err.error.message === 'username must be an email') {
-          errorElement.innerText = 'L\'username deve essere un indirizzo email.';
+        if (errorElement) {
+          // Debugging
+          console.log('Error element:', errorElement);
+          console.log('Error message:', err.error.message);
+
+          // Gestione del messaggio d'errore
+          if (err.error && err.error.message) {
+            errorElement.innerText = err.error.message;
+          } else {
+            errorElement.innerText = 'Errore sconosciuto. Riprova.';
+          }
+          // Se l'errore riguarda l'email non valida
+          if (err.error.message === 'username must be an email') {
+            errorElement.innerText = 'L\'username deve essere un indirizzo email.';
+          }
+
+          // Visualizza l'errore
+          showContent(errorElement);
         }
-        showContent(errorElement);
       }
     );
   }
@@ -70,7 +90,9 @@ export class LoginComponent {
   togglePasswordVisibility(id: string) {
     this.isPasswordVisible = !this.isPasswordVisible;
     const passwordField = document.getElementById(id) as HTMLInputElement;
-    passwordField.type = this.isPasswordVisible ? 'text' : 'password';
+    if (passwordField) {
+      passwordField.type = this.isPasswordVisible ? 'text' : 'password';
+    }
   }
 
   navigate(path: string) {
