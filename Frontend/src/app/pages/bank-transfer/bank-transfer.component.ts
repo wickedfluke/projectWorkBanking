@@ -91,6 +91,24 @@ export class BankTransferComponent implements OnInit {
       );
   }
 
+  validateFirstName() {
+    const firstNameError = 'Nome non valido.';
+    if (this.transferData.firstName.length === 0) {
+      if (!this.errors.includes(firstNameError)) this.errors.push(firstNameError);
+    } else {
+      this.errors = this.errors.filter((error) => error !== firstNameError);
+    }
+  }
+
+  validateLastName() {
+    const lastNameError = 'Cognome non valido.';
+    if (this.transferData.lastName.length === 0) {
+      if (!this.errors.includes(lastNameError)) this.errors.push(lastNameError);
+    } else {
+      this.errors = this.errors.filter((error) => error !== lastNameError);
+    }
+  }
+
   validateIban() {
     const ibanErrorLenght = 'IBAN deve essere di 27 caratteri.';
     const ibanNotFound = 'IBAN non trovato nel database.';

@@ -8,11 +8,11 @@
       <div class="user-info">
         <p>
           <strong>Nome:</strong>
-          {{ currentUser.firstName }}
+          {{ currentUser?.firstName }}
         </p>
         <p>
           <strong>Cognome:</strong>
-          {{ currentUser.lastName }}
+          {{ currentUser?.lastName }}
         </p>
         <p>
           <strong>Email:</strong>
@@ -20,11 +20,11 @@
         </p>
         <p>
           <strong>Iban:</strong>
-          {{ currentUser.iban }}
+          {{ currentUser?.iban }}
         </p>
         <p>
           <strong>Data Apertura Conto:</strong>
-          {{ currentUser.openDate | date : "dd/MM/yyyy" }}
+          {{ currentUser?.openDate | date : "dd/MM/yyyy" }}
         </p>
       </div>
 

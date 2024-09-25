@@ -3,7 +3,7 @@
   <div class="row my-5">
     <div class="col-md-6 form" *ngIf="showDataInsert">
       <span class="h2 font-type title-h2">Effettua bonifico</span>
-      <form (ngSubmit)="onSubmit()">
+      <form #transferForm="ngForm" (ngSubmit)="onSubmit()">
         <span class="font-type span-description">Inserisci i dati per fare il bonifico:</span>
         <div class="mb-3">
           <input
@@ -12,8 +12,10 @@
             [(ngModel)]="transferData.firstName"
             name="firstName"
             placeholder="Inserire Nome del destinatario"
+            (focusout)="validateFirstName()"
             required
             id="firstName"
+            #firstName="ngModel"
           />
         </div>
         <div class="mb-3">
@@ -23,7 +25,9 @@
             [(ngModel)]="transferData.lastName"
             name="lastName"
             placeholder="Inserire Cognome del destinatario"
+            (focusout)="validateLastName()"
             required
+            #lastName="ngModel"
           />
         </div>
         <div class="mb-3">
@@ -35,8 +39,9 @@
             [(ngModel)]="transferData.iban"
             name="iban"
             placeholder="Inserire IBAN del destinatario"
-            (focusout)="validateIban()"
             required
+            (focusout)="validateIban()"
+            #iban="ngModel"
           />
         </div>
         <div class="mb-3">
@@ -46,7 +51,7 @@
             [(ngModel)]="transferData.description"
             name="description"
             placeholder="Inserire la Causale"
-            required
+            #description="ngModel"
           />
         </div>
         <div class="mb-3">
@@ -59,6 +64,7 @@
             placeholder="Inserire Importo"
             (focusout)="validateAmount()"
             required
+            #amount="ngModel"
           />
         </div>
         <div *ngIf="errors.length > 0" class="text-danger" style="margin-left: 36px; margin-right: 36px">
@@ -68,7 +74,10 @@
         </div>
         <!-- Centered Button -->
         <div class="d-flex justify-content-center mt-4">
-          <button type="submit" id="btn-check" class="btn btn-warning">Controlla Dati</button>
+          <!-- Disabilita il pulsante se il form non è valido -->
+          <button type="submit" id="btn-check" class="btn btn-warning" [disabled]="!transferForm.form.valid">
+            Controlla Dati
+          </button>
         </div>
       </form>
     </div>
