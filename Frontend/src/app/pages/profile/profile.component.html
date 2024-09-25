@@ -47,13 +47,13 @@
         <label for="confirm-password" class="form-label">Inserisci la password</label>
         <input
           type="password"
-          formControlName="password"
+          formControlName="newPassword"
           class="form-control"
-          id="password"
+          id="newPassword"
           placeholder="Inserisci la password"
           required
         />
-        <div class="eye-icon" (click)="togglePasswordVisibility('password')">
+        <div class="eye-icon" (click)="togglePasswordVisibility('newPassword')">
           <app-eyes-icon
             [size]="'25px'"
             (state)="(isPasswordVisible)"
