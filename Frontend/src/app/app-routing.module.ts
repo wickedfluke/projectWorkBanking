@@ -12,6 +12,7 @@ import { BankTransferComponent } from './pages/bank-transfer/bank-transfer.compo
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
+import { EmailConfirmationFaildedComponent } from './pages/email-confirmation-failded/email-confirmation-failded.component';
 
 const routes: Routes = [
   {
@@ -22,32 +23,32 @@ const routes: Routes = [
   {
     path: 'login',
     canActivate: [LoginGuard],
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
     canActivate: [LoginGuard],
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: 'dashboard',
     canActivate: [authGuard],
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: 'profile',
     canActivate: [authGuard],
-    component: ProfileComponent
+    component: ProfileComponent,
   },
   {
     path: 'recharge',
     canActivate: [authGuard],
-    component: PhoneRechargeComponent
+    component: PhoneRechargeComponent,
   },
   {
     path: 'view',
     canActivate: [authGuard],
-    component: ViewMovementComponent
+    component: ViewMovementComponent,
   },
   {
     path: 'transfer',
@@ -56,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'home',
@@ -67,13 +68,17 @@ const routes: Routes = [
     component: EmailConfirmationComponent,
   },
   {
+    path: 'confirm-email-failed',
+    component: EmailConfirmationFaildedComponent,
+  },
+  {
     path: '**',
     component: NotFoundComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

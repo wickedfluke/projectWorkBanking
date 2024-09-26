@@ -25,6 +25,7 @@ import { SuccessPopupComponent } from './components/success-popup/success-popup.
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
+import { EmailConfirmationFaildedComponent } from './pages/email-confirmation-failded/email-confirmation-failded.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EmailConfirmationComponent } from './pages/email-confirmation/email-con
     SuccessPopupComponent,
     HomeComponent,
     NotFoundComponent,
-    EmailConfirmationComponent
+    EmailConfirmationComponent,
+    EmailConfirmationFaildedComponent
   ],
   imports: [
     BrowserModule,
