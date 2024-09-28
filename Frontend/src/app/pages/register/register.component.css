@@ -104,7 +104,15 @@ label {
 small:first-child {
   margin-bottom: 15px;
 }
-
+.register-error {
+  position: absolute;
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #f8d7da;
+  color: #721c24;
+  display: none;
+}
 .error-margin {
   margin-top: 2rem !important; /* Aggiunge margine superiore di 2rem */
 }
@@ -126,14 +134,4 @@ small:first-child {
     padding: 0rem;
     transform: translateX(2%);
   }
-}
-
-.register-error {
-  position: absolute;
-  margin-bottom: 15px;
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #f8d7da;
-  color: #721c24;
-  display: none;
 }
