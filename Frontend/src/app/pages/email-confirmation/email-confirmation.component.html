@@ -1,9 +1,14 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card shadow p-4" style="max-width: 400px">
-    <div class="card-body text-center">
-      <h2 class="card-title mb-4">Email Confermata</h2>
-      <p class="card-text mb-4">La tua email è stata confermata con successo. Puoi ora effettuare il login.</p>
-      <button class="btn btn-warning" (click)="navigateToLogin()">Vai al Login</button>
+  <div class="row w-100">
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+      <div class="p-4 font-type">
+        <p class="title mb-4">Account creato con successo!</p>
+        <p class="description card-text mb-4">Benvenuto, ora inizia a scoprire tutte le opportunità che ti aspettano!</p>
+        <button class="btn btn-warning" (click)="navigateToLogin()">Vai al Login</button>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <img src="../../../assets/success.png" alt="Success Image" />
     </div>
   </div>
 </div>
