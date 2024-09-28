@@ -25,15 +25,16 @@ export class RegisterComponent {
 
   onRegister(form: NgForm) {
     if (form.invalid) return;
-     if (!this.namePattern.test(this.registerData.firstName) || !this.namePattern.test(this.registerData.lastName)) {
+    if (!this.namePattern.test(this.registerData.firstName) || !this.namePattern.test(this.registerData.lastName)) {
       const errorElement = getElementById('register-error');
       errorElement.innerText = "Il nome e il cognome possono contenere solo lettere, apostrofo (') e trattino (-).";
       showContent(errorElement);
       return;
     }
 
-    this.registerData.firstName = this.registerData.firstName.trim()  
-    this.registerData.lastName = this.registerData.lastName.trim()
+    this.registerData.firstName = this.registerData.firstName.trim();
+    this.registerData.lastName = this.registerData.lastName.trim();
+    this.registerData.username = this.registerData.username.trim().toLowerCase();
 
     this.authService.register(this.registerData).subscribe(
       (response) => {
@@ -44,10 +45,10 @@ export class RegisterComponent {
       },
       (err) => {
         const errorElement = getElementById('register-error');
-        if(err.error.message) {
+        if (err.error.message) {
           let errorMessage = err.error.message;
-          errorMessage = errorMessage.replace("username must be an email", "L'username deve essere un'email valida");
-          errorMessage = errorMessage.replace(",password must be longer than or equal to 8 characters", '');
+          errorMessage = errorMessage.replace('username must be an email', "L'username deve essere un'email valida");
+          errorMessage = errorMessage.replace(',password must be longer than or equal to 8 characters', '');
           errorMessage = errorMessage.replace(/;/g, ';\n');
           errorElement.innerText = errorMessage;
           showContent(errorElement);

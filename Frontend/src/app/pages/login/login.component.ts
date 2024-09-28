@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   isPasswordVisible = false;
   pageTitle = 'Login home banking';
-  errorMessage: string | null = null; // Aggiungi una proprietà per gestire il messaggio di errore
+  errorMessage: string | null = null;
 
   private destroyed$ = new Subject<void>();
 
@@ -55,31 +55,26 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   showCustomAlert() {
-    // Visualizza l'alert senza manipolare direttamente il DOM
     this.errorMessage = 'Tempo scaduto per il login';
   }
 
   hideCustomAlert() {
-    // Nascondi l'alert
     this.errorMessage = null;
   }
 
   login() {
     if (this.loginForm.invalid) return;
-
-    const { username, password } = this.loginForm.value;
+    let { username, password } = this.loginForm.value;
+    username = username!.trim().toLowerCase();
     this.authService.login(username!, password!).subscribe(
       () => {
         this.errorMessage = null;
         this.router.navigate(['/dashboard']);
       },
       (err: any) => {
-        // Gestione degli errori con messaggi definiti
-        if (err.error.message === 'username must be an email') {
+        if (err.error.message === 'username must be an email')
           this.errorMessage = "L'username deve essere un indirizzo email.";
-        } else {
-          this.errorMessage = 'Credenziali non valide. Riprova.';
-        }
+        else this.errorMessage = 'Credenziali non valide. Riprova.';
       }
     );
   }

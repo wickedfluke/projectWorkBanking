@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private authSrv: AuthService,
     private jwtSrv: JwtService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.titleSrv.setTitle(this.title);
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
       if (token && this.jwtSrv.isTokenExpired(token)) {
         this.logout();
       }
-    }, 10000);
+    }, 1000);
   }
 
   ngOnDestroy(): void {
