@@ -54,7 +54,7 @@ label {
   background-color: #d97706;
 }
 #btn-submit {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 .eye-icon {
   position: absolute;
@@ -65,18 +65,21 @@ label {
   font-size: 1.2rem;
 }
 
-/* Error Messages */
+/* Error messages */
 .text-danger small {
   display: block;
   position: absolute;
-  bottom: -1.5rem;
-  left: 0.4rem;
+  bottom: -20px; /* Adjust based on your design */
+  left: 0;
   font-size: 12px;
   color: red;
   width: 100%;
 }
 .mb-3.position-relative {
-  margin-bottom: 40px;
+  margin-bottom: 0px !important;
+}
+.mb-3.position-relative.has-error {
+  margin-bottom: 20px !important;
 }
 
 /* Image Background */

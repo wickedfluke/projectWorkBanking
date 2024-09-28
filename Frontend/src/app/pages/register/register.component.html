@@ -1,7 +1,7 @@
 <div class="container-fluid body">
   <div class="row w-100">
     <!-- Left Column: Registration Form -->
-    <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">
+    <div class="col-lg-6 register-container col-md-12 d-flex justify-content-center align-items-center">
       <div class="register-form w-100 p-3">
         <h2 class="text-center mb-4">
           <span class="h2" (click)="navigate('login')">Login</span>
@@ -9,72 +9,135 @@
           <span class="h2 actual">Registrati</span>
         </h2>
         <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
-          <div class="mb-3">
+          <!-- First Name -->
+          <div class="mb-3 position-relative" [ngClass]="{ 'has-error': firstName.invalid && firstName.touched }">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" name="firstName" [(ngModel)]="registerData.firstName"
-              placeholder="Inserisci qui il tuo nome" required #firstName="ngModel" />
-            <div *ngIf="firstName.invalid && firstName.touched" class="form-text text-danger">
-              Il nome è obbligatorio.
-            </div>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="firstName"
+              [(ngModel)]="registerData.firstName"
+              placeholder="Inserisci qui il tuo nome"
+              required
+              #firstName="ngModel"
+            />
+            <div *ngIf="firstName.invalid && firstName.touched" class="text-danger">Il nome è obbligatorio.</div>
           </div>
-          <div class="mb-3">
+
+          <!-- Last Name -->
+          <div class="mb-3 position-relative" [ngClass]="{ 'has-error': lastName.invalid && lastName.touched }">
             <label for="surname" class="form-label">Cognome</label>
-            <input type="text" class="form-control" id="surname" name="lastName" [(ngModel)]="registerData.lastName"
-              placeholder="Inserisci qui il tuo cognome" required #lastName="ngModel" />
-            <div *ngIf="lastName.invalid && lastName.touched" class="form-text text-danger">
-              Il cognome è obbligatorio.
-            </div>
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              name="lastName"
+              [(ngModel)]="registerData.lastName"
+              placeholder="Inserisci qui il tuo cognome"
+              required
+              #lastName="ngModel"
+            />
+            <div *ngIf="lastName.invalid && lastName.touched" class="text-danger">Il cognome è obbligatorio.</div>
           </div>
-          <div class="mb-3">
+
+          <!-- Email -->
+          <div class="mb-3 position-relative" [ngClass]="{ 'has-error': email.invalid && email.touched }">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="username" [(ngModel)]="registerData.username"
-              placeholder="Inserisci qui una mail valida" required #email="ngModel" />
-            <div *ngIf="email.invalid && email.touched" class="form-text text-danger">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="username"
+              [(ngModel)]="registerData.username"
+              placeholder="Inserisci qui una mail valida"
+              required
+              #email="ngModel"
+            />
+            <div *ngIf="email.invalid && email.touched" class="text-danger">
               L'email è obbligatoria e deve essere valida.
             </div>
-            <div class="form-text text-success success-message">Success message</div>
           </div>
-          <div class="mb-3 position-relative">
+
+          <!-- Password -->
+          <div class="mb-3 position-relative" [ngClass]="{ 'has-error': password.invalid && password.touched }">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password"
-              [(ngModel)]="registerData.password" placeholder="Con almeno 8 caratteri, una maiuscola e un simbolo"
-              required #password="ngModel" />
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              [(ngModel)]="registerData.password"
+              placeholder="Con almeno 8 caratteri, una maiuscola e un simbolo"
+              required
+              #password="ngModel"
+            />
             <div class="eye-icon" (click)="togglePasswordVisibility('password')">
-              <app-eyes-icon [size]="'25px'" (state)="(isPasswordVisible)"
-                [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"></app-eyes-icon>
+              <app-eyes-icon
+                [size]="'25px'"
+                [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
+              ></app-eyes-icon>
             </div>
+            <div *ngIf="password.invalid && password.touched" class="text-danger">La password è obbligatoria.</div>
           </div>
-          <div *ngIf="password.invalid && password.touched" class="form-text text-danger">
-            La password è obbligatoria.
-          </div>
-          <div class="form-text text-success success-message">Successo</div>
 
-          <div class="mb-3 position-relative">
+          <!-- Confirm Password -->
+          <div
+            class="mb-3 position-relative"
+            [ngClass]="{ 'has-error': checkPassword.invalid && checkPassword.touched }"
+          >
             <label for="confirm-password" class="form-label">Conferma Password</label>
-            <input type="password" class="form-control" id="confirm-password" name="checkPassword"
-              [(ngModel)]="registerData.checkPassword" placeholder="Ripeti qui la password scelta" required
-              #checkPassword="ngModel" />
-
+            <input
+              type="password"
+              class="form-control"
+              id="confirm-password"
+              name="checkPassword"
+              [(ngModel)]="registerData.checkPassword"
+              placeholder="Ripeti qui la password scelta"
+              required
+              #checkPassword="ngModel"
+            />
             <div class="eye-icon" (click)="togglePasswordVisibility('confirm-password')">
-              <app-eyes-icon [size]="'25px'" (state)="(isPasswordVisible)"
-                [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"></app-eyes-icon>
+              <app-eyes-icon
+                [size]="'25px'"
+                [ngClass]="{ show: isPasswordVisible, hide: !isPasswordVisible }"
+              ></app-eyes-icon>
+            </div>
+            <div class="error-message">
+              <div
+                *ngIf="
+                  (checkPassword.invalid && checkPassword.touched) ||
+                  (password.value !== checkPassword.value && checkPassword.touched)
+                "
+                class="text-danger"
+              >
+                <small *ngIf="checkPassword.invalid && checkPassword.touched">
+                  La conferma della password è obbligatoria.
+                </small>
+                <small *ngIf="password.value !== checkPassword.value && checkPassword.touched">
+                  Le password non corrispondono.
+                </small>
+              </div>
             </div>
           </div>
-
-          <div *ngIf="checkPassword.invalid && checkPassword.touched" class="form-text text-danger">
-            La conferma della password è obbligatoria.
-          </div>
-          <div *ngIf="password.value !== checkPassword.value && checkPassword.touched" class="form-text text-danger">
-            Le password non corrispondono
-          </div>
-          <div id="register-error" class="text-danger"></div>
-
+          <div id="register-error" class="position-relative register-error text-danger"></div>
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary" (click)="markFormTouched(registerForm)">Continua</button>
+            <button
+              type="submit"
+              id="btn-submit"
+              class="btn btn-primary"
+              (click)="markFormTouched(registerForm)"
+              [ngClass]="{
+                'error-margin': checkPassword.invalid && checkPassword.touched && password.value !== checkPassword.value
+              }"
+            >
+              Continua
+            </button>
           </div>
         </form>
       </div>
     </div>
+
     <!-- Right Column: Image -->
     <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center illustration">
       <img src="../../../assets/registerImage.png" id="img-register" class="img-fluid" alt="Illustration" />
@@ -82,6 +145,9 @@
   </div>
 </div>
 
-<app-success-popup [show]="showSuccessAlert"
+<!-- Success Popup -->
+<app-success-popup
+  [show]="showSuccessAlert"
   [message]="'Registrazione avvenuta con successo! Verifica la tua casella di posta per confermare la tua email.'"
-  (closed)="closeAlert()"></app-success-popup>
+  (closed)="closeAlert()"
+></app-success-popup>

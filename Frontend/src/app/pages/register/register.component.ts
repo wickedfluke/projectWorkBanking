@@ -48,9 +48,10 @@ export class RegisterComponent {
         if (err.error.message) {
           let errorMessage = err.error.message;
           errorMessage = errorMessage.replace('username must be an email', "L'username deve essere un'email valida");
-          errorMessage = errorMessage.replace(',password must be longer than or equal to 8 characters', '');
+          errorMessage = errorMessage.replace('password must be longer than or equal to 8 characters', '');
           errorMessage = errorMessage.replace(/;/g, ';\n');
           errorElement.innerText = errorMessage;
+          errorElement.classList.add('has-error');
           showContent(errorElement);
           return;
         }
