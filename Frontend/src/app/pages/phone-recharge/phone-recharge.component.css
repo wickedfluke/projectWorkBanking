@@ -1,16 +1,18 @@
 .font-type {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-size: large;
+}
+
+.title{
+  font-size: xxx-large;
+  margin-top: 15%;
+  margin-left: 2.5%;
 }
 
 .form-recharge {
   transform: translateY(-10%);
 }
-
-.title-h2 {
-  position: relative;
-  font-size: 3rem;
-  left: 10px;
-}
+ 
 
 .container-phone {
   position: relative;
@@ -22,13 +24,14 @@
 }
 
 .phone-icon {
-  width: 300px;
+  width: 480px;
   height: auto;
 }
 
 .balance {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-top: 10px;
+  font-style: italic;
 }
 
 .form-control:focus, .form-select:focus {
@@ -46,14 +49,6 @@ app-success-popup {
   height: auto;
 }
 
-#btn-submit {
-  background-color: #ec9552;
-  color: #fff;
-  margin-top: 1rem;
-  padding: 4px;
-  display: flex;
-  justify-content: center;
-}
 
 div .home-icon {
   background-color: #ec9552;
@@ -63,10 +58,10 @@ div .home-icon {
 
 .home-icon {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  padding: 10px;
-  width: 45px;
+  bottom: 30px;
+  left: 30px;
+  padding: 15px;
+  width: 55px;
   height: auto;
 }
 
@@ -76,4 +71,17 @@ div .home-icon {
   }
 }
 
+.btn-warning {
+  background-color: #ec9552;
+  color: white;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
+  border: none;
+}
 
+.btn-warning:hover {
+  background-color: #c9702c;
+}
+
+div .home-icon:hover{
+  background-color: #c9702c;
+}

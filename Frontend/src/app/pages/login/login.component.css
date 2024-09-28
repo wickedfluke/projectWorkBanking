@@ -32,7 +32,6 @@ h2 .actual {
   background-color: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
   margin: auto;
@@ -50,21 +49,20 @@ h2 .actual {
 .btn-primary {
   background-color: #f48c06;
   border: none;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
+
 }
 
 .eye-icon {
   position: absolute;
   top: 50%;
   right: 15px;
-  /* Distanza dal bordo destro dell'input */
   cursor: pointer;
   z-index: 1;
-  /* Assicurati che l'icona sia sopra l'input */
 }
 
 .eye-icon app-eyes-icon {
   font-size: 1.2rem;
-  /* Dimensione dell'icona */
 }
 
 .btn-primary:hover {

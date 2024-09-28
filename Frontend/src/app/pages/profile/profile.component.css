@@ -12,6 +12,12 @@
   margin-bottom: 6%;
 }
 
+.title{
+  font-size: xx-large;
+  margin-bottom: 0%;
+  margin-left: 1%;
+}
+
 .user-detail {
   padding: 20px;
   margin-right: 20%;
@@ -42,7 +48,6 @@
   cursor: pointer;
 }
 
-/* Uniformare i grafici */
 .chart-wrapper {
   display: flex;
   justify-content: center;
@@ -82,3 +87,24 @@ div .home-icon {
   border-radius: 30%;
   box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
 }
+
+.btn-warning {
+  background-color:  #ec9552;
+  color: white;
+  border: none;
+  font-size: medium;
+  max-width: fit-content;
+  margin-left: 30%;
+  box-shadow: 0 2px 2px rgb(209, 203, 203);
+  margin-right: auto;
+}
+
+
+.btn-warning:hover {
+  background-color: #c9702c;
+}
+
+div .home-icon:hover{
+  background-color: #c9702c;
+}
+

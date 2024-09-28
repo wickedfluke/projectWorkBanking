@@ -1,22 +1,25 @@
-.container {
-  margin-top: 50px;
+.font-type {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-size: large;
 }
 
 .title {
-  position: relative;
-  top: 45px;
+  font-size: xxx-large;
 }
 
 .btn {
   border: none;
 }
+
 .btn:focus {
   background-color: #ef600d !important;
 }
 
 .table {
-  margin-top: 50px;
   width: 100%;
+  border: 1px solid transparent;
+  border-collapse: separate;
+    border-spacing: 1em 2px;
 }
 
 .table-position {
@@ -33,7 +36,7 @@
 
 .filter {
   position: relative;
-  top: 120px;
+  margin-top: 15%;
 }
 
 .bg-filter {
@@ -46,8 +49,9 @@
 }
 
 .card-title {
-  font-weight: bold;
-  text-align: center;
+  font-size: xx-large;
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  text-align: left;
 }
 
 .max-height {
@@ -56,7 +60,7 @@
 }
 
 th {
-  background: #ffe1a1;
+  background: rgba(255, 196, 68, 0.5);
 }
 
 button.btn {
@@ -67,14 +71,26 @@ button.btn {
 div .home-icon {
   background-color: #ec9552;
   border-radius: 30%;
-  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
 }
 
 .home-icon {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  padding: 10px;
-  width: 45px;
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  padding: 15px;
+  width: 55px;
   height: auto;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important
+}
+
+.form-control {
+  border: 1px solid transparent;
+}
+
+div .home-icon:hover{
+  background-color: #c9702c;
+}
+
+button.btn:hover{
+  background-color: #c9702c;  
 }

@@ -1,8 +1,8 @@
-<div class="table-custom spacer">
+<div class="table-custom spacer font-type">
     <div class="table-responsive mb-4" style="padding-left: 32px; padding-right: 15px; margin-left: 2px">
         <ng-container *ngIf="currentUser">
-            <table class="table table-bordered table-hover">
-                <thead class="bg-warning">
+            <table class="table rounded-3 overflow-hidden table-bordered table-hover shadow-sm table-borderless">
+                <thead class="bg-warning font-type">
                     <tr>
                         <th>Data</th>
                         <th>Importo</th>
@@ -31,11 +31,11 @@
 
 <!-- Modal -->
 <ng-template #modalContent>
-    <div class="modal-header">
-        <h3 class="modal-title">Dettagli movimento</h3>
+    <div class="modal-header border-0 font-type mx-2">
+        <h3 class="modal-title title">Dettagli movimento</h3>
         <button type="button" class="btn-close" aria-label="Close" (click)="modalReference?.close()"></button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body font-type mx-3">
         <div *ngIf="selectedMovement">
             <p><strong>Data:</strong> {{ selectedMovement.date | date:'dd/MM/yyyy' }}</p>
             <p><strong>Importo:</strong> {{ selectedMovement.amount | currency:'EUR':'symbol' }}</p>
@@ -47,7 +47,7 @@
             <p>Loading...</p>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modalReference?.close()">Close</button>
+    <div class="modal-footer border-0">
+        <button type="button" class="btn bg-warning shadow-sm mx-3 mb-2" (click)="modalReference?.close()">Close</button>
     </div>
 </ng-template>

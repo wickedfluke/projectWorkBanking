@@ -2,13 +2,13 @@
 <app-loading [isLoading]="loading"></app-loading>
 
 <div *ngIf="!loading">
-  <div class="container mt-4">
+  <div class="container mt-4 font-type">
     <div class="row">
       <div class="col-lg-8 col-md-12 mb-4">
         <div class="table-responsive">
           <!-- Final balance display -->
-          <h1 style="font-size: 36px">Visualizzazione movimenti</h1>
-          <h2>Saldo Finale: {{ balance | currency : "EUR" : "symbol" }}</h2>
+          <p class="title mt-5 mb-4">Visualizza Movimenti</p>
+          <p >Saldo Finale: {{ balance | currency : "EUR" : "symbol" }}</p>
 
           <!-- Movements table -->
           <app-movement-table [movements]="movements"></app-movement-table>
@@ -17,14 +17,14 @@
 
       <!-- Right Column: Filters -->
       <div class="col-lg-4 col-md-12">
-        <div class="card bg-filter p-4 shadow-sm" style="position: sticky; top: 20px">
+        <div class="card bg-filter p-4 shadow-sm filter" style="position: sticky; top: 20px">
           <h4 class="card-title">Filtri</h4>
           <form>
             <!-- Switch Buttons -->
-            <div class="mb-3 text-center">
+            <div class="mb-3 text-center font-type">
               <button
                 type="button"
-                class="btn btn-primary w-100 mt-2"
+                class="btn btn-primary w-100 mt-2 font-type"
                 [class.active]="filterMode === 'category'"
                 (click)="setFilterMode('category')"
               >
@@ -32,7 +32,7 @@
               </button>
               <button
                 type="button"
-                class="btn btn-primary w-100 mt-2"
+                class="btn btn-primary w-100 mt-2 font-type"
                 [class.active]="filterMode === 'date'"
                 (click)="setFilterMode('date')"
               >
@@ -45,7 +45,7 @@
               <label for="numeroMovimenti" class="form-label">Seleziona numero movimenti</label>
               <input
                 type="number"
-                class="form-control"
+                class="form-control font-type"
                 id="numeroMovimenti"
                 [(ngModel)]="filtro.numeroMovimenti"
                 name="numeroMovimenti"
@@ -55,7 +55,7 @@
 
             <!-- Filter by category (shown only if filterMode is 'category') -->
             <div class="mb-3" *ngIf="filterMode === 'category'">
-              <label for="categoriaMovimento" class="form-label">Seleziona Categoria</label>
+              <label for="categoriaMovimento" class="form-label font-type">Seleziona Categoria</label>
               <select
                 class="form-control"
                 id="categoriaMovimento"
@@ -66,7 +66,7 @@
                 <option value="">Seleziona una categoria</option>
                 <option *ngFor="let category of categories" [value]="category.id">{{ category.title }}</option>
               </select>
-              <button type="button" class="btn btn-primary w-100 mt-2" (click)="clearCategory()">
+              <button type="button" class="btn btn-primary w-100 mt-2 font-type" (click)="clearCategory()">
                 Rimuovi filtro categoria
               </button>
             </div>
@@ -78,7 +78,7 @@
                 <input
                   type="date"
                   id="dataInizio"
-                  class="form-control"
+                  class="form-control font-type"
                   [(ngModel)]="filtro.dataInizio"
                   name="dataInizio"
                 />
@@ -86,15 +86,15 @@
 
               <div class="mb-3">
                 <label for="dataFine" class="form-label">Inserisci data Fine</label>
-                <input type="date" id="dataFine" class="form-control" [(ngModel)]="filtro.dataFine" name="dataFine" />
+                <input type="date" id="dataFine" class="form-control font-type" [(ngModel)]="filtro.dataFine" name="dataFine" />
               </div>
             </div>
 
             <!-- Apply filters button -->
-            <button type="button" class="btn btn-primary w-100" (click)="applyFilters()">Applica Filtri</button>
+            <button type="button" class="btn btn-primary w-100 font-type" (click)="applyFilters()">Applica Filtri</button>
 
             <!-- Export CSV button -->
-            <button type="button" class="btn btn-success w-100 mt-2" (click)="exportMovements()">
+            <button type="button" class="btn btn-success w-100 mt-2 font-type" (click)="exportMovements()">
               Esporta in .csv
             </button>
           </form>

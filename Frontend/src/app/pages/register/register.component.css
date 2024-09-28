@@ -30,7 +30,6 @@ h2 .actual {
   background-color: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
   margin: auto;
@@ -44,6 +43,7 @@ h2 .actual {
 .btn-primary {
   background-color: #f48c06;
   border: none;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
 }
 
 .btn-primary:hover {
