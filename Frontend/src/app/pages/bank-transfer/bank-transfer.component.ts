@@ -111,6 +111,7 @@ export class BankTransferComponent implements OnInit {
 
   validateIban() {
     const ibanErrorLenght = 'IBAN deve essere di 27 caratteri.';
+    const sameIbanError = 'Non puoi fare un bonifico a te stesso.';
     const ibanNotFound = 'IBAN non trovato nel database.';
     if (this.transferData.iban.length !== 27)
       if (!this.errors.includes(ibanErrorLenght)) this.errors.push(ibanErrorLenght);
@@ -118,6 +119,9 @@ export class BankTransferComponent implements OnInit {
     if (!this.userIbans.includes(this.transferData.iban))
       if (!this.errors.includes(ibanNotFound)) this.errors.push(ibanNotFound);
       else this.errors = this.errors.filter((error) => error !== ibanNotFound);
+    if (this.currentUser.iban === this.transferData.iban)
+      if (!this.errors.includes(sameIbanError)) this.errors.push(sameIbanError);
+      else this.errors = this.errors.filter((error) => error !== sameIbanError);
   }
 
   validateAmount() {
