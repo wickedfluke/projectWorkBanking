@@ -34,6 +34,8 @@ export class ProfileComponent {
   showSuccess: boolean = false;
   touchAlert: boolean = false;
   isPasswordVisible = false;
+  eightAlert: boolean = false;
+  passwordAlert: boolean = false;
 
   ngOnInit() {
     this.titleSrv.setTitle('Profilo');
@@ -65,6 +67,27 @@ export class ProfileComponent {
   }
 
   submitChangePassword() {
+    if(this.passwordForm!.value.newPassword.length < 8) {
+      this.eightAlert = true;
+      setTimeout(() => {
+        this.eightAlert = false;
+      }, 10000);
+      return;
+    }
+
+    const password = this.passwordForm!.value.newPassword;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (!hasUpperCase || !hasLowerCase || !hasNumber || !hasSpecialChar) {
+      this.passwordAlert = true;
+      setTimeout(() => {
+      this.passwordAlert = false;
+      }, 10000);
+      return;
+    }
     if (this.passwordForm!.invalid) {
       this.touchAlert = true;
       setTimeout(() => {
@@ -93,7 +116,8 @@ export class ProfileComponent {
         }, 5000);
       },
       (error) => {
-        alert('Errore:' + error.error);
+        alert('Errore: ' + error.error.message);
+        console.log(error);
       }
     );
   }

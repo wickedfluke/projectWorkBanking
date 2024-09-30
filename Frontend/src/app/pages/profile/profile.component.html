@@ -79,6 +79,26 @@
         </div>
       </div>
     </form>
+    <div *ngIf="passwordAlert" class="alert alert-danger alert-dismissible fade show" role="alert">  
+      La password deve contenere almeno un carattere maiuscolo, uno minuscolo, un numero e un carattere speciale!
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Chiudi"
+        (click)="closeAlert()"
+      ></button>
+    </div>
+    <div *ngIf="eightAlert" class="alert alert-danger alert-dismissible fade show" role="alert">  
+      La password deve avere almeno 8 caratteri!
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Chiudi"
+        (click)="closeAlert()"
+      ></button>
+    </div>
     <div *ngIf="touchAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
       Inserisci tutti i campi!
       <button

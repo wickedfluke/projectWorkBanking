@@ -90,13 +90,13 @@
                 <input type="date" id="dataFine" class="form-control font-type" [(ngModel)]="filtro.dataFine" name="dataFine" />
               </div>
 
-              <button type="button" class="btn btn-primary w-100 mt-2" (click)="clearDate()">
+              <button type="button" class="btn btn-primary w-100 mt-2 font-type" (click)="clearDate()">
                 Rimuovi filtro data
               </button>
             </div>
 
             <!-- Apply filters button -->
-            <button type="button" class="btn btn-primary w-100 font-type" (click)="applyFilters()">Applica Filtri</button>
+            <button type="button" class="btn btn-primary w-100 font-type mt-2" (click)="applyFilters()">Applica Filtri</button>
 
             <!-- Export CSV button -->
             <button type="button" class="btn btn-success w-100 mt-2 font-type" (click)="exportMovements()">
