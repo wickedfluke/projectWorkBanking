@@ -12,7 +12,7 @@
   margin-bottom: 6%;
 }
 
-.title{
+.title {
   font-size: xx-large;
   margin-bottom: 0%;
   margin-left: 1%;
@@ -47,7 +47,6 @@
   border: none;
   cursor: pointer;
 }
-
 
 .close-change-password-form {
   color: white !important;
@@ -93,7 +92,6 @@ div .home-icon {
   box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
 }
 
-
 .home-icon {
   position: absolute;
   bottom: 20px;
@@ -121,7 +119,7 @@ div .home-icon {
 }
 
 .btn-warning {
-  background-color:  #ec9552;
+  background-color: #ec9552;
   color: white;
   border: none;
   font-size: medium;
@@ -131,11 +129,14 @@ div .home-icon {
   margin-right: auto;
 }
 
-
 .btn-warning:hover {
   background-color: #c9702c;
 }
 
-div .home-icon:hover{
+div .home-icon:hover {
   background-color: #c9702c;
+}
+
+.color-white {
+  color: white !important;
 }
