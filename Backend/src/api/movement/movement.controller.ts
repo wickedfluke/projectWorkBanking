@@ -94,7 +94,11 @@ export const exportMovementsCSV1 = async (req: Request, res: Response, next: Nex
             ...movement,
             date: moment(movement.date).format('DD/MM/YYYY') 
         }));
-        const fields = ['date', 'amount', 'categoryName.title'];
+        const fields = [
+            { label: 'Data', value: 'date' },
+            { label: 'Importo', value: 'amount' },
+            { label: 'Categoria', value: 'categoryName.title' }
+        ];
         const opts = { fields };
         const parser = new Parser(opts);
         const csv = parser.parse(formattedMovements);
@@ -128,7 +132,11 @@ export const exportMovementsCSV2 = async (req: Request, res: Response, next: Nex
             date: moment(movement.date).format('DD/MM/YYYY') 
         }));
 
-        const fields = ['date', 'amount', 'categoryName.title'];
+        const fields = [
+            { label: 'Data', value: 'date' },
+            { label: 'Importo', value: 'amount' },
+            { label: 'Categoria', value: 'categoryName.title' }
+        ];
         const opts = { fields };
 
         const parser = new Parser(opts);
@@ -158,7 +166,11 @@ export const exportMovementsCSV3 = async (req: Request, res: Response, next: Nex
             ...movement,
             date: moment(movement.date).format('DD/MM/YYYY') 
         }));
-        const fields = ['date', 'amount', 'categoryName.title'];
+        const fields = [
+            { label: 'Data', value: 'date' },
+            { label: 'Importo', value: 'amount' },
+            { label: 'Categoria', value: 'categoryName.title' }
+        ];
         const opts = { fields };
 
         const parser = new Parser(opts);
