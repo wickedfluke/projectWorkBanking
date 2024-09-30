@@ -28,7 +28,7 @@
       </div>
 
       <!-- Pulsante per aprire il modale -->
-      <button class="btn btn-warning mt-3 password-button" (click)="openChangePasswordModal(modalContent)">
+      <button class="btn btn-warning mt-3 password-button font-type px-4" (click)="openChangePasswordModal(modalContent)">
         Modifica password
       </button>
     </div>
@@ -41,11 +41,11 @@
 </div>
 <!-- Modale per il cambio password -->
 <ng-template #modalContent>
-  <div class="modal-header">
-    <h4 class="modal-title" id="changePasswordModalLabel">Modifica Password</h4>
+  <div class="modal-header border-0 font-type mx-2">
+    <h4 class="modal-title title mt-3 font-type" id="changePasswordModalLabel">Modifica Password</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body font-type mx-3">
     <form [formGroup]="passwordForm!">
       <div class="mb-3 position-relative">
         <label for="confirm-password" class="form-label">Inserisci la password</label>
@@ -74,6 +74,11 @@
         <div class="eye-icon" (click)="togglePasswordVisibility('confirmPassword')">
           <app-eyes-icon [size]="'25px'" (state)="(isPasswordVisible)"></app-eyes-icon>
         </div>
+        <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
+          placeh older="Conferma la nuova password" />
+          <div class="eye-icon" (click)="togglePasswordVisibility('confirmPassword')">
+            <app-eyes-icon [size]="'25px'" (state)="(isPasswordVisible)"></app-eyes-icon>
+          </div>
       </div>
     </form>
     <div *ngIf="touchAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -107,9 +112,9 @@
       ></button>
     </div>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer border-0">
     <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
-    <button type="button" class="btn btn-warning close-change-password-form" (click)="submitChangePassword()">
+    <button type="button" class="btn btn-warning shadow-sm mx-3 mb-2 font-type" (click)="submitChangePassword()" style="color: white !important">
       Salva
     </button>
   </div>

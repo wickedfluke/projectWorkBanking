@@ -1,3 +1,23 @@
+.font-type {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+  font-size: larger !important;
+}
+
+.header .title {
+  font-size: 3em !important;
+  color: #EC9552;
+  margin-top: 20%;
+  font-weight: 300 !important;
+}
+
+.title {
+  font-size: 2.5em  !important;
+  color: #EC9552;
+  margin-top: 20%;
+  font-weight: 300;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -18,10 +38,6 @@
   text-align: center;
 }
 
-.header h1 {
-  font-size: 2.5rem;
-  color: #f08554;
-}
 
 .header {
   position: relative;
@@ -31,20 +47,37 @@
 .header p {
   margin-top: 10px;
   font-size: 1.2rem;
-  letter-spacing: 2px;
+  line-height: normal;
 }
 
 .brand {
-  font-weight: bold;
-  color: #f08554;
+  color: #EC9552;
+  font-size: xx-large !important;
 }
 
 .content {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 40px;
+  position: relative;
 }
+
+.left-section {
+  flex: 1;
+  margin-right: 20%;
+  position: relative;
+  top: -60px;
+  
+}
+
+.right-section {
+  flex: 1;
+  margin-left: 20%;
+  position: relative;
+  top: -60px;
+}
+
 
 .left-section,
 .right-section {
@@ -53,32 +86,27 @@
 
 .left-section p,
 .right-section p {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+   margin-bottom: 5%;
 }
 
-.button {
-  background-color: #f08554;
+.btn-warning {
+  background-color: #ec9552;
   color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border: none;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
+  width: 40%;
 }
 
-.button:hover {
-  background-color: #d97446;
+.btn-warning:hover {
+  background-color: #c9702c;
 }
 
-.image-section {
-  flex: 1.5;
-}
 
 .image-section img {
   position: absolute;
   bottom: 0;
-  left: 34%;
-  width: 30%;
+  left: 28%;
+  width: 40%;
   max-width: 100%;
   height: auto;
 }

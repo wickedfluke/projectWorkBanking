@@ -8,6 +8,11 @@ html {
   background-color: #f8f9fa;
 }
 
+.font-type {
+  font-family: "IBM Plex Sans Condensed", sans-serif;
+
+}
+ 
 .error-container {
   max-width: 600px;
 }
@@ -17,10 +22,24 @@ html {
   height: auto;
 }
 
-h1 {
-  color: #ff7043;
+.title {
+  font-size: 3em !important;
+  color: #EC9552;
+  margin-top: 10%;
+  font-weight: 300 !important;
 }
 
 img {
   width: 80%;
+}
+ 
+.btn-warning {
+  background-color: #ec9552;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 2px rgb(209, 203, 203) !important;
+}
+
+.btn-warning:hover {
+  background-color: #c9702c;
 }
