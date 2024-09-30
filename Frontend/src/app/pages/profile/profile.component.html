@@ -63,17 +63,6 @@
       </div>
       <div class="mb-3 position-relative">
         <label for="confirmPassword" class="form-label">Conferma Nuova Password</label>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          class="form-control"
-          id="confirmPassword"
-          placeholder="Conferma la nuova password"
-          required
-        />
-        <div class="eye-icon" (click)="togglePasswordVisibility('confirmPassword')">
-          <app-eyes-icon [size]="'25px'" (state)="(isPasswordVisible)"></app-eyes-icon>
-        </div>
         <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword"
           placeh older="Conferma la nuova password" />
           <div class="eye-icon" (click)="togglePasswordVisibility('confirmPassword')">
@@ -113,7 +102,7 @@
     </div>
   </div>
   <div class="modal-footer border-0">
-    <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
+    <button type="button" class="btn btn-secondary shadow-sm mx-3 mb-2 font-type" (click)="closeModal()">Chiudi</button>
     <button type="button" class="btn btn-warning shadow-sm mx-3 mb-2 font-type" (click)="submitChangePassword()" style="color: white !important">
       Salva
     </button>
