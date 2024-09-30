@@ -87,11 +87,13 @@ export class ViewMovementComponent {
 
   clearCategory() {
     this.selectedCategory = null;
+    this.applyFilters();
   }
 
   clearDate() {
     this.filtro.dataInizio = '';
     this.filtro.dataFine = '';
+    this.applyFilters();
   }
 
   exportMovements() {
