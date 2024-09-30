@@ -33,7 +33,7 @@
 <ng-template #modalContent>
     <div class="modal-header border-0 font-type mx-2">
         <h3 class="modal-title title">Dettagli movimento</h3>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modalReference?.close()"></button>
+        <button type="button" class="btn-close" aria-label="Chiudi" (click)="modalReference?.close()"></button>
     </div>
     <div class="modal-body font-type mx-3">
         <div *ngIf="selectedMovement">
@@ -48,6 +48,6 @@
         </div>
     </div>
     <div class="modal-footer border-0">
-        <button type="button" class="btn bg-warning shadow-sm mx-3 mb-2" (click)="modalReference?.close()">Close</button>
+        <button type="button" class="btn bg-warning shadow-sm mx-3 mb-2" (click)="modalReference?.close()">Chiudi</button>
     </div>
 </ng-template>
