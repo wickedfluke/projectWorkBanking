@@ -16,7 +16,7 @@ class EmailService {
     async sendConfirmationEmail(username: string, userId: string, confirmationCode: string) {
         //ToDO: Change the BASE_URL to the actual base URL of the application
         //! REAL CONST const confirmationLink = `${process.env.BASE_URL}/api/auth/confirm-email?userId=${userId}&code=${confirmationCode}`;
-        const confirmationLink = `https://governing-nike-wickedlabel-b8b1618b.koyeb.app/api/confirm-email?userId=${userId}&code=${confirmationCode}`;
+        const confirmationLink = `https://careful-filide-lucabenini-89d64874.koyeb.app/api/confirm-email?userId=${userId}&code=${confirmationCode}`;
 
         const htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd;">

@@ -129,12 +129,12 @@ export const confirmEmail = async (
       await movementService.createOpeningMovement(userId as string); // Create opening movement
 
       res.redirect(
-        "https://governing-nike-wickedlabel-b8b1618b.koyeb.app/confirm-email"
+        "https://careful-filide-lucabenini-89d64874.koyeb.app/confirm-email"
       );
       // res.status(200).json({ message: 'Mail confermata, account attivato.' });
     } else {
       res.redirect(
-        "https://governing-nike-wickedlabel-b8b1618b.koyeb.app/confirm-email-failed"
+        "https://careful-filide-lucabenini-89d64874.koyeb.app/confirm-email-failed"
       );
       //   res.status(400).json({ message: "Codice di conferma non valido." });
     }
